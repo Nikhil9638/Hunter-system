@@ -1,0 +1,23 @@
+[
+  {
+    "code": "scores = [4, 6, 8]\nscores[1] = 7\nprint(scores)\nprint(scores[:2])",
+    "stdout": "[4, 7, 8]\n[4, 7]\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "items = [1]\nitems.append(2)\nitems.extend([3, 4])\nlast = items.pop()\nprint(items)\nprint(last)",
+    "stdout": "[1, 2, 3]\n4\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "a = [1, 2]\nb = a\nc = a.copy()\nb.append(3)\nprint(a)\nprint(c)",
+    "stdout": "[1, 2, 3]\n[1, 2]\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  }
+]

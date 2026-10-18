@@ -1,0 +1,23 @@
+[
+  {
+    "code": "name = input(\"Name: \")\nprint(\"Hello\", name)",
+    "stdout": "Name: Hello Ana\n",
+    "stdin": "Ana\n",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "count = int(input())\nprint(count + 2)",
+    "stdout": "9\n",
+    "stdin": "7\n",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "print(float(\"2.5\"))\nprint(\"Level \" + str(3))\nprint(int(-3.9))",
+    "stdout": "2.5\nLevel 3\n-3\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  }
+]

@@ -1,0 +1,113 @@
+{
+  "chrome": "155.0.8059.79",
+  "assets": [
+    {
+      "name": "Shadow Recruit",
+      "format": "PNG",
+      "width": 512,
+      "height": 512,
+      "bytes": 25093,
+      "transparent": 128784,
+      "opaque": 132368,
+      "partial": 992,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Shadow Soldier",
+      "format": "PNG",
+      "width": 512,
+      "height": 512,
+      "bytes": 29421,
+      "transparent": 128784,
+      "opaque": 132368,
+      "partial": 992,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Shadow Knight",
+      "format": "PNG",
+      "width": 512,
+      "height": 512,
+      "bytes": 22162,
+      "transparent": 128784,
+      "opaque": 132368,
+      "partial": 992,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Elite Shadow Knight",
+      "format": "PNG",
+      "width": 512,
+      "height": 512,
+      "bytes": 28523,
+      "transparent": 128784,
+      "opaque": 132368,
+      "partial": 992,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Shadow Commander",
+      "format": "PNG",
+      "width": 512,
+      "height": 512,
+      "bytes": 27632,
+      "transparent": 128784,
+      "opaque": 132368,
+      "partial": 992,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Shadow Monarch",
+      "format": "PNG",
+      "width": 512,
+      "height": 512,
+      "bytes": 28099,
+      "transparent": 128784,
+      "opaque": 132368,
+      "partial": 992,
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "review_sizes": [
+    {
+      "width": 1280,
+      "images": 18,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "images": 18,
+      "overflow": false
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 256 256">
+<title>First Spark cosmetic badge proposal</title>
+<g stroke-linecap="round" stroke-linejoin="round" stroke-width="6" fill="none">
+<path d="m128 18 94 54v112l-94 54-94-54V72z" fill="#101a2a" stroke="#778ba7"/>
+<path d="m128 29 84 49v100l-84 49-84-49V78z" stroke="#344a64" stroke-width="3"/>
+<path d="m55 80 26-15m94 127 26-15" stroke="#72e8f2" stroke-width="4"/>
+<path d="M142 57 94 128h31l-11 65 51-82h-33z" fill="#72e8f2"/><path d="m76 83 8 9m89 70 9 8m-112-34h12m90-56-8 9" stroke="#a49afb"/></g></svg>

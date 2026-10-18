@@ -1,0 +1,471 @@
+[
+  {
+    "kind": "concept",
+    "stem": "Which operator checks equality?",
+    "code_snippet": null,
+    "explanation": "== compares equality. A single = assigns a value.",
+    "objective": "Distinguish equality from assignment",
+    "key": "py-06-01",
+    "topic_id": 6,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "=",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "!=",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": ":=",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "==",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "When is A and B true if A and B are Booleans?",
+    "code_snippet": null,
+    "explanation": "Both Boolean conditions must be true for and to be true.",
+    "objective": "Combine Boolean expressions",
+    "key": "py-06-02",
+    "topic_id": 6,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Only when both are True",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "When either one is True",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Only when both are False",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Whenever A and B differ",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Which comparison includes the boundary value?",
+    "code_snippet": null,
+    "explanation": ">= includes equality, so a score of exactly 3 meets this lower bound.",
+    "objective": "Use inclusive comparisons",
+    "key": "py-06-03",
+    "topic_id": 6,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "score != 3",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "score >= 3",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "score > 3",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "score < 3",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What do and/or return for general Python operands?",
+    "code_snippet": null,
+    "explanation": "and/or short-circuit and return the deciding operand. not always produces a bool.",
+    "objective": "Understand logical results",
+    "key": "py-06-04",
+    "topic_id": 6,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Always an int",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Always None",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "One of their operand values",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Always a bool",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(5 > 2 and 5 < 8)",
+    "explanation": "Both comparisons are True, so the and expression is True.",
+    "objective": "Combine comparisons",
+    "validation": {
+      "code": "print(5 > 2 and 5 < 8)",
+      "stdout": "True\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-06-05",
+    "topic_id": 6,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "False",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "5",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "True",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(not (2 == 2))",
+    "explanation": "2 == 2 is True; not reverses it.",
+    "objective": "Use not",
+    "validation": {
+      "code": "print(not (2 == 2))",
+      "stdout": "False\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-06-06",
+    "topic_id": 6,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "False",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "True",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "2",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "None",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "n = 0\nprint(n != 0 and 6 / n > 1)",
+    "explanation": "The false left operand short-circuits and; 6/n is never evaluated.",
+    "objective": "Understand short-circuiting",
+    "validation": {
+      "code": "n = 0\nprint(n != 0 and 6 / n > 1)",
+      "stdout": "False\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-06-07",
+    "topic_id": 6,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "0.0",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "False",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "True",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "ZeroDivisionError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(\"\" or \"guest\")",
+    "explanation": "An empty string is falsy, so or evaluates and returns the second operand.",
+    "objective": "Understand truthiness",
+    "validation": {
+      "code": "print(\"\" or \"guest\")",
+      "stdout": "guest\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-06-08",
+    "topic_id": 6,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "False",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "None",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "guest",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "True",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(2 <= 3 <= 3)",
+    "explanation": "Both 2<=3 and 3<=3 are true. Chained comparisons include both checks.",
+    "objective": "Use chained comparisons",
+    "validation": {
+      "code": "print(2 <= 3 <= 3)",
+      "stdout": "True\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-06-09",
+    "topic_id": 6,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "False",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "3",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "SyntaxError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "True",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "print(\"5\" < 6)",
+    "explanation": "Python cannot order a string and an integer in this way; convert suitable input first.",
+    "objective": "Identify mixed-type comparisons",
+    "validation": {
+      "code": "print(\"5\" < 6)",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "TypeError"
+    },
+    "key": "py-06-10",
+    "topic_id": 6,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "TypeError",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "SyntaxError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "NameError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "print(True && False)",
+    "explanation": "&& is not Python syntax. The logical word is and.",
+    "objective": "Use Python logical syntax",
+    "validation": {
+      "code": "print(True && False)",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "SyntaxError"
+    },
+    "key": "py-06-11",
+    "topic_id": 6,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "SyntaxError",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "NameError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "A rule requires level >= 2 AND ready. Why is level >= 2 or ready wrong?",
+    "code_snippet": null,
+    "explanation": "or permits either requirement alone, whereas the stated rule requires both.",
+    "objective": "Choose the correct combination",
+    "key": "py-06-12",
+    "topic_id": 6,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "or changes level to 2",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "The ready variable becomes a string",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "It accepts a case where only one requirement is met",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "or always rejects every case",
+        "is_correct": false
+      }
+    ]
+  }
+]

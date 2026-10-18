@@ -1,0 +1,471 @@
+[
+  {
+    "kind": "concept",
+    "stem": "Which loop does break stop?",
+    "code_snippet": null,
+    "explanation": "Break applies to its enclosing loop, regardless of for or while.",
+    "objective": "Understand break",
+    "key": "py-09-01",
+    "topic_id": 9,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Only a while loop",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "The next loop after this one",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "The nearest enclosing loop",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Every loop in the program",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What does continue skip?",
+    "code_snippet": null,
+    "explanation": "The next iteration can still run.",
+    "objective": "Understand continue",
+    "key": "py-09-02",
+    "topic_id": 9,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "All future iterations",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Only the next print anywhere",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "The whole program",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "The remaining statements in the current iteration",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What does pass do?",
+    "code_snippet": null,
+    "explanation": "Pass is a placeholder statement.",
+    "objective": "Understand pass",
+    "key": "py-09-03",
+    "topic_id": 9,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Nothing",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "Ends the loop",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Skips the iteration",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Returns a value",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "When does loop else run?",
+    "code_snippet": null,
+    "explanation": "Normal exhaustion, including an empty iterable, reaches else.",
+    "objective": "Understand loop else",
+    "key": "py-09-04",
+    "topic_id": 9,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Only if the first item is false",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "After normal completion without break",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "Only after break",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "After every iteration",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "for n in range(4):\n    if n == 2:\n        break\n    print(n)",
+    "explanation": "Break occurs before printing 2.",
+    "objective": "Trace break",
+    "validation": {
+      "code": "for n in range(4):\n    if n == 2:\n        break\n    print(n)",
+      "stdout": "0\n1\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-09-05",
+    "topic_id": 9,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "0\n1\n2\n3",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "2",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "0\n1",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "0\n1\n2",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "for n in range(3):\n    if n == 1:\n        continue\n    print(n)",
+    "explanation": "Only the iteration with 1 skips printing.",
+    "objective": "Trace continue",
+    "validation": {
+      "code": "for n in range(3):\n    if n == 1:\n        continue\n    print(n)",
+      "stdout": "0\n2\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-09-06",
+    "topic_id": 9,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "0\n1\n2",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "0",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "1",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "0\n2",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "for n in range(2):\n    pass\n    print(n)",
+    "explanation": "Pass leaves the following print reachable.",
+    "objective": "Trace pass",
+    "validation": {
+      "code": "for n in range(2):\n    pass\n    print(n)",
+      "stdout": "0\n1\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-09-07",
+    "topic_id": 9,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "0\n1",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "No output",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "1",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "0",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "for n in range(0):\n    print(n)\nelse:\n    print(\"empty\")",
+    "explanation": "An empty range completes without break.",
+    "objective": "Trace empty loop else",
+    "validation": {
+      "code": "for n in range(0):\n    print(n)\nelse:\n    print(\"empty\")",
+      "stdout": "empty\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-09-08",
+    "topic_id": 9,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "False",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "empty",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "0",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "No output",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "for a in range(2):\n    for b in range(3):\n        print(a, b)\n        break",
+    "explanation": "The inner loop stops once per outer iteration.",
+    "objective": "Trace nested break",
+    "validation": {
+      "code": "for a in range(2):\n    for b in range(3):\n        print(a, b)\n        break",
+      "stdout": "0 0\n1 0\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-09-09",
+    "topic_id": 9,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "0 0\n0 1\n0 2",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "1 2",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "0 0\n1 0",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "0 0",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "break",
+    "explanation": "Break is legal only inside a loop.",
+    "objective": "Identify misplaced break",
+    "validation": {
+      "code": "break",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "SyntaxError"
+    },
+    "key": "py-09-10",
+    "topic_id": 9,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "NameError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "SyntaxError",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "continue",
+    "explanation": "Continue requires an enclosing loop.",
+    "objective": "Identify misplaced continue",
+    "validation": {
+      "code": "continue",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "SyntaxError"
+    },
+    "key": "py-09-11",
+    "topic_id": 9,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "SyntaxError",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "NameError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "IndexError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "ValueError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "A while counter update follows a continue that always runs. What is wrong?",
+    "code_snippet": null,
+    "explanation": "Move the update before the continue or restructure the condition.",
+    "objective": "Avoid skipped updates",
+    "key": "py-09-12",
+    "topic_id": 9,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Pass would also skip the update",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "The update is never reached",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "Continue updates the counter automatically",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "The loop always runs once",
+        "is_correct": false
+      }
+    ]
+  }
+]

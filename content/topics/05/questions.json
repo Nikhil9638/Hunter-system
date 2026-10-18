@@ -1,0 +1,471 @@
+[
+  {
+    "kind": "concept",
+    "stem": "Which operator raises a number to a power?",
+    "code_snippet": null,
+    "explanation": "Python uses ** for exponentiation. ^ is a different operator outside this lesson's scope.",
+    "objective": "Select arithmetic operators",
+    "key": "py-05-01",
+    "topic_id": 5,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "//",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "%",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "**",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "^",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "For two ordinary integers, what kind of result does / produce?",
+    "code_snippet": null,
+    "explanation": "True division of ordinary integers produces a floating-point result, even when the division is exact.",
+    "objective": "Understand division",
+    "key": "py-05-02",
+    "topic_id": 5,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Always int",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Always str",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Always bool",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "float",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Which operation finds leftovers after sharing a positive integer amount into equal positive-sized groups?",
+    "code_snippet": null,
+    "explanation": "% gives the remainder after the corresponding floor division.",
+    "objective": "Use quotient and remainder",
+    "key": "py-05-03",
+    "topic_id": 5,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Remainder (%)",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "Power (**)",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Addition (+)",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "True division (/) alone",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Why put parentheses around part of an arithmetic expression?",
+    "code_snippet": null,
+    "explanation": "Parentheses group an expression so it is evaluated as a unit before surrounding operations.",
+    "objective": "Use precedence",
+    "key": "py-05-04",
+    "topic_id": 5,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "To make division by zero valid",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "To make that grouping take precedence",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "To convert all values into strings",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "To round every result",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(7 // 2)\nprint(7 % 2)",
+    "explanation": "Seven contains three complete groups of two with one left over.",
+    "objective": "Use quotient and remainder",
+    "validation": {
+      "code": "print(7 // 2)\nprint(7 % 2)",
+      "stdout": "3\n1\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-05-05",
+    "topic_id": 5,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "3\n0",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "4\n-1",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "3\n1",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "3.5\n1",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(6 / 3)",
+    "explanation": "/ gives a float for these integer operands; print shows 2.0.",
+    "objective": "Understand division",
+    "validation": {
+      "code": "print(6 / 3)",
+      "stdout": "2.0\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-05-06",
+    "topic_id": 5,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "2",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "3",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "0",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "2.0",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(2 + 3 * 4)",
+    "explanation": "Multiplication happens before addition: 3 * 4 is 12, then add 2.",
+    "objective": "Use precedence",
+    "validation": {
+      "code": "print(2 + 3 * 4)",
+      "stdout": "14\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-05-07",
+    "topic_id": 5,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "14",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "20",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "24",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "9",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print((2 + 3) * 4)",
+    "explanation": "The parenthesized sum is evaluated before multiplication.",
+    "objective": "Use parentheses",
+    "validation": {
+      "code": "print((2 + 3) * 4)",
+      "stdout": "20\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-05-08",
+    "topic_id": 5,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "9",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "20",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "14",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "24",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(-7 // 3)\nprint(-7 % 3)",
+    "explanation": "Flooring -7/3 gives -3; the matching remainder is 2 because -3*3+2=-7.",
+    "objective": "Understand negative floor division",
+    "validation": {
+      "code": "print(-7 // 3)\nprint(-7 % 3)",
+      "stdout": "-3\n2\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-05-09",
+    "topic_id": 5,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "-2\n1",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "-3\n-2",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "-3\n2",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "-2\n-1",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "print(8 / 0)",
+    "explanation": "True division by zero is undefined for these numbers and raises ZeroDivisionError.",
+    "objective": "Identify zero division",
+    "validation": {
+      "code": "print(8 / 0)",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "ZeroDivisionError"
+    },
+    "key": "py-05-10",
+    "topic_id": 5,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "SyntaxError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "ZeroDivisionError",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "print(8 % 0)",
+    "explanation": "Remainder also needs a nonzero divisor.",
+    "objective": "Identify invalid remainder",
+    "validation": {
+      "code": "print(8 % 0)",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "ZeroDivisionError"
+    },
+    "key": "py-05-11",
+    "topic_id": 5,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "ZeroDivisionError",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "IndexError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "NameError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "SyntaxError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "A learner expects int(-7 / 3) and -7 // 3 to match. What was missed?",
+    "code_snippet": null,
+    "explanation": "int(-7/3) is -2, whereas -7//3 is -3. They perform different operations.",
+    "objective": "Distinguish truncation and flooring",
+    "key": "py-05-12",
+    "topic_id": 5,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Negative division always raises an error",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "int() truncates toward zero; // floors toward negative infinity",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "Both always round to nearest",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "// converts its operands to text",
+        "is_correct": false
+      }
+    ]
+  }
+]

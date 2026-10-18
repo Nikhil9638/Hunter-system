@@ -1,0 +1,481 @@
+[
+  {
+    "kind": "concept",
+    "stem": "Which mode can erase existing file contents when opened?",
+    "code_snippet": null,
+    "explanation": "Write mode truncates existing files; use only disposable files in practice.",
+    "objective": "Choose modes",
+    "key": "py-17-01",
+    "topic_id": 17,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "a",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "No mode can erase text",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "w",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "r",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What does a with open block ensure?",
+    "code_snippet": null,
+    "explanation": "The context manager closes the handle even on exceptional exit.",
+    "objective": "Manage handles",
+    "key": "py-17-02",
+    "topic_id": 17,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The file can never be missing",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "The path is always absolute",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "All text is automatically printed",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "The file is closed when the block exits",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Does write(\"Hi\") automatically add a newline?",
+    "code_snippet": null,
+    "explanation": "Write writes exactly the supplied text.",
+    "objective": "Understand write",
+    "key": "py-17-03",
+    "topic_id": 17,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "No; include a newline explicitly when needed",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "Yes, always",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Only on Windows",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Only with UTF-8",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Relative file paths are interpreted from where?",
+    "code_snippet": null,
+    "explanation": "The working directory can differ from the script location.",
+    "objective": "Understand paths",
+    "key": "py-17-04",
+    "topic_id": 17,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Always the database directory",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "The process current working directory",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "Always the script directory",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Always the desktop",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "In an isolated temporary directory, note.txt contains exactly Hi (no newline). What does this code print?",
+    "code_snippet": "with open(\"note.txt\", \"r\", encoding=\"utf-8\") as handle:\n    print(handle.read())",
+    "explanation": "Read returns the file text.",
+    "objective": "Read text",
+    "validation": {
+      "code": "with open(\"note.txt\", \"r\", encoding=\"utf-8\") as handle:\n    print(handle.read())",
+      "stdout": "Hi\n",
+      "stdin": "",
+      "files": {
+        "note.txt": "Hi"
+      },
+      "exception": null
+    },
+    "key": "py-17-05",
+    "topic_id": 17,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "None",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "2",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Hi",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Hi\nHi",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "The temporary file note.txt contains Hi. What does this code print?",
+    "code_snippet": "with open(\"note.txt\", \"r\", encoding=\"utf-8\") as handle:\n    handle.read()\n    print(repr(handle.read()))",
+    "explanation": "The first read reaches the end, so the second returns an empty string.",
+    "objective": "Trace position",
+    "validation": {
+      "code": "with open(\"note.txt\", \"r\", encoding=\"utf-8\") as handle:\n    handle.read()\n    print(repr(handle.read()))",
+      "stdout": "''\n",
+      "stdin": "",
+      "files": {
+        "note.txt": "Hi"
+      },
+      "exception": null
+    },
+    "key": "py-17-06",
+    "topic_id": 17,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Hi",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "None",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "0",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "''",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "note.txt is a disposable file in an isolated temporary directory. What does this code print?",
+    "code_snippet": "with open(\"note.txt\", \"w\", encoding=\"utf-8\") as handle:\n    print(handle.write(\"cat\"))",
+    "explanation": "Write returns the number of characters written.",
+    "objective": "Read write result",
+    "validation": {
+      "code": "with open(\"note.txt\", \"w\", encoding=\"utf-8\") as handle:\n    print(handle.write(\"cat\"))",
+      "stdout": "3\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-17-07",
+    "topic_id": 17,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "3",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "cat",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "None",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "4",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "The temporary file note.txt initially contains A. What does this code print?",
+    "code_snippet": "with open(\"note.txt\", \"a\", encoding=\"utf-8\") as handle:\n    handle.write(\"B\")\nwith open(\"note.txt\", \"r\", encoding=\"utf-8\") as handle:\n    print(handle.read())",
+    "explanation": "Append preserves A and adds B at the end.",
+    "objective": "Trace append",
+    "validation": {
+      "code": "with open(\"note.txt\", \"a\", encoding=\"utf-8\") as handle:\n    handle.write(\"B\")\nwith open(\"note.txt\", \"r\", encoding=\"utf-8\") as handle:\n    print(handle.read())",
+      "stdout": "AB\n",
+      "stdin": "",
+      "files": {
+        "note.txt": "A"
+      },
+      "exception": null
+    },
+    "key": "py-17-08",
+    "topic_id": 17,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A B",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "AB",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "B",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "A",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "The temporary file contains A followed by a newline, then B followed by a newline. What does this code print?",
+    "code_snippet": "with open(\"note.txt\", \"r\", encoding=\"utf-8\") as handle:\n    for line in handle:\n        print(line, end=\"\")",
+    "explanation": "Each line already carries a newline; end avoids adding another.",
+    "objective": "Iterate lines",
+    "validation": {
+      "code": "with open(\"note.txt\", \"r\", encoding=\"utf-8\") as handle:\n    for line in handle:\n        print(line, end=\"\")",
+      "stdout": "A\nB\n",
+      "stdin": "",
+      "files": {
+        "note.txt": "A\nB\n"
+      },
+      "exception": null
+    },
+    "key": "py-17-09",
+    "topic_id": 17,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A\n\nB",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "B\nA",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "A\nB",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "AB",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "The isolated temporary directory contains no missing.txt. Which exception class stops this code?",
+    "code_snippet": "with open(\"missing.txt\", \"r\", encoding=\"utf-8\") as handle:\n    print(handle.read())",
+    "explanation": "Read mode requires an existing file.",
+    "objective": "Identify missing file",
+    "validation": {
+      "code": "with open(\"missing.txt\", \"r\", encoding=\"utf-8\") as handle:\n    print(handle.read())",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "FileNotFoundError"
+    },
+    "key": "py-17-10",
+    "topic_id": 17,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "KeyError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "SyntaxError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "FileNotFoundError",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "The temporary file note.txt contains Hi. Which exception class stops this code?",
+    "code_snippet": "with open(\"note.txt\", \"r\", encoding=\"utf-8\") as handle:\n    text = handle.read()\nhandle.read()",
+    "explanation": "After the with block the handle is closed.",
+    "objective": "Identify closed handle",
+    "validation": {
+      "code": "with open(\"note.txt\", \"r\", encoding=\"utf-8\") as handle:\n    text = handle.read()\nhandle.read()",
+      "stdout": "",
+      "stdin": "",
+      "files": {
+        "note.txt": "Hi"
+      },
+      "exception": "ValueError"
+    },
+    "key": "py-17-11",
+    "topic_id": 17,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "ValueError",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "FileNotFoundError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "IndexError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Why is opening an important existing file with w unsafe for practice?",
+    "code_snippet": null,
+    "explanation": "Use disposable temporary files and choose modes deliberately.",
+    "objective": "Avoid accidental overwrite",
+    "key": "py-17-12",
+    "topic_id": 17,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It always refuses existing files",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "It truncates the existing contents immediately",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "It only reads the first line",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "It encrypts the file",
+        "is_correct": false
+      }
+    ]
+  }
+]

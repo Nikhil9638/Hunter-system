@@ -1,0 +1,30 @@
+[
+  {
+    "code": "print(4 == 4)\nprint(4 != 4)\nprint(4 < 4)\nprint(4 <= 4)",
+    "stdout": "True\nFalse\nFalse\nTrue\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "level = 3\nready = True\nprint(level >= 2 and ready)\nprint(level < 2 or ready)\nprint(not ready)",
+    "stdout": "True\nTrue\nFalse\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "level = 5\nprint(1 <= level <= 5)",
+    "stdout": "True\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "print(bool(\"False\"))\nnumber = 0\nprint(number != 0 and 10 / number > 1)\nprint(\"\" or \"guest\")",
+    "stdout": "True\nFalse\nguest\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  }
+]

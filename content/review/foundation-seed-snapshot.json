@@ -1,0 +1,985 @@
+{
+  "source": "database/seed.sql; live database unavailable during this review; verify current revisions before any eventual audited correction",
+  "lessons": [
+    {
+      "id": 1,
+      "topic_id": 1,
+      "title": "Python introduction",
+      "body_markdown": "# Python introduction\n\nPython is a general-purpose programming language known for readable code. People use it for automation scripts, data analysis, web back ends and for learning to program.\n\n## Your first program\n\n```python\nprint(\"Hello, World!\")\n```\n\n`print()` displays a value on the screen. Text values (strings) are written inside quotes. The quotes mark where the text starts and ends; they are not displayed.\n\n## More about print()\n\n- `print(\"Hi\", \"there\")` prints several values separated by one space: `Hi there`.\n- `print(2 + 3)` prints `5`, because `2 + 3` without quotes is a calculation.\n- `print(\"2\" + \"3\")` prints `23`, because `+` joins two strings.\n- `print()` with nothing inside prints an empty line.\n- `\\n` inside a string starts a new line.\n\n## Comments\n\nA comment starts with `#`. Python ignores everything after `#` on that line, so comments are notes for people.\n\n```python\n# This line is ignored\nprint(\"Shown\")  # this part is ignored too\n```\n\n## Indentation\n\nPython uses indentation (spaces at the start of a line) to group statements into blocks, for example the body of an `if` statement. Indenting a line for no reason causes an `IndentationError`, and Python does not run the program at all.\n\n## Case sensitivity\n\nPython is case-sensitive. `print` works; `Print` and `PRINT` are unknown names.\n",
+      "status": "published",
+      "revision": 1
+    },
+    {
+      "id": 2,
+      "topic_id": 2,
+      "title": "Variables and assignment",
+      "body_markdown": "# Variables and assignment\n\nA **variable** is a name that refers to a value.\n\n```python\ncount = 0\nname = \"Ana\"\n```\n\nThe `=` sign is the **assignment operator**: it stores the value on the right under the name on the left. (Checking equality uses `==`, which comes in a later topic.)\n\n## Updating a value\n\n```python\nx = 5\nx = x + 2   # uses the old value 5, then stores 7\n```\n\nShorthand operators do the same thing: `x += 2`, `x -= 2`, `x *= 3`.\n\n## Naming rules\n\n- Use letters, digits and underscores: `total_score`, `item2`.\n- A name cannot start with a digit (`2nd_place` is invalid).\n- No hyphens or spaces (`my-score` is invalid).\n- Keywords such as `class`, `if` and `for` cannot be names.\n- Names are case-sensitive: `name` and `Name` are different variables.\n\n## Several names at once\n\n```python\nx, y = 3, 4      # x is 3, y is 4\na, b = b, a      # swaps the values of a and b\na = b = 0        # both names get 0\n```\n\n## Assignment does not link two names\n\n```python\na = 10\nb = a\na = 20\nprint(b)   # 10\n```\n\n`b = a` gives `b` the value `a` had at that moment. Reassigning `a` later does not change `b`.\n\n## Common mistakes\n\n- Using a name before giving it a value raises a `NameError`.\n- A variable can be reassigned to a value of a different type, for example from `4` to `\"four\"`. The latest assignment wins.\n",
+      "status": "published",
+      "revision": 1
+    }
+  ],
+  "questions": [
+    {
+      "id": 101,
+      "topic_id": 1,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "What does this code display?",
+      "code_snippet": "print(\"Hello, World!\")",
+      "explanation": "print() shows the value of the string. The quotes mark the start and end of the string and are not displayed.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 1011,
+          "label": "A",
+          "text": "Hello, World!",
+          "is_correct": true
+        },
+        {
+          "id": 1012,
+          "label": "B",
+          "text": "\"Hello, World!\"",
+          "is_correct": false
+        },
+        {
+          "id": 1013,
+          "label": "C",
+          "text": "print Hello, World!",
+          "is_correct": false
+        },
+        {
+          "id": 1014,
+          "label": "D",
+          "text": "Nothing; the code causes an error.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "topic_id": 1,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "Which symbol starts a single-line comment in Python?",
+      "code_snippet": null,
+      "explanation": "Python ignores everything after # on the same line.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 1021,
+          "label": "A",
+          "text": "//",
+          "is_correct": false
+        },
+        {
+          "id": 1022,
+          "label": "B",
+          "text": "#",
+          "is_correct": true
+        },
+        {
+          "id": 1023,
+          "label": "C",
+          "text": "/*",
+          "is_correct": false
+        },
+        {
+          "id": 1024,
+          "label": "D",
+          "text": "--",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "topic_id": 1,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "How does Python mark a block of code, such as the body of an if statement?",
+      "code_snippet": null,
+      "explanation": "Python uses indentation (leading spaces) to group statements into blocks.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 1031,
+          "label": "A",
+          "text": "Curly braces { }",
+          "is_correct": false
+        },
+        {
+          "id": 1032,
+          "label": "B",
+          "text": "Semicolons",
+          "is_correct": false
+        },
+        {
+          "id": 1033,
+          "label": "C",
+          "text": "Indentation",
+          "is_correct": true
+        },
+        {
+          "id": 1034,
+          "label": "D",
+          "text": "The keyword end",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 104,
+      "topic_id": 1,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "What does this code display?",
+      "code_snippet": "print(\"A\")\n# print(\"B\")\nprint(\"C\")",
+      "explanation": "The middle line is a comment, so only A and C are printed, each on its own line.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 1041,
+          "label": "A",
+          "text": "A, B and C, each on its own line",
+          "is_correct": false
+        },
+        {
+          "id": 1042,
+          "label": "B",
+          "text": "A and C, each on its own line",
+          "is_correct": true
+        },
+        {
+          "id": 1043,
+          "label": "C",
+          "text": "Only A",
+          "is_correct": false
+        },
+        {
+          "id": 1044,
+          "label": "D",
+          "text": "An error, because a line is commented out",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 105,
+      "topic_id": 1,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "What does this code display?",
+      "code_snippet": "print(2 + 3)",
+      "explanation": "Without quotes, 2 + 3 is an arithmetic expression, so Python prints its value.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 1051,
+          "label": "A",
+          "text": "2 + 3",
+          "is_correct": false
+        },
+        {
+          "id": 1052,
+          "label": "B",
+          "text": "5",
+          "is_correct": true
+        },
+        {
+          "id": 1053,
+          "label": "C",
+          "text": "23",
+          "is_correct": false
+        },
+        {
+          "id": 1054,
+          "label": "D",
+          "text": "\"5\"",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 106,
+      "topic_id": 1,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "What does this code display?",
+      "code_snippet": "print(\"2\" + \"3\")",
+      "explanation": "Both values are strings, so + joins (concatenates) them.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 1061,
+          "label": "A",
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "id": 1062,
+          "label": "B",
+          "text": "23",
+          "is_correct": true
+        },
+        {
+          "id": 1063,
+          "label": "C",
+          "text": "2 + 3",
+          "is_correct": false
+        },
+        {
+          "id": 1064,
+          "label": "D",
+          "text": "An error",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 107,
+      "topic_id": 1,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "Which statement about Python is true?",
+      "code_snippet": null,
+      "explanation": "Python is a general-purpose language. Lines do not need semicolons, and you do not compile Python to machine code yourself before running it.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 1071,
+          "label": "A",
+          "text": "Every Python line must end with a semicolon.",
+          "is_correct": false
+        },
+        {
+          "id": 1072,
+          "label": "B",
+          "text": "Python can only be used to build websites.",
+          "is_correct": false
+        },
+        {
+          "id": 1073,
+          "label": "C",
+          "text": "Python is a general-purpose language used for tasks such as automation, data analysis and web development.",
+          "is_correct": true
+        },
+        {
+          "id": 1074,
+          "label": "D",
+          "text": "You must compile Python code to machine code yourself before running it.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 108,
+      "topic_id": 1,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "What does this code display?",
+      "code_snippet": "print(\"Hi\", \"there\")",
+      "explanation": "When print() receives several values, it separates them with one space by default.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 1081,
+          "label": "A",
+          "text": "Hithere",
+          "is_correct": false
+        },
+        {
+          "id": 1082,
+          "label": "B",
+          "text": "Hi there",
+          "is_correct": true
+        },
+        {
+          "id": 1083,
+          "label": "C",
+          "text": "Hi, there",
+          "is_correct": false
+        },
+        {
+          "id": 1084,
+          "label": "D",
+          "text": "\"Hi\" \"there\"",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 109,
+      "topic_id": 1,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "medium",
+      "stem": "What happens when this program is run?",
+      "code_snippet": "print(\"Start\")\n    print(\"End\")",
+      "explanation": "The second line is indented for no reason. Python checks the whole file before running it, so it reports an IndentationError and prints nothing.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 1091,
+          "label": "A",
+          "text": "Start and End are printed on separate lines.",
+          "is_correct": false
+        },
+        {
+          "id": 1092,
+          "label": "B",
+          "text": "Start is printed, then an error is shown.",
+          "is_correct": false
+        },
+        {
+          "id": 1093,
+          "label": "C",
+          "text": "An IndentationError is reported and nothing is printed.",
+          "is_correct": true
+        },
+        {
+          "id": 1094,
+          "label": "D",
+          "text": "End is printed first, then Start.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 110,
+      "topic_id": 1,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "Python is case-sensitive. Which line runs without an error?",
+      "code_snippet": null,
+      "explanation": "The built-in function is called print, in lowercase, and its arguments go inside round brackets.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 1101,
+          "label": "A",
+          "text": "Print(\"Hi\")",
+          "is_correct": false
+        },
+        {
+          "id": 1102,
+          "label": "B",
+          "text": "PRINT(\"Hi\")",
+          "is_correct": false
+        },
+        {
+          "id": 1103,
+          "label": "C",
+          "text": "print[\"Hi\"]",
+          "is_correct": false
+        },
+        {
+          "id": 1104,
+          "label": "D",
+          "text": "print(\"Hi\")",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "id": 111,
+      "topic_id": 1,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "medium",
+      "stem": "What does this code display?",
+      "code_snippet": "print(\"Line1\\nLine2\")",
+      "explanation": "\\n inside a string is a newline character, so the text is split over two lines.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 1111,
+          "label": "A",
+          "text": "Line1\\nLine2",
+          "is_correct": false
+        },
+        {
+          "id": 1112,
+          "label": "B",
+          "text": "Line1 and Line2 on separate lines",
+          "is_correct": true
+        },
+        {
+          "id": 1113,
+          "label": "C",
+          "text": "Line1Line2",
+          "is_correct": false
+        },
+        {
+          "id": 1114,
+          "label": "D",
+          "text": "Line1 nLine2",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "topic_id": 1,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "medium",
+      "stem": "What does print() display when it is called with nothing inside the brackets?",
+      "code_snippet": null,
+      "explanation": "print() always ends its output with a newline, so with no values it prints an empty line.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 1121,
+          "label": "A",
+          "text": "Nothing at all, not even a new line",
+          "is_correct": false
+        },
+        {
+          "id": 1122,
+          "label": "B",
+          "text": "An empty line",
+          "is_correct": true
+        },
+        {
+          "id": 1123,
+          "label": "C",
+          "text": "None",
+          "is_correct": false
+        },
+        {
+          "id": 1124,
+          "label": "D",
+          "text": "An error",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 201,
+      "topic_id": 2,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "What does this code display?",
+      "code_snippet": "x = 5\nx = x + 2\nprint(x)",
+      "explanation": "x + 2 is calculated with the old value (5), and the result 7 is assigned back to x.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 2011,
+          "label": "A",
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "id": 2012,
+          "label": "B",
+          "text": "7",
+          "is_correct": true
+        },
+        {
+          "id": 2013,
+          "label": "C",
+          "text": "x + 2",
+          "is_correct": false
+        },
+        {
+          "id": 2014,
+          "label": "D",
+          "text": "52",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 202,
+      "topic_id": 2,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "Which of these is a valid Python variable name?",
+      "code_snippet": null,
+      "explanation": "Names may contain letters, digits and underscores. They cannot start with a digit, cannot contain hyphens and cannot be a keyword such as class.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 2021,
+          "label": "A",
+          "text": "2nd_place",
+          "is_correct": false
+        },
+        {
+          "id": 2022,
+          "label": "B",
+          "text": "my-score",
+          "is_correct": false
+        },
+        {
+          "id": 2023,
+          "label": "C",
+          "text": "total_score",
+          "is_correct": true
+        },
+        {
+          "id": 2024,
+          "label": "D",
+          "text": "class",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 203,
+      "topic_id": 2,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "medium",
+      "stem": "What does this code display?",
+      "code_snippet": "a = 10\nb = a\na = 20\nprint(b)",
+      "explanation": "b = a gives b the value 10. Assigning a new value to a afterwards does not change b.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 2031,
+          "label": "A",
+          "text": "10",
+          "is_correct": true
+        },
+        {
+          "id": 2032,
+          "label": "B",
+          "text": "20",
+          "is_correct": false
+        },
+        {
+          "id": 2033,
+          "label": "C",
+          "text": "a",
+          "is_correct": false
+        },
+        {
+          "id": 2034,
+          "label": "D",
+          "text": "An error",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 204,
+      "topic_id": 2,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "In the statement count = 0, what does the = sign do?",
+      "code_snippet": null,
+      "explanation": "In Python, = is the assignment operator. Equality is tested with ==.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 2041,
+          "label": "A",
+          "text": "It checks whether count is equal to 0.",
+          "is_correct": false
+        },
+        {
+          "id": 2042,
+          "label": "B",
+          "text": "It assigns the value 0 to the name count.",
+          "is_correct": true
+        },
+        {
+          "id": 2043,
+          "label": "C",
+          "text": "It creates a constant that can never change.",
+          "is_correct": false
+        },
+        {
+          "id": 2044,
+          "label": "D",
+          "text": "It prints 0.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 205,
+      "topic_id": 2,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "What does this code display?",
+      "code_snippet": "x, y = 3, 4\nprint(x, y)",
+      "explanation": "Multiple assignment gives x the first value and y the second. print() separates them with a space.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 2051,
+          "label": "A",
+          "text": "3 4",
+          "is_correct": true
+        },
+        {
+          "id": 2052,
+          "label": "B",
+          "text": "(3, 4)",
+          "is_correct": false
+        },
+        {
+          "id": 2053,
+          "label": "C",
+          "text": "7",
+          "is_correct": false
+        },
+        {
+          "id": 2054,
+          "label": "D",
+          "text": "4 3",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 206,
+      "topic_id": 2,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "What does this code display?",
+      "code_snippet": "score = 10\nscore += 5\nprint(score)",
+      "explanation": "score += 5 is shorthand for score = score + 5.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 2061,
+          "label": "A",
+          "text": "5",
+          "is_correct": false
+        },
+        {
+          "id": 2062,
+          "label": "B",
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "id": 2063,
+          "label": "C",
+          "text": "15",
+          "is_correct": true
+        },
+        {
+          "id": 2064,
+          "label": "D",
+          "text": "105",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 207,
+      "topic_id": 2,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "What does this code display?",
+      "code_snippet": "name = \"Ana\"\nName = \"Ben\"\nprint(name)",
+      "explanation": "Names are case-sensitive, so name and Name are two different variables.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 2071,
+          "label": "A",
+          "text": "Ana",
+          "is_correct": true
+        },
+        {
+          "id": 2072,
+          "label": "B",
+          "text": "Ben",
+          "is_correct": false
+        },
+        {
+          "id": 2073,
+          "label": "C",
+          "text": "Ana Ben",
+          "is_correct": false
+        },
+        {
+          "id": 2074,
+          "label": "D",
+          "text": "An error",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 208,
+      "topic_id": 2,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "medium",
+      "stem": "What does this code display?",
+      "code_snippet": "a = 1\nb = 2\na, b = b, a\nprint(a, b)",
+      "explanation": "The right-hand side (2, 1) is evaluated first and then assigned to a and b, which swaps them.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 2081,
+          "label": "A",
+          "text": "1 2",
+          "is_correct": false
+        },
+        {
+          "id": 2082,
+          "label": "B",
+          "text": "2 1",
+          "is_correct": true
+        },
+        {
+          "id": 2083,
+          "label": "C",
+          "text": "2 2",
+          "is_correct": false
+        },
+        {
+          "id": 2084,
+          "label": "D",
+          "text": "1 1",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 209,
+      "topic_id": 2,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "What happens when this program runs, if total has never been assigned a value?",
+      "code_snippet": "print(total)",
+      "explanation": "Using a name that has not been assigned a value raises a NameError.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 2091,
+          "label": "A",
+          "text": "It prints 0.",
+          "is_correct": false
+        },
+        {
+          "id": 2092,
+          "label": "B",
+          "text": "It prints nothing.",
+          "is_correct": false
+        },
+        {
+          "id": 2093,
+          "label": "C",
+          "text": "It raises a NameError.",
+          "is_correct": true
+        },
+        {
+          "id": 2094,
+          "label": "D",
+          "text": "It prints the word total.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 210,
+      "topic_id": 2,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "easy",
+      "stem": "What does this code display?",
+      "code_snippet": "x = 4\nx = \"four\"\nprint(x)",
+      "explanation": "A variable can be reassigned to a value of a different type. The latest assignment wins.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 2101,
+          "label": "A",
+          "text": "4",
+          "is_correct": false
+        },
+        {
+          "id": 2102,
+          "label": "B",
+          "text": "four",
+          "is_correct": true
+        },
+        {
+          "id": 2103,
+          "label": "C",
+          "text": "An error, because x already holds a number",
+          "is_correct": false
+        },
+        {
+          "id": 2104,
+          "label": "D",
+          "text": "x",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 211,
+      "topic_id": 2,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "medium",
+      "stem": "What does this code display?",
+      "code_snippet": "n = 7\nn -= 2\nn *= 3\nprint(n)",
+      "explanation": "n -= 2 makes n equal to 5, then n *= 3 makes it 15.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 2111,
+          "label": "A",
+          "text": "15",
+          "is_correct": true
+        },
+        {
+          "id": 2112,
+          "label": "B",
+          "text": "19",
+          "is_correct": false
+        },
+        {
+          "id": 2113,
+          "label": "C",
+          "text": "21",
+          "is_correct": false
+        },
+        {
+          "id": 2114,
+          "label": "D",
+          "text": "5",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 212,
+      "topic_id": 2,
+      "for_quiz": true,
+      "for_assessment": false,
+      "difficulty": "medium",
+      "stem": "What does this code display?",
+      "code_snippet": "a = b = 0\nb = 5\nprint(a, b)",
+      "explanation": "a = b = 0 gives both names the value 0. Reassigning b afterwards does not change a.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 2121,
+          "label": "A",
+          "text": "5 5",
+          "is_correct": false
+        },
+        {
+          "id": 2122,
+          "label": "B",
+          "text": "0 0",
+          "is_correct": false
+        },
+        {
+          "id": 2123,
+          "label": "C",
+          "text": "0 5",
+          "is_correct": true
+        },
+        {
+          "id": 2124,
+          "label": "D",
+          "text": "5 0",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 151,
+      "topic_id": 1,
+      "for_quiz": false,
+      "for_assessment": true,
+      "difficulty": "easy",
+      "stem": "Which line correctly prints the word Python?",
+      "code_snippet": null,
+      "explanation": "Text must be a string in quotes, passed to print() inside round brackets. print \"Python\" is old Python 2 syntax and is a SyntaxError in Python 3.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 1511,
+          "label": "A",
+          "text": "print(Python)",
+          "is_correct": false
+        },
+        {
+          "id": 1512,
+          "label": "B",
+          "text": "print \"Python\"",
+          "is_correct": false
+        },
+        {
+          "id": 1513,
+          "label": "C",
+          "text": "print(\"Python\")",
+          "is_correct": true
+        },
+        {
+          "id": 1514,
+          "label": "D",
+          "text": "echo(\"Python\")",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "id": 251,
+      "topic_id": 2,
+      "for_quiz": false,
+      "for_assessment": true,
+      "difficulty": "medium",
+      "stem": "What does this code display?",
+      "code_snippet": "x = 3\ny = x\nx = x * 2\nprint(x, y)",
+      "explanation": "y gets the value 3. x is then reassigned to 6, which does not affect y.",
+      "status": "active",
+      "choices": [
+        {
+          "id": 2511,
+          "label": "A",
+          "text": "6 6",
+          "is_correct": false
+        },
+        {
+          "id": 2512,
+          "label": "B",
+          "text": "6 3",
+          "is_correct": true
+        },
+        {
+          "id": 2513,
+          "label": "C",
+          "text": "3 6",
+          "is_correct": false
+        },
+        {
+          "id": 2514,
+          "label": "D",
+          "text": "3 3",
+          "is_correct": false
+        }
+      ]
+    }
+  ]
+}

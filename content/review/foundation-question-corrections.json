@@ -1,0 +1,76 @@
+[
+  {
+    "id": 102,
+    "topic_id": 1,
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "stem": "Which symbol starts a single-line comment in Python?",
+    "code_snippet": null,
+    "explanation": "Outside a string literal, # begins a comment extending to the end of that line.",
+    "status": "active",
+    "choices": [
+      {
+        "id": 1021,
+        "label": "A",
+        "text": "//",
+        "is_correct": false
+      },
+      {
+        "id": 1022,
+        "label": "B",
+        "text": "#",
+        "is_correct": true
+      },
+      {
+        "id": 1023,
+        "label": "C",
+        "text": "/*",
+        "is_correct": false
+      },
+      {
+        "id": 1024,
+        "label": "D",
+        "text": "--",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "id": 112,
+    "topic_id": 1,
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "stem": "What does print() display when it is called with nothing inside the brackets?",
+    "code_snippet": null,
+    "explanation": "With its default end argument, print() adds a newline, so a call with no values prints an empty line.",
+    "status": "active",
+    "choices": [
+      {
+        "id": 1121,
+        "label": "A",
+        "text": "Nothing at all, not even a new line",
+        "is_correct": false
+      },
+      {
+        "id": 1122,
+        "label": "B",
+        "text": "An empty line",
+        "is_correct": true
+      },
+      {
+        "id": 1123,
+        "label": "C",
+        "text": "None",
+        "is_correct": false
+      },
+      {
+        "id": 1124,
+        "label": "D",
+        "text": "An error",
+        "is_correct": false
+      }
+    ]
+  }
+]

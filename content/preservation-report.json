@@ -1,0 +1,18 @@
+{
+  "dev_content_writes": 0,
+  "dev_draft_import": "pending explicit administrator identity/authentication",
+  "before_and_after_dev_checksums": {
+    "topics": 3724271315,
+    "lessons": 3167391072,
+    "questions": 4102142839,
+    "question_choices": 1532109024,
+    "audit_log": 3663059478
+  },
+  "dev_audit_rows": 1,
+  "IR_1_question_106": {"status":"active","revision":1,"retired_at":null},
+  "fixture_original_history_rows_verified_unchanged": 11735,
+  "history_tables": ["attempts","attempt_questions","attempt_question_choices","quiz_results","assessment_results","rank_history","coin_ledger"],
+  "fixture_import": "192 new questions, 16 updated placeholder lessons; placeholder question rows retired through audited APIs, never deleted",
+  "conflict_test": "deliberately stale saved lesson revision rejected before content writes; local plan preserved and restored by test",
+  "limitations": ["No human educational sign-off", "No dev administrator chosen", "No dev publication", "No cross-browser/full accessibility/security review in this milestone"]
+}

@@ -1,0 +1,13 @@
+{
+  "mode": "Existing Markdown component rendering only — not live API evidence",
+  "browser": "Edge",
+  "engine": "Chromium",
+  "version": "155.0.4283.45",
+  "topics": 18,
+  "widths": [
+    1280,
+    390
+  ],
+  "checks": 73,
+  "failures": 0
+}

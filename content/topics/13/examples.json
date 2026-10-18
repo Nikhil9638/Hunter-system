@@ -1,0 +1,23 @@
+[
+  {
+    "code": "student = {\"name\": \"Ada\", \"coins\": 10}\nprint(student[\"name\"])\nprint(student.get(\"rank\", \"E\"))",
+    "stdout": "Ada\nE\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "scores = {\"math\": 4}\nscores[\"math\"] = 6\nscores[\"python\"] = 8\nprint(len(scores))\nprint(scores[\"math\"])",
+    "stdout": "2\n6\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "scores = {\"a\": 2, \"b\": 3}\nfor key, value in scores.items():\n    print(key, value)",
+    "stdout": "a 2\nb 3\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  }
+]

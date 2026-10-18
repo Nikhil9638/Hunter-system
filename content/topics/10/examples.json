@@ -1,0 +1,23 @@
+[
+  {
+    "code": "word = \"Python\"\nprint(word[0], word[-1])\nprint(word[1:4])",
+    "stdout": "P n\nyth\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "name = \"  Ada  \"\nclean = name.strip()\nprint(clean.upper())\nprint(clean)",
+    "stdout": "ADA\nAda\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "score = 8\nprint(f\"Score: {score}\")",
+    "stdout": "Score: 8\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  }
+]

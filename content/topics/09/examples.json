@@ -1,0 +1,23 @@
+[
+  {
+    "code": "for n in range(5):\n    if n == 2:\n        break\n    print(n)\nprint(\"done\")",
+    "stdout": "0\n1\ndone\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "for n in range(4):\n    if n == 1:\n        continue\n    print(n)",
+    "stdout": "0\n2\n3\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "for n in range(2):\n    pass\nelse:\n    print(\"finished\")",
+    "stdout": "finished\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  }
+]

@@ -1,0 +1,471 @@
+[
+  {
+    "kind": "concept",
+    "stem": "What does append([2, 3]) add to a list?",
+    "code_snippet": null,
+    "explanation": "Append adds its argument as one item.",
+    "objective": "Distinguish additions",
+    "key": "py-11-01",
+    "topic_id": 11,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "One item that is itself a list",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "Two separate integers",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Only 2",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Nothing",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What does pop() return on a nonempty list?",
+    "code_snippet": null,
+    "explanation": "Without an index, pop removes the final item.",
+    "objective": "Use pop",
+    "key": "py-11-02",
+    "topic_id": 11,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The first item without removing it",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "The removed last item",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "The new list length",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Always None",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What does remove(4) mean?",
+    "code_snippet": null,
+    "explanation": "Remove uses value, not position.",
+    "objective": "Use remove",
+    "key": "py-11-03",
+    "topic_id": 11,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Remove every 4",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Remove four items",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Remove the first item equal to 4",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Remove index 4",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What does a.copy() create for a list of integers?",
+    "code_snippet": null,
+    "explanation": "A shallow copy separates the outer container.",
+    "objective": "Understand copies",
+    "key": "py-11-04",
+    "topic_id": 11,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "An alias of the same outer list",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "An empty list",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "A sorted list",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "A separate outer list with the same items",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "a = [1, 2]\na[0] = 9\nprint(a)",
+    "explanation": "Item assignment replaces the value at index zero.",
+    "objective": "Trace mutation",
+    "validation": {
+      "code": "a = [1, 2]\na[0] = 9\nprint(a)",
+      "stdout": "[9, 2]\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-11-05",
+    "topic_id": 11,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "[9, 2]",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "[1, 2]",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "[9, 1, 2]",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "[2, 9]",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "a = [1]\na.extend([2, 3])\nprint(a)",
+    "explanation": "Extend adds each supplied item.",
+    "objective": "Trace extend",
+    "validation": {
+      "code": "a = [1]\na.extend([2, 3])\nprint(a)",
+      "stdout": "[1, 2, 3]\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-11-06",
+    "topic_id": 11,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "None",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "[1, 2, 3]",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "[1, [2, 3]]",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "[2, 3]",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "a = [3, 4, 3]\na.remove(3)\nprint(a)",
+    "explanation": "Only the first matching 3 is removed.",
+    "objective": "Trace remove",
+    "validation": {
+      "code": "a = [3, 4, 3]\na.remove(3)\nprint(a)",
+      "stdout": "[4, 3]\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-11-07",
+    "topic_id": 11,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "[3, 4]",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "[3, 4, 3]",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "[4, 3]",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "[4]",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "a = [1]\nb = a\nb.append(2)\nprint(a)",
+    "explanation": "Both names refer to the same list.",
+    "objective": "Trace aliases",
+    "validation": {
+      "code": "a = [1]\nb = a\nb.append(2)\nprint(a)",
+      "stdout": "[1, 2]\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-11-08",
+    "topic_id": 11,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "[1]",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "[2]",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "None",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "[1, 2]",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "a = [1, 2]\nb = a.copy()\nb.pop()\nprint(a)",
+    "explanation": "Popping from the copied outer list leaves a intact.",
+    "objective": "Trace copies",
+    "validation": {
+      "code": "a = [1, 2]\nb = a.copy()\nb.pop()\nprint(a)",
+      "stdout": "[1, 2]\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-11-09",
+    "topic_id": 11,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "[1, 2]",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "[1]",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "[2]",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "[]",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "print([][0])",
+    "explanation": "An empty list has no valid item index.",
+    "objective": "Identify empty access",
+    "validation": {
+      "code": "print([][0])",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "IndexError"
+    },
+    "key": "py-11-10",
+    "topic_id": 11,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "KeyError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "IndexError",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "TypeError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "a = [1, 2]\na.remove(3)",
+    "explanation": "The requested value is absent.",
+    "objective": "Identify absent removal",
+    "validation": {
+      "code": "a = [1, 2]\na.remove(3)",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "ValueError"
+    },
+    "key": "py-11-11",
+    "topic_id": 11,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "NameError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "ValueError",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "IndexError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Why is items = items.append(5) a mistake?",
+    "code_snippet": null,
+    "explanation": "Call items.append(5) without assigning its return value.",
+    "objective": "Avoid method return confusion",
+    "key": "py-11-12",
+    "topic_id": 11,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Append sorts the list",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Append cannot accept integers",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Assignment copies the list",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Append returns None, which replaces the list reference",
+        "is_correct": true
+      }
+    ]
+  }
+]

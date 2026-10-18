@@ -1,0 +1,471 @@
+[
+  {
+    "kind": "concept",
+    "stem": "When does a function body normally run?",
+    "code_snippet": null,
+    "explanation": "Def creates the function; a call runs its body.",
+    "objective": "Understand definition and call",
+    "key": "py-14-01",
+    "topic_id": 14,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Whenever Python reads def, even without a call",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Only when its name is printed",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Only at program exit",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "When the function is called",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What does return do?",
+    "code_snippet": null,
+    "explanation": "The caller can use the returned value.",
+    "objective": "Understand return",
+    "key": "py-14-02",
+    "topic_id": 14,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Ends the current call and sends a value back",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "Prints the value automatically",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Ends every program",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Repeats the function",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What is a parameter?",
+    "code_snippet": null,
+    "explanation": "An argument is supplied at the call.",
+    "objective": "Distinguish parameters",
+    "key": "py-14-03",
+    "topic_id": 14,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "An exception type",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "A name in a function definition that receives an argument",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "Only a printed message",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "The function file name",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Why prefer a string rather than a list as a simple default?",
+    "code_snippet": null,
+    "explanation": "Defaults are evaluated when the definition executes, not each call.",
+    "objective": "Choose safe defaults",
+    "key": "py-14-04",
+    "topic_id": 14,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "List defaults are syntax errors",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Defaults are recreated on every call",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "A mutable default can retain changes across calls",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Strings cannot be passed as arguments",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "def add(a, b):\n    return a + b\n\nprint(add(2, 5))",
+    "explanation": "The two arguments bind to a and b.",
+    "objective": "Trace arguments",
+    "validation": {
+      "code": "def add(a, b):\n    return a + b\n\nprint(add(2, 5))",
+      "stdout": "7\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-14-05",
+    "topic_id": 14,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "25",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "None",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "2 5",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "7",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "def number():\n    return 3\n    print(9)\n\nprint(number())",
+    "explanation": "Return ends the call before print(9).",
+    "objective": "Trace early return",
+    "validation": {
+      "code": "def number():\n    return 3\n    print(9)\n\nprint(number())",
+      "stdout": "3\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-14-06",
+    "topic_id": 14,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "3",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "9\n3",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "3\n9",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "None",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "def greet(name=\"friend\"):\n    return \"Hi \" + name\n\nprint(greet())",
+    "explanation": "The omitted argument uses the default.",
+    "objective": "Trace defaults",
+    "validation": {
+      "code": "def greet(name=\"friend\"):\n    return \"Hi \" + name\n\nprint(greet())",
+      "stdout": "Hi friend\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-14-07",
+    "topic_id": 14,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Hi friend",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "Hi name",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "None",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "x = 4\ndef work():\n    x = 9\n    return x\n\nprint(work())\nprint(x)",
+    "explanation": "The local x and outer x are different bindings.",
+    "objective": "Trace local scope",
+    "validation": {
+      "code": "x = 4\ndef work():\n    x = 9\n    return x\n\nprint(work())\nprint(x)",
+      "stdout": "9\n4\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-14-08",
+    "topic_id": 14,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "4\n4",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "None\n4",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "9\n4",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "9\n9",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "def quiet():\n    pass\n\nprint(quiet())",
+    "explanation": "Reaching the end without return yields None.",
+    "objective": "Trace implicit return",
+    "validation": {
+      "code": "def quiet():\n    pass\n\nprint(quiet())",
+      "stdout": "None\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-14-09",
+    "topic_id": 14,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "No output",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "0",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "False",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "None",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "def add(a, b):\n    return a + b\n\nadd(1)",
+    "explanation": "A required argument b is missing.",
+    "objective": "Identify missing argument",
+    "validation": {
+      "code": "def add(a, b):\n    return a + b\n\nadd(1)",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "TypeError"
+    },
+    "key": "py-14-10",
+    "topic_id": 14,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "TypeError",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "NameError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "SyntaxError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "def work():\n    inside = 2\n\nwork()\nprint(inside)",
+    "explanation": "Inside is local to work.",
+    "objective": "Identify inaccessible local",
+    "validation": {
+      "code": "def work():\n    inside = 2\n\nwork()\nprint(inside)",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "NameError"
+    },
+    "key": "py-14-11",
+    "topic_id": 14,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "IndexError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "NameError",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "ValueError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "A function only prints a total, but its caller needs to calculate with it. What should change?",
+    "code_snippet": null,
+    "explanation": "Return passes the numeric result to the caller.",
+    "objective": "Avoid print-return confusion",
+    "key": "py-14-12",
+    "topic_id": 14,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Call print twice",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Add pass after print",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Return the total",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Remove every parameter",
+        "is_correct": false
+      }
+    ]
+  }
+]

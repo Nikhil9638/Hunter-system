@@ -1,0 +1,23 @@
+[
+  {
+    "code": "try:\n    number = int(\"bad\")\n    print(number)\nexcept ValueError:\n    print(\"Use digits\")\nprint(\"done\")",
+    "stdout": "Use digits\ndone\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "try:\n    print(int(\"4\"))\nexcept ValueError:\n    print(\"invalid\")\nelse:\n    print(\"success\")\nfinally:\n    print(\"finished\")",
+    "stdout": "4\nsuccess\nfinished\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "def check_age(age):\n    if age < 0:\n        raise ValueError(\"age must not be negative\")\n    return age\n\ntry:\n    check_age(-1)\nexcept ValueError as error:\n    print(str(error))",
+    "stdout": "age must not be negative\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  }
+]

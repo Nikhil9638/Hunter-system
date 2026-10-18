@@ -1,0 +1,471 @@
+[
+  {
+    "kind": "concept",
+    "stem": "What type does input() return after the user types 25?",
+    "code_snippet": null,
+    "explanation": "input() returns a line of text; digit characters are still text until explicitly converted.",
+    "objective": "Understand input type",
+    "key": "py-04-01",
+    "topic_id": 4,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "bool",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "str",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "int",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "float",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Which conversion accepts the decimal text '2.5' directly?",
+    "code_snippet": null,
+    "explanation": "float() parses suitable decimal text. int() does not directly parse text with a decimal point.",
+    "objective": "Select a conversion",
+    "key": "py-04-02",
+    "topic_id": 4,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "bool('2.5') returns 2.5",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "str(2.5) returns a float",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "float('2.5')",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "int('2.5')",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What does int() do with a floating-point value such as -2.8?",
+    "code_snippet": null,
+    "explanation": "Converting a float to int drops the fractional part toward zero, so int(-2.8) is -2.",
+    "objective": "Understand truncation",
+    "key": "py-04-03",
+    "topic_id": 4,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Always rounds down",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Always rounds up",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Rounds to the nearest whole number",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Truncates toward zero",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Why use str(score) before joining score to a string with +?",
+    "code_snippet": null,
+    "explanation": "str() creates a text representation that can be concatenated with another string.",
+    "objective": "Convert for display",
+    "key": "py-04-04",
+    "topic_id": 4,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "To create text from the numeric value",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "To permanently change every copy of score",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "To add one to score",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "To verify that score is positive",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "The controlled input is 42 followed by Enter. What does this code print?",
+    "code_snippet": "value = input()\nprint(type(value))",
+    "explanation": "The controlled line contains digits, but input() still returns a str.",
+    "objective": "Inspect input",
+    "validation": {
+      "code": "value = input()\nprint(type(value))",
+      "stdout": "<class 'str'>\n",
+      "stdin": "42\n",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-04-05",
+    "topic_id": 4,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "<class 'bool'>",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "<class 'str'>",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "<class 'int'>",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "<class 'float'>",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "The controlled input is 8 followed by Enter. What does this code print?",
+    "code_snippet": "n = int(input())\nprint(n + 1)",
+    "explanation": "int() converts the input text 8 into a number before adding one.",
+    "objective": "Convert integer input",
+    "validation": {
+      "code": "n = int(input())\nprint(n + 1)",
+      "stdout": "9\n",
+      "stdin": "8\n",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-04-06",
+    "topic_id": 4,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "8",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "9",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "81",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(str(6) + \"0\")",
+    "explanation": "str(6) creates the string '6', and + joins the two strings.",
+    "objective": "Convert numbers to text",
+    "validation": {
+      "code": "print(str(6) + \"0\")",
+      "stdout": "60\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-04-07",
+    "topic_id": 4,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "6",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "0",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "60",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(int(3.8))\nprint(int(-3.8))",
+    "explanation": "Both conversions truncate toward zero, rather than rounding or flooring.",
+    "objective": "Understand truncation",
+    "validation": {
+      "code": "print(int(3.8))\nprint(int(-3.8))",
+      "stdout": "3\n-3\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-04-08",
+    "topic_id": 4,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "3\n-3",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "4\n-4",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "3\n-4",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "4\n-3",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(float(\"4.5\") + 0.5)",
+    "explanation": "float() parses 4.5; adding the exactly represented half produces float 5.0.",
+    "objective": "Convert decimal text",
+    "validation": {
+      "code": "print(float(\"4.5\") + 0.5)",
+      "stdout": "5.0\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-04-09",
+    "topic_id": 4,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "5.0",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "4.50.5",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "5",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "print(int(\"3.5\"))",
+    "explanation": "The string has decimal-point syntax, not valid integer text.",
+    "objective": "Recognize invalid integer text",
+    "validation": {
+      "code": "print(int(\"3.5\"))",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "ValueError"
+    },
+    "key": "py-04-10",
+    "topic_id": 4,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "NameError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "SyntaxError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "ValueError",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "TypeError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "The controlled input is 12 followed by Enter. Which exception class stops this code?",
+    "code_snippet": "age = input()\nprint(age + 1)",
+    "explanation": "age is a string. Convert suitable text with int() before numeric addition.",
+    "objective": "Identify missing conversion",
+    "validation": {
+      "code": "age = input()\nprint(age + 1)",
+      "stdout": "",
+      "stdin": "12\n",
+      "files": {},
+      "exception": "TypeError"
+    },
+    "key": "py-04-11",
+    "topic_id": 4,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "NameError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "SyntaxError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "TypeError",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Why is bool('False') unsuitable for parsing a typed False answer?",
+    "code_snippet": null,
+    "explanation": "bool() tests truthiness; it does not interpret the words 'True' and 'False'.",
+    "objective": "Avoid Boolean parsing mistakes",
+    "key": "py-04-12",
+    "topic_id": 4,
+    "skill_group": "G2",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A nonempty string is truthy regardless of its spelling",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "It always raises SyntaxError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "It always returns None",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "It changes the string into lowercase",
+        "is_correct": false
+      }
+    ]
+  }
+]

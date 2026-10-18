@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 256 256">
+<title>Shadow Commander cosmetic badge proposal</title>
+<g stroke-linecap="round" stroke-linejoin="round" stroke-width="6" fill="none">
+<path d="m128 18 94 54v112l-94 54-94-54V72z" fill="#101a2a" stroke="#778ba7"/>
+<path d="m128 29 84 49v100l-84 49-84-49V78z" stroke="#344a64" stroke-width="3"/>
+<path d="m55 80 26-15m94 127 26-15" stroke="#72e8f2" stroke-width="4"/>
+<path d="m128 64 48 20v48c0 26-25 48-48 62-23-14-48-36-48-62V84z" stroke="#72e8f2" stroke-width="8" fill="#152b3c"/><path d="M117 106h-8a14 14 0 0 0 0 28h19m11 16h8a14 14 0 0 0 0-28h-19" stroke="#a49afb" stroke-width="9"/></g></svg>

@@ -1,0 +1,2 @@
+# Private: never served over HTTP (defense in depth behind the root .htaccess).
+Require all denied

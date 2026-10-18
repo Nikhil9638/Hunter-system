@@ -1,0 +1,471 @@
+[
+  {
+    "kind": "concept",
+    "stem": "What does key in data test for a dictionary?",
+    "code_snippet": null,
+    "explanation": "Membership checks keys by default.",
+    "objective": "Understand membership",
+    "key": "py-13-01",
+    "topic_id": 13,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Whether key is an index position",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Whether all values equal key",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Whether key is a key",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Whether key is a value",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What happens when an existing key is assigned a new value?",
+    "code_snippet": null,
+    "explanation": "Each key has one value.",
+    "objective": "Update entries",
+    "key": "py-13-02",
+    "topic_id": 13,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A duplicate key entry is appended",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "The key is removed",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "All other values are replaced",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Its value is replaced",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What does items() supply when iterated?",
+    "code_snippet": null,
+    "explanation": "Each pair can be unpacked into two names.",
+    "objective": "Iterate entries",
+    "key": "py-13-03",
+    "topic_id": 13,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Key-value pairs",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "Only keys",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Only values",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Sorted indices",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Which is a valid dictionary key in these choices?",
+    "code_snippet": null,
+    "explanation": "Strings are hashable; these mutable collections are not.",
+    "objective": "Choose keys",
+    "key": "py-13-04",
+    "topic_id": 13,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "{1, 2}",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "\"name\"",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "[1, 2]",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "{\"x\": 1}",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "d = {\"x\": 2}\nprint(d.get(\"y\", 5))\nprint(len(d))",
+    "explanation": "Get returns the fallback without inserting y.",
+    "objective": "Trace get",
+    "validation": {
+      "code": "d = {\"x\": 2}\nprint(d.get(\"y\", 5))\nprint(len(d))",
+      "stdout": "5\n1\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-13-05",
+    "topic_id": 13,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "None\n1",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "KeyError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "5\n1",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "5\n2",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "d = {\"x\": 2, \"x\": 7}\nprint(d[\"x\"])",
+    "explanation": "The later value replaces the earlier value for x.",
+    "objective": "Trace duplicate keys",
+    "validation": {
+      "code": "d = {\"x\": 2, \"x\": 7}\nprint(d[\"x\"])",
+      "stdout": "7\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-13-06",
+    "topic_id": 13,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "2",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "[2, 7]",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "KeyError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "7",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "d = {\"a\": 3}\nprint(\"a\" in d)\nprint(3 in d)",
+    "explanation": "Both membership tests inspect keys.",
+    "objective": "Trace membership",
+    "validation": {
+      "code": "d = {\"a\": 3}\nprint(\"a\" in d)\nprint(3 in d)",
+      "stdout": "True\nFalse\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-13-07",
+    "topic_id": 13,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "True\nFalse",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "True\nTrue",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "False\nTrue",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "False\nFalse",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "d = {\"a\": 1, \"b\": 2}\nd[\"a\"] = 9\nfor key in d:\n    print(key)",
+    "explanation": "Updating a value does not move its key.",
+    "objective": "Trace insertion order",
+    "validation": {
+      "code": "d = {\"a\": 1, \"b\": 2}\nd[\"a\"] = 9\nfor key in d:\n    print(key)",
+      "stdout": "a\nb\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-13-08",
+    "topic_id": 13,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "1\n2",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "a\nb",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "b\na",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "a\nb\na",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "d = {\"a\": 4, \"b\": 6}\nprint(d.pop(\"a\"))\nprint(len(d))",
+    "explanation": "Pop returns the removed value and decreases the entry count.",
+    "objective": "Trace pop",
+    "validation": {
+      "code": "d = {\"a\": 4, \"b\": 6}\nprint(d.pop(\"a\"))\nprint(len(d))",
+      "stdout": "4\n1\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-13-09",
+    "topic_id": 13,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "4\n2",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "None\n1",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "4\n1",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "a\n1",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "print({\"a\": 1}[\"b\"])",
+    "explanation": "Indexing an absent key raises KeyError.",
+    "objective": "Identify absent key",
+    "validation": {
+      "code": "print({\"a\": 1}[\"b\"])",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "KeyError"
+    },
+    "key": "py-13-10",
+    "topic_id": 13,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "IndexError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "KeyError",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "d = {[1, 2]: \"point\"}",
+    "explanation": "Lists are unhashable and cannot be keys.",
+    "objective": "Identify invalid key",
+    "validation": {
+      "code": "d = {[1, 2]: \"point\"}",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "TypeError"
+    },
+    "key": "py-13-11",
+    "topic_id": 13,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "TypeError",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "SyntaxError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "KeyError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "ValueError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "A student expects len({\"a\": 1, \"a\": 2}) to be 2. What was missed?",
+    "code_snippet": null,
+    "explanation": "There is only one distinct key a.",
+    "objective": "Avoid duplicate-key confusion",
+    "key": "py-13-12",
+    "topic_id": 13,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Every dictionary has one entry",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Repeated keys keep only the last assigned value",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "Dictionaries count only numeric keys",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Len cannot count dictionaries",
+        "is_correct": false
+      }
+    ]
+  }
+]

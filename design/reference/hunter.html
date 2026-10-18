@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hunter System | Code. Quest. Evolve.</title>
+
+<!-- Google Fonts (Fira Code for Python Code Particles & Consolas fallback) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#07090e;
+  --surface:#0d111b;
+  --surface2:#111827;
+  --line:#222d3d;
+  --yellow:#ffd43b;
+  --yellow-glow:rgba(255, 212, 59, 0.45);
+  --blue:#387eb8;
+  --blue-glow:rgba(56, 126, 184, 0.45);
+  --cyan-glow:rgba(0, 240, 255, 0.35);
+  --text:#f4f7fb;
+  --muted:#94a1b5;
+  --green:#59d98e;
+  --red:#ff707c;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font:14px/1.5 Inter,Segoe UI,Arial,sans-serif;
+  overflow-x:hidden;
+  position:relative;
+  min-height:100vh;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+
+/* ==========================================================================
+   ANIMATED PYTHON CANVAS & AMBIENT GLOW (FROM 2.HTML)
+   ========================================================================== */
+#python-bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ambient-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.38;
+}
+
+.ambient-py-blue {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
+  top: -120px;
+  left: -120px;
+}
+
+.ambient-py-yellow {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--yellow-glow) 0%, transparent 70%);
+  top: 40%;
+  right: -160px;
+}
+
+.ambient-cyan {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%);
+  bottom: 5%;
+  left: 10%;
+}
+
+/* ==========================================================================
+   HUNTER SYSTEM APP LAYOUT & VIEWS
+   ========================================================================== */
+.layout{min-height:100vh;position:relative;z-index:1}
+.sidebar{
+  width:245px;
+  position:fixed;
+  inset:0 auto 0 0;
+  background:rgba(11, 15, 23, 0.94);
+  backdrop-filter:blur(16px);
+  border-right:1px solid var(--line);
+  padding:22px 15px;
+  display:flex;
+  flex-direction:column;
+  z-index:10;
+}
+.brand{display:flex;gap:10px;align-items:center;padding:0 9px 25px;font-weight:900;letter-spacing:1.2px}
+.logo{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:linear-gradient(135deg, var(--blue) 0%, var(--yellow) 100%);
+  color:#07090e;
+  display:grid;
+  place-items:center;
+  font-size:20px;
+  box-shadow: 0 0 16px var(--yellow-glow);
+}
+.brand small{display:block;color:var(--muted);font-size:9px;letter-spacing:2px}
+.nav-label{font-size:10px;color:#68758a;font-weight:800;letter-spacing:1.6px;padding:14px 12px 7px}
+.navbtn{display:flex;align-items:center;gap:12px;width:100%;padding:11px 12px;border:0;background:transparent;color:#aeb9ca;text-align:left;border-radius:10px;margin:2px 0;transition:all 0.2s ease}
+.navbtn:hover,.navbtn.active{background:#192131;color:#fff}
+.navbtn.active{box-shadow:inset 3px 0 var(--yellow)}
+.navbtn span:first-child{width:20px;text-align:center}
+.sidebar-bottom{margin-top:auto;border-top:1px solid var(--line);padding-top:15px}
+.user-mini{display:flex;gap:10px;align-items:center;padding:10px}
+.avatar{width:35px;height:35px;display:grid;place-items:center;border-radius:11px;background:linear-gradient(135deg,var(--yellow),#ff9f43);color:#111;font-weight:900}
+.user-mini small{display:block;color:var(--muted);font-size:11px}
+.main{margin-left:245px;min-height:100vh}
+.topbar{
+  height:72px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 32px;
+  background:#07090edb;
+  position:sticky;
+  top:0;
+  z-index:8;
+  backdrop-filter:blur(14px);
+}
+.crumb{color:var(--muted)}
+.top-actions{display:flex;align-items:center;gap:10px}
+.status{color:var(--green);font-size:12px}
+.content{max-width:1450px;margin:auto;padding:30px 32px 60px}
+.eyebrow{color:var(--yellow);font-size:11px;letter-spacing:1.8px;font-weight:850}
+.page-title{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;margin-bottom:25px}
+.page-title h1{font-size:32px;letter-spacing:-1px;margin:5px 0}
+.page-title p{color:var(--muted);margin:0}
+.btn{border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:#141b28;color:var(--text);font-weight:700;transition:all 0.2s ease}
+.btn:hover{border-color:#667991;transform:translateY(-1px)}
+.btn.primary{background:var(--yellow);border-color:var(--yellow);color:#171717}
+.btn.blue{background:var(--blue);border-color:var(--blue)}
+.btn.ghost{background:transparent}
+.btn.danger{color:var(--red)}
+.btn.small{font-size:12px;padding:7px 10px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{
+  background:linear-gradient(145deg, rgba(16, 23, 34, 0.88), rgba(12, 17, 26, 0.88));
+  backdrop-filter:blur(12px);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:20px;
+  min-width:0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+.card h3{margin:0 0 9px;font-size:16px}
+.card p{color:var(--muted);margin:0 0 12px;line-height:1.7}
+.metric{font-size:29px;font-weight:850;margin:8px 0}
+.metric small{font-size:12px;color:var(--muted);font-weight:500}
+.muted{color:var(--muted)}
+.progress{height:7px;border-radius:20px;background:#263144;overflow:hidden;margin:12px 0}
+.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--yellow));border-radius:20px}
+.tag{display:inline-block;background:#387eb81c;color:#9bcdf5;padding:5px 9px;border-radius:7px;font-size:11px}
+.tag.yellow{background:#ffd43b16;color:var(--yellow)}
+.tag.green{background:#59d98e16;color:var(--green)}
+.tag.red{background:#ff707c16;color:var(--red)}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin:28px 0 14px}
+.section-head h2{font-size:19px;margin:0}
+.quest{display:flex;flex-direction:column;min-height:210px}
+.quest .bottom{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:16px;gap:8px}
+.iconbox{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:#ffd43b18;color:var(--yellow);font-size:20px;margin-bottom:15px}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.spread{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.field{margin:15px 0}
+.field label{display:block;margin-bottom:7px;color:#c8d2e0;font-size:12px;font-weight:700}
+.field input,.field select,.field textarea{width:100%;border:1px solid #2b374a;background:#080d15;color:var(--text);padding:12px;border-radius:9px;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--yellow)}
+.field textarea{min-height:110px;resize:vertical}
+.form-card{max-width:510px;margin:25px auto}
+.form-card h1{font-size:30px;margin:8px 0}
+.form-card>p{color:var(--muted)}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:13px}
+table{width:100%;border-collapse:collapse;min-width:580px}
+th,td{padding:13px 15px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:#121a27;color:#9eacc0;font-size:11px;text-transform:uppercase;letter-spacing:1px}
+td{color:#dce4ef}
+tr:last-child td{border-bottom:0}
+.notice{background:#142b20;border:1px solid #285d40;color:#a5edbd;padding:12px;border-radius:10px;margin:12px 0}
+.warning{background:#302719;border-color:#6b5126;color:#ffe2a1}
+.editor{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#080c13}
+.editor-head{display:flex;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--line);color:var(--muted);font-size:12px}
+.editor textarea{width:100%;min-height:230px;background:transparent;color:#dce7f8;border:0;outline:0;padding:16px;font:14px/1.7 'Fira Code', Consolas, monospace;resize:vertical}
+.output{padding:14px;border-top:1px solid var(--line);min-height:55px;white-space:pre-wrap;color:var(--green);font-family:'Fira Code', Consolas, monospace}
+.hero{padding:35px 0 25px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.hero h1{font-size:clamp(38px,5vw,64px);line-height:1.05;letter-spacing:-2px;margin:17px 0}
+.hero h1 span{color:var(--yellow);text-shadow: 0 0 25px rgba(255, 212, 59, 0.4);}
+.hero p{color:var(--muted);font-size:16px;line-height:1.8;max-width:580px}
+.hero-panel{
+  padding:23px;
+  border-radius:20px;
+  border:1px solid #273247;
+  background:linear-gradient(145deg, rgba(18, 26, 42, 0.9), rgba(11, 16, 25, 0.9));
+  box-shadow:0 25px 80px rgba(0,0,0,0.6), 0 0 40px rgba(56, 126, 184, 0.15);
+  backdrop-filter:blur(14px);
+}
+.rank{display:flex;align-items:center;gap:12px;background:#24251c;border:1px solid #4a4528;border-radius:13px;padding:15px}
+.rank-icon{width:48px;height:48px;background:#ffd43b1c;color:var(--yellow);border-radius:13px;display:grid;place-items:center;font-size:24px}
+.toast{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  background:#15251d;
+  border:1px solid #326548;
+  padding:13px 18px;
+  border-radius:12px;
+  color:#a9f2c2;
+  z-index:99;
+  box-shadow:0 12px 40px rgba(0,0,0,0.6);
+}
+.mobilebar{display:none}
+
+@media(max-width:1000px){
+  .sidebar{width:210px}
+  .main{margin-left:210px}
+  .content{padding:25px 20px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero{grid-template-columns:1fr}
+  .hero-panel{max-width:600px}
+}
+
+@media(max-width:700px){
+  .sidebar{
+    position:fixed;
+    inset:auto 0 0;
+    width:100%;
+    height:65px;
+    padding:5px 8px;
+    background:#0b0f17f5;
+    border-right:0;
+    border-top:1px solid var(--line);
+    display:block;
+  }
+  .brand,.nav-label,.sidebar-bottom{display:none}
+  .sidebar nav{display:flex;justify-content:space-around;gap:2px}
+  .navbtn{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:2px;
+    padding:7px 3px;
+    margin:0;
+    font-size:10px;
+    text-align:center;
+  }
+  .navbtn span:first-child{font-size:16px}
+  .main{margin-left:0;padding-bottom:65px}
+  .topbar{padding:0 16px;height:62px}
+  .topbar .crumb{font-size:12px}
+  .content{padding:23px 15px 35px}
+  .grid,.grid.two{grid-template-columns:1fr}
+  .page-title{align-items:flex-start;flex-direction:column}
+  .hero{padding-top:15px}
+  .hero h1{letter-spacing:-1.5px}
+  .hero-panel{padding:15px}
+  .hide-mobile{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ANIMATED PYTHON CANVAS & AMBIENT GLOW BACKGROUND (FROM 2.HTML) -->
+<canvas id="python-bg-canvas"></canvas>
+<div class="ambient-glow ambient-py-blue"></div>
+<div class="ambient-glow ambient-py-yellow"></div>
+<div class="ambient-glow ambient-cyan"></div>
+
+<div class="layout">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">🐍</div><div>HUNTER SYSTEM<small>CODE · QUEST · EVOLVE</small></div></div>
+  <div class="nav-label">MAIN MENU</div>
+  <nav>
+    <button class="navbtn active" data-page="landing"><span>⌂</span>Home</button>
+    <button class="navbtn" data-page="dashboard"><span>▦</span>Dashboard</button>
+    <button class="navbtn" data-page="quests"><span>⚔</span>Quests</button>
+    <button class="navbtn" data-page="assessment"><span>◈</span>Assessment</button>
+    <button class="navbtn" data-page="profile"><span>♙</span>Profile</button>
+    <button class="navbtn" data-page="settings"><span>⚙</span>Settings</button>
+  </nav>
+  <div class="nav-label">ADMIN PANEL · DEMO</div>
+  <nav>
+    <button class="navbtn" data-page="admin"><span>▤</span>Admin dashboard</button>
+    <button class="navbtn" data-page="users"><span>♧</span>User management</button>
+    <button class="navbtn" data-page="questions"><span>?</span>Question bank</button>
+    <button class="navbtn" data-page="managequests"><span>⚒</span>Quest management</button>
+    <button class="navbtn" data-page="submissions"><span>☷</span>Submissions</button>
+    <button class="navbtn" data-page="rewards"><span>✦</span>Rewards</button>
+    <button class="navbtn" data-page="audit"><span>◷</span>Audit log</button>
+  </nav>
+  <div class="sidebar-bottom"><div class="user-mini"><div class="avatar" id="sideAvatar">H</div><div><strong id="sideName">Rookie Hunter</strong><small>Demo profile</small></div></div><button class="navbtn" data-page="signin"><span>⇥</span>Sign in / Switch</button></div>
+</aside>
+<div class="main">
+<header class="topbar"><div class="crumb">Hunter System <span style="color:#4d5b70">/</span> <strong id="crumbName">Home</strong></div><div class="top-actions"><span class="status">● DEMO MODE</span><button class="btn small" onclick="showPage('signin')">Sign in</button></div></header>
+<div class="content">
+
+<section id="landing" class="view">
+ <div class="hero"><div><span class="eyebrow">● YOUR CODING JOURNEY STARTS HERE</span><h1>Turn coding into<br>a <span>real adventure.</span></h1><p>Master Python one quest at a time. Solve challenges, earn XP, unlock achievements, and build your skills in a focused learning space.</p><div class="row"><button class="btn primary" onclick="showPage('signup')">Start your journey ↗</button><button class="btn" onclick="showPage('quests')">Explore quests</button></div><div class="row" style="gap:32px;margin-top:28px"><div><strong style="font-size:23px">19</strong><div class="muted">Planned core pages</div></div><div><strong style="font-size:23px">XP +</strong><div class="muted">Learn by doing</div></div><div><strong style="font-size:23px">Python</strong><div class="muted">Your first path</div></div></div></div>
+ <div class="hero-panel"><div class="spread" style="margin-bottom:18px"><strong>PLAYER OVERVIEW</strong><span class="tag">DEMO PLAYER</span></div><div class="rank"><div class="rank-icon">♜</div><div><strong id="heroName">Rookie Hunter</strong><div class="muted">Python Initiate · Level <span id="heroLevel">1</span></div></div><span class="tag yellow" style="margin-left:auto">ACTIVE</span></div><div class="spread" style="margin-top:22px"><span class="muted">NEXT LEVEL</span><strong><span id="heroXp">120</span> / 300 XP</strong></div><div class="progress"><span id="heroBar" style="width:40%"></span></div><div class="card" style="margin-top:14px"><div class="spread"><strong>⌘ First Steps in Python</strong><span class="tag yellow">+50 XP</span></div><p style="margin:7px 0 0">Print your first message and begin your journey.</p></div><div class="card" style="margin-top:10px"><div class="spread"><strong>◈ Variables & Values</strong><span class="tag">+80 XP</span></div><p style="margin:7px 0 0">Learn how to store information.</p></div></div></div>
+ <div class="section-head"><h2>How it works</h2></div><div class="grid"><div class="card"><div class="iconbox">01</div><h3>Choose a quest</h3><p>Pick a challenge that matches your current skill level.</p></div><div class="card"><div class="iconbox">02</div><h3>Write your code</h3><p>Practice Python concepts in the coding arena.</p></div><div class="card"><div class="iconbox">03</div><h3>Level up</h3><p>Track your demo XP and celebrate your progress.</p></div></div>
+</section>
+
+<section id="signup" class="view hidden"><div class="card form-card"><span class="eyebrow">CREATE YOUR PLAYER</span><h1>Begin your quest.</h1><p>Create a local demo profile. No server account is created.</p><form id="signupForm"><div class="field"><label for="newName">Hunter name</label><input id="newName" required minlength="2" maxlength="24" placeholder="Choose a username"></div><div class="field"><label for="newEmail">Email</label><input id="newEmail" type="email" required placeholder="you@example.com"></div><div class="field"><label for="newPass">Password</label><input id="newPass" type="password" minlength="4" required placeholder="At least 4 characters"></div><div class="field"><label for="newPath">Learning path</label><select id="newPath"><option>Python</option><option>Web Development</option><option>Problem Solving</option></select></div><button class="btn primary" style="width:100%">Create demo profile →</button></form><p class="muted" style="text-align:center;margin-top:18px">Already have a profile? <button class="linkbtn" onclick="showPage('signin')">Sign in</button></p></div></section>
+
+<section id="signin" class="view hidden"><div class="card form-card"><span class="eyebrow">WELCOME BACK</span><h1>Sign in, Hunter.</h1><p>Use any demo name and password to enter the prototype.</p><form id="signinForm"><div class="field"><label for="loginName">Username or email</label><input id="loginName" required placeholder="Your name or email"></div><div class="field"><label for="loginPass">Password</label><input id="loginPass" type="password" required placeholder="Demo password"></div><button class="btn primary" style="width:100%">Enter the system →</button></form><p class="muted" style="text-align:center;margin-top:18px">New here? <button class="linkbtn" onclick="showPage('signup')">Create profile</button></p></div></section>
+
+<section id="onboarding" class="view hidden"><div class="page-title"><div><span class="eyebrow">FIRST-TIME SETUP</span><h1>Set your starting point.</h1><p>Choose your experience level to personalize the demo journey.</p></div></div><div class="card" style="max-width:650px"><form id="onboardForm"><div class="field"><label for="experience">Your Python experience</label><select id="experience"><option>Complete beginner</option><option>Know the basics</option><option>Comfortable with Python</option></select></div><div class="field"><label for="goal">Your main goal</label><select id="goal"><option>Learn Python basics</option><option>Improve problem solving</option><option>Prepare for projects</option></select></div><button class="btn primary">Save preferences →</button></form></div></section>
+
+<section id="assessment" class="view hidden"><div class="page-title"><div><span class="eyebrow">SKILL CHECK</span><h1>Python quick assessment</h1><p>A short demo question to check your basics.</p></div><span class="tag">1 QUESTION</span></div><div class="card" style="max-width:760px"><h3>What does <code>print("Hello")</code> do in Python?</h3><form id="assessmentForm"><div class="field"><label><input type="radio" name="answer" value="a" required style="width:auto"> Stores Hello in a variable</label><label><input type="radio" name="answer" value="b" style="width:auto"> Displays Hello as output</label><label><input type="radio" name="answer" value="c" style="width:auto"> Stops the program</label></div><button class="btn primary">Submit assessment</button></form><div id="assessmentResult"></div></div></section>
+
+<section id="results" class="view hidden"><div class="page-title"><div><span class="eyebrow">ASSESSMENT RESULTS</span><h1>Your skill check result.</h1><p>Demo result summary for your learning path.</p></div></div><div class="grid"><div class="card"><span class="muted">SCORE</span><div class="metric" id="resultScore">—</div><p>Demo assessment score</p></div><div class="card"><span class="muted">RECOMMENDED PATH</span><div class="metric" style="font-size:23px">Python Basics</div><p>Start with print, variables, and conditions.</p></div><div class="card"><span class="muted">NEXT ACTION</span><div class="metric" style="font-size:23px">Start a quest</div><button class="btn primary" onclick="showPage('quests')">View quests →</button></div></div></section>
+
+<section id="dashboard" class="view hidden"><div class="page-title"><div><span class="eyebrow">PLAYER HUB</span><h1>Welcome back, <span id="dashName">Hunter</span>.</h1><p>Your next level is closer than you think. Keep going.</p></div><button class="btn primary" onclick="showPage('quests')">Continue quest →</button></div><div class="grid"><div class="card"><span class="muted">TOTAL EXPERIENCE</span><div class="metric"><span id="dashXp">120</span> <small>XP</small></div><div class="progress"><span id="dashBar" style="width:40%"></span></div></div><div class="card"><span class="muted">CURRENT LEVEL</span><div class="metric" id="dashLevel">01</div><p>Keep completing quests to level up.</p></div><div class="card"><span class="muted">QUESTS COMPLETED</span><div class="metric" id="dashCompleted">0 <small>quests</small></div><p>Every challenge is progress.</p></div></div><div class="section-head"><h2>Recommended quests</h2><button class="btn small" onclick="showPage('quests')">View all →</button></div><div class="grid" id="recommended"></div></section>
+
+<section id="quests" class="view hidden"><div class="page-title"><div><span class="eyebrow">QUEST BOARD</span><h1>Choose your next challenge.</h1><p>Start with the basics and build up your coding skills.</p></div><span class="tag yellow">PYTHON PATH</span></div><div class="grid" id="questGrid"></div></section>
+
+<section id="questdetail" class="view hidden"><div class="page-title"><div><span class="eyebrow">QUEST DETAILS</span><h1 id="detailTitle">Quest</h1><p id="detailDesc">Quest description</p></div><button class="btn" onclick="showPage('quests')">← Back to quests</button></div><div class="grid two"><div class="card"><h3>📜 Quest instructions</h3><p id="detailTask"></p><div class="notice">This is a frontend prototype. The demo checker does not execute real Python.</div><button class="btn primary" onclick="showPage('coding')">Open coding arena →</button></div><div class="card"><h3>Quest rewards</h3><div class="metric" id="detailXp">+50 XP</div><p>Complete the challenge to add demo XP to your profile.</p><span class="tag">Python · Practice</span></div></div></section>
+
+<section id="coding" class="view hidden"><div class="page-title"><div><span class="eyebrow">CODING ARENA</span><h1 id="codingTitle">First Steps in Python</h1><p id="codingDesc">Write a simple Python program.</p></div><span class="tag yellow" id="codingXp">+50 XP</span></div><div class="grid two"><div class="card"><h3>Task</h3><p id="codingTask"></p><div class="editor"><div class="editor-head"><span>PYTHON 3 · DEMO EDITOR</span><span>main.py</span></div><textarea id="codeInput" spellcheck="false">print("Hello, Hunter!")</textarea><div class="editor-head"><span>OUTPUT</span><button class="btn small" onclick="runCode()">Run code ▶</button></div><div class="output" id="codeOutput">Output will appear here...</div></div></div><div class="card"><h3>Completion checklist</h3><p>Read the task, write your solution, then check the demo output.</p><div class="notice warning">For safety, this page does not run submitted code. Real code execution requires a separately secured sandbox service.</div><button class="btn primary" style="width:100%;margin-top:8px" onclick="completeQuest()">Complete quest ✓</button><button class="btn" style="width:100%;margin-top:10px" onclick="showPage('quests')">Back to quests</button></div></div></section>
+
+<section id="profile" class="view hidden"><div class="page-title"><div><span class="eyebrow">HUNTER PROFILE</span><h1>Your progress, your story.</h1><p>Achievements and progress saved in this browser for the demo.</p></div></div><div class="card row"><div class="avatar" id="profileAvatar" style="width:60px;height:60px;font-size:24px">H</div><div><h2 id="profileName" style="margin:0 0 5px">Rookie Hunter</h2><span class="muted">Python Initiate · Level <span id="profileLevel">1</span></span></div></div><div class="grid" style="margin-top:16px"><div class="card"><span class="muted">TOTAL XP</span><div class="metric" id="profileXp">120</div></div><div class="card"><span class="muted">QUESTS CLEARED</span><div class="metric" id="profileCompleted">0</div></div><div class="card"><span class="muted">LEARNING PATH</span><div class="metric" style="font-size:22px" id="profilePath">Python</div></div></div><div class="section-head"><h2>Achievements</h2></div><div class="card"><span class="tag yellow">🌱 New Recruit</span> <span class="tag">⌨️ Code Starter</span> <span class="tag">🔥 On a Roll</span></div></section>
+
+<section id="settings" class="view hidden"><div class="page-title"><div><span class="eyebrow">PREFERENCES</span><h1>Settings</h1><p>Manage your local demo preferences.</p></div></div><div class="card" style="max-width:700px"><div class="field"><label for="settingsName">Display name</label><input id="settingsName" placeholder="Hunter name"></div><div class="field"><label for="settingsPath">Learning path</label><select id="settingsPath"><option>Python</option><option>Web Development</option><option>Problem Solving</option></select></div><button class="btn primary" onclick="saveSettings()">Save demo settings</button> <button class="btn danger" onclick="logout()">Sign out</button><div class="notice warning">These settings are stored locally in this browser only. There is no backend account system in this HTML prototype.</div></div></section>
+
+<section id="admin" class="view hidden"><div class="page-title"><div><span class="eyebrow">ADMINISTRATION · DEMO</span><h1>Platform overview</h1><p>Sample metrics only — not connected to a real database.</p></div><span class="tag yellow">ADMIN PREVIEW</span></div><div class="grid"><div class="card"><span class="muted">DEMO USERS</span><div class="metric">128</div><p>Sample total user count</p></div><div class="card"><span class="muted">ACTIVE QUESTS</span><div class="metric">06</div><p>Sample quest count</p></div><div class="card"><span class="muted">SUBMISSIONS</span><div class="metric">342</div><p>Sample submission count</p></div></div><div class="section-head"><h2>Admin tools</h2></div><div class="grid" id="adminLinks"></div><div class="notice warning">Admin screens are visual prototypes. Actual role checks and permissions must be enforced by PHP on the server.</div></section>
+
+<section id="users" class="view hidden"><div class="page-title"><div><span class="eyebrow">ADMIN / USERS</span><h1>User management</h1><p>Example records for layout preview.</p></div><button class="btn primary" onclick="toast('Connect this button to a secure PHP API.')">+ Add user</button></div><div class="table-wrap"><table><thead><tr><th>User</th><th>Email</th><th>Role</th><th>Status</th><th>Action</th></tr></thead><tbody><tr><td>Alex Hunter</td><td>alex@example.com</td><td>Student</td><td><span class="tag green">Active</span></td><td><button class="btn small" onclick="toast('Demo action only.')">View</button></td></tr><tr><td>Sam Coder</td><td>sam@example.com</td><td>Student</td><td><span class="tag green">Active</span></td><td><button class="btn small" onclick="toast('Demo action only.')">View</button></td></tr><tr><td>Admin Demo</td><td>admin@example.com</td><td>Admin</td><td><span class="tag yellow">Staff</span></td><td><button class="btn small" onclick="toast('Demo action only.')">View</button></td></tr></tbody></table></div></section>
+
+<section id="questions" class="view hidden"><div class="page-title"><div><span class="eyebrow">ADMIN / ASSESSMENTS</span><h1>Question bank</h1><p>Draft a question layout for the future PHP integration.</p></div></div><div class="card"><div class="field"><label for="questionText">Question</label><textarea id="questionText" placeholder="Enter assessment question..."></textarea></div><div class="grid two"><div class="field"><label for="questionTopic">Topic</label><select id="questionTopic"><option>Python Basics</option><option>Variables</option><option>Conditions</option><option>Loops</option></select></div><div class="field"><label for="questionLevel">Difficulty</label><select id="questionLevel"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div></div><button class="btn primary" onclick="toast('Draft UI only — connect to the question API to save.')">Save draft</button></div></section>
+
+<section id="managequests" class="view hidden"><div class="page-title"><div><span class="eyebrow">ADMIN / CONTENT</span><h1>Quest management</h1><p>Create and organize learning quests.</p></div></div><div class="card"><div class="field"><label for="questTitleInput">Quest title</label><input id="questTitleInput" placeholder="e.g. String Explorer"></div><div class="field"><label for="questDescInput">Description</label><textarea id="questDescInput" placeholder="Explain what the student will learn..."></textarea></div><div class="grid two"><div class="field"><label for="questDifficulty">Difficulty</label><select id="questDifficulty"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select></div><div class="field"><label for="questReward">XP reward preview</label><input id="questReward" type="number" min="0" value="50"></div></div><button class="btn primary" onclick="toast('Quest form preview only — no data was saved.')">Save quest draft</button><div class="notice warning">Private test cases must be stored and evaluated server-side, never sent to student pages.</div></div></section>
+
+<section id="submissions" class="view hidden"><div class="page-title"><div><span class="eyebrow">ADMIN / REVIEW</span><h1>Submission review</h1><p>Sample submission statuses.</p></div></div><div class="table-wrap"><table><thead><tr><th>Submission</th><th>Quest</th><th>Submitted</th><th>Result</th></tr></thead><tbody><tr><td>#SUB-1042</td><td>Variables & Values</td><td>Today, 10:42</td><td><span class="tag green">Accepted</span></td></tr><tr><td>#SUB-1041</td><td>Loop Runner</td><td>Today, 10:25</td><td><span class="tag red">Wrong answer</span></td></tr><tr><td>#SUB-1040</td><td>First Steps in Python</td><td>Yesterday</td><td><span class="tag">Pending</span></td></tr></tbody></table></div></section>
+
+<section id="rewards" class="view hidden"><div class="page-title"><div><span class="eyebrow">ADMIN / PROGRESSION</span><h1>Badges & reward rules</h1><p>Reward settings preview.</p></div></div><div class="grid"><div class="card"><div class="iconbox">🌱</div><h3>New Recruit</h3><p>Granted when a learner creates a profile.</p><span class="tag green">Enabled · Demo</span></div><div class="card"><div class="iconbox">⌨️</div><h3>Code Starter</h3><p>Granted after the first quest is completed.</p><span class="tag green">Enabled · Demo</span></div><div class="card"><div class="iconbox">🔥</div><h3>On a Roll</h3><p>Granted after three quests are completed.</p><span class="tag">Planned</span></div></div><div class="notice warning">Real XP and badge eligibility must be calculated by the backend, not by browser code.</div></section>
+
+<section id="audit" class="view hidden"><div class="page-title"><div><span class="eyebrow">ADMIN / SECURITY</span><h1>Audit log</h1><p>Illustrative events for the admin page design.</p></div></div><div class="table-wrap"><table><thead><tr><th>Time</th><th>Actor</th><th>Event</th><th>Outcome</th></tr></thead><tbody><tr><td>10:42:10</td><td>Admin Demo</td><td>Opened user management</td><td><span class="tag green">Allowed</span></td></tr><tr><td>10:31:04</td><td>System</td><td>Demo quest preview loaded</td><td><span class="tag">Info</span></td></tr><tr><td>09:55:48</td><td>Admin Demo</td><td>Viewed submissions</td><td><span class="tag green">Allowed</span></td></tr></tbody></table></div><div class="notice warning">A production audit log must be written by the server and must not be editable from the browser.</div></section>
+
+<section id="notfound" class="view hidden"><div class="card form-card"><span class="eyebrow">404 / NOT FOUND</span><h1>Quest not found.</h1><p>This route is not available in the prototype.</p><button class="btn primary" onclick="showPage('landing')">Return home</button></div></section>
+<section id="denied" class="view hidden"><div class="card form-card"><span class="eyebrow">ACCESS DENIED</span><h1>Access unavailable.</h1><p>This demo cannot verify real account permissions. Protected admin routes require server-side authorization in production.</p><button class="btn primary" onclick="showPage('landing')">Return home</button></div></section>
+
+</div></div></div>
+
+<script>
+/* ==========================================================================
+   ANIMATED PYTHON CANVAS ENGINE (FLOATING PYTHON LOGOS & SYNTAX PARTICLES)
+   ========================================================================== */
+(function initPythonCanvas() {
+  const canvas = document.getElementById('python-bg-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  let width, height;
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const pythonKeywords = [
+    'def', 'async def', 'yield from', 'lambda x:', '@decorator', 
+    '__init__', '[x**2 for x in nums]', 'import asyncio', 
+    'class Hunter(Player):', 'pytest.mark.parametrize', 'with open()', 
+    'return max(a, b)', 'dict.setdefault()', 'try ... except', 'self.rank = "S"'
+  ];
+
+  const particles = [];
+  const particleCount = 30;
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.45,
+      vy: (Math.random() - 0.5) * 0.45 - 0.2,
+      size: Math.random() * 22 + 14,
+      type: Math.random() > 0.45 ? 'text' : 'logo',
+      text: pythonKeywords[Math.floor(Math.random() * pythonKeywords.length)],
+      color: Math.random() > 0.5 ? '#387eb8' : '#ffd43b',
+      alpha: Math.random() * 0.16 + 0.05,
+      angle: Math.random() * Math.PI * 2,
+      va: (Math.random() - 0.5) * 0.008
+    });
+  }
+
+  function drawPythonSnakeIcon(ctx, x, y, size, alpha, angle) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+    ctx.globalAlpha = alpha;
+
+    // Draw Blue Snake Top Curve
+    ctx.fillStyle = '#387eb8';
+    ctx.beginPath();
+    ctx.arc(0, -size / 4, size / 2, Math.PI, 0, false);
+    ctx.lineTo(size / 3, -size / 6);
+    ctx.lineTo(-size / 6, -size / 6);
+    ctx.closePath();
+    ctx.fill();
+
+    // Draw Yellow Snake Bottom Curve
+    ctx.fillStyle = '#ffd43b';
+    ctx.beginPath();
+    ctx.arc(0, size / 4, size / 2, 0, Math.PI, false);
+    ctx.lineTo(-size / 3, size / 6);
+    ctx.lineTo(size / 6, size / 6);
+    ctx.closePath();
+    ctx.fill();
+
+    // Eye dots
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.arc(-size / 4, -size / 3, size / 10, 0, Math.PI * 2);
+    ctx.arc(size / 4, size / 3, size / 10, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.restore();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Subtle matrix grid lines
+    ctx.strokeStyle = 'rgba(56, 126, 184, 0.035)';
+    ctx.lineWidth = 1;
+    const gridSize = 65;
+    for (let x = 0; x < width; x += gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, height);
+      ctx.stroke();
+    }
+    for (let y = 0; y < height; y += gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(width, y);
+      ctx.stroke();
+    }
+
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.angle += p.va;
+
+      if (p.x < -100) p.x = width + 100;
+      if (p.x > width + 100) p.x = -100;
+      if (p.y < -100) p.y = height + 100;
+      if (p.y > height + 100) p.y = -100;
+
+      if (p.type === 'logo') {
+        drawPythonSnakeIcon(ctx, p.x, p.y, p.size, p.alpha, p.angle);
+      } else {
+        ctx.save();
+        ctx.font = `${Math.floor(p.size * 0.7)}px 'Fira Code', Consolas, monospace`;
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha * 1.3;
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.angle * 0.2);
+        ctx.fillText(p.text, 0, 0);
+        ctx.restore();
+      }
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+})();
+
+/* ==========================================================================
+   HUNTER SYSTEM APP LOGIC & STATE
+   ========================================================================== */
+const quests=[
+{id:1,title:"First Steps in Python",level:"Beginner",minutes:10,xp:50,desc:"Meet the print() function.",task:"Print the message Hello, Hunter! using Python's print() function.",starter:'print("Hello, Hunter!")'},
+{id:2,title:"Variables & Values",level:"Beginner",minutes:15,xp:80,desc:"Store information in variables.",task:"Create a variable named hunter and assign it the text 'Ready'. Then print the variable.",starter:'hunter = "Ready"\\nprint(hunter)'},
+{id:3,title:"Number Explorer",level:"Beginner",minutes:15,xp:90,desc:"Work with simple numbers.",task:"Create two numbers and print their sum.",starter:'a = 5\\nb = 7\\nprint(a + b)'},
+{id:4,title:"Decision Maker",level:"Intermediate",minutes:20,xp:120,desc:"Use if/else to make decisions.",task:"Create score = 10. If score is greater than 5, print 'Level up!'.",starter:'score = 10\\nif score > 5:\\n    print("Level up!")'},
+{id:5,title:"Loop Runner",level:"Intermediate",minutes:20,xp:140,desc:"Repeat actions with a loop.",task:"Use a for loop to print numbers from 1 to 5.",starter:'for i in range(1, 6):\\n    print(i)'},
+{id:6,title:"Function Forge",level:"Intermediate",minutes:25,xp:180,desc:"Organize code with functions.",task:"Define a function named greet that prints 'Hello, Hunter!', then call it.",starter:'def greet():\\n    print("Hello, Hunter!")\\n\\ngreet()'}
+];
+let state={name:"Rookie Hunter",email:"",xp:120,completed:[],path:"Python",signedIn:false};let activeQuest=quests[0];
+try{state={...state,...JSON.parse(localStorage.getItem("hunterSystemSpecDemo")||"{}")}}catch(e){}
+const pageNames={landing:"Home",signup:"Sign up",signin:"Sign in",onboarding:"Onboarding",assessment:"Assessment",results:"Assessment results",dashboard:"Dashboard",quests:"Quest catalogue",questdetail:"Quest details",coding:"Code submission",profile:"Profile & progress",settings:"Settings",admin:"Admin dashboard",users:"User management",questions:"Question bank",managequests:"Quest management",submissions:"Submission review",rewards:"Badge & reward rules",audit:"Audit log",notfound:"Not found",denied:"Access denied"};
+function save(){localStorage.setItem("hunterSystemSpecDemo",JSON.stringify(state));renderStats()}
+function showPage(id){if(!pageNames[id])id="notfound";document.querySelectorAll(".view").forEach(x=>x.classList.add("hidden"));document.getElementById(id).classList.remove("hidden");document.getElementById("crumbName").textContent=pageNames[id];document.querySelectorAll(".navbtn").forEach(b=>b.classList.toggle("active",b.dataset.page===id));if(["users","questions","managequests","submissions","rewards","audit"].includes(id)&&!state.signedIn){toast("Demo preview: production admin pages need server-side role checks.");}renderStats();if(id==="quests")renderQuests();if(id==="dashboard")renderDashboard();window.scrollTo({top:0,behavior:"smooth"})}
+document.querySelectorAll(".navbtn").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+function toast(msg){let t=document.createElement("div");t.className="toast";t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),3000)}
+function signInName(value){return value.includes("@")?value.split("@")[0]:value}
+document.getElementById("signupForm").addEventListener("submit",e=>{e.preventDefault();state.name=document.getElementById("newName").value.trim();state.email=document.getElementById("newEmail").value.trim();state.path=document.getElementById("newPath").value;state.signedIn=true;save();toast("Demo profile created!");showPage("onboarding")});
+document.getElementById("signinForm").addEventListener("submit",e=>{e.preventDefault();state.name=signInName(document.getElementById("loginName").value.trim());state.email=document.getElementById("loginName").value.trim();state.signedIn=true;save();toast("Welcome back, "+state.name+"!");showPage("dashboard")});
+document.getElementById("onboardForm").addEventListener("submit",e=>{e.preventDefault();save();toast("Demo preferences saved.");showPage("assessment")});
+document.getElementById("assessmentForm").addEventListener("submit",e=>{e.preventDefault();const a=new FormData(e.target).get("answer");const good=a==="b";document.getElementById("resultScore").textContent=good?"100%":"0%";document.getElementById("assessmentResult").innerHTML=good?'<div class="notice">Correct! Your demo result is ready.</div>':'<div class="notice warning">Not quite. print() displays text or values as output.</div>';showPage("results")});
+function renderStats(){const level=Math.floor(state.xp/300)+1,pct=Math.round((state.xp%300)/300*100);const put=(id,v)=>{let e=document.getElementById(id);if(e)e.textContent=v};["heroName","dashName","profileName","sideName"].forEach(id=>put(id,state.name));["heroXp","dashXp","profileXp"].forEach(id=>put(id,state.xp));["heroLevel","profileLevel"].forEach(id=>put(id,level));put("dashLevel",String(level).padStart(2,"0"));put("dashCompleted",state.completed.length+" quests");put("profileCompleted",state.completed.length);put("profilePath",state.path);put("sideAvatar",(state.name[0]||"H").toUpperCase());put("profileAvatar",(state.name[0]||"H").toUpperCase());["heroBar","dashBar"].forEach(id=>{let e=document.getElementById(id);if(e)e.style.width=pct+"%"})}
+function card(q){let done=state.completed.includes(q.id);return `<article class="card quest"><div class="spread"><span class="tag">${q.level}</span><span class="tag yellow">+${q.xp} XP</span></div><div class="iconbox" style="margin-top:17px">⌘</div><h3>${q.title}</h3><p>${q.desc}</p><div class="bottom"><span class="muted">◷ ${q.minutes} min ${done?"· ✓ Completed":""}</span><button class="btn ${done?"":"primary"} small" onclick="openQuest(${q.id})">${done?"Practice again":"Start quest →"}</button></div></article>`}
+function renderQuests(){document.getElementById("questGrid").innerHTML=quests.map(card).join("")}
+function renderDashboard(){document.getElementById("recommended").innerHTML=quests.slice(0,3).map(card).join("")}
+function openQuest(id){activeQuest=quests.find(q=>q.id===id)||quests[0];document.getElementById("detailTitle").textContent=activeQuest.title;document.getElementById("detailDesc").textContent=activeQuest.desc;document.getElementById("detailTask").textContent=activeQuest.task;document.getElementById("detailXp").textContent="+"+activeQuest.xp+" XP";document.getElementById("codingTitle").textContent=activeQuest.title;document.getElementById("codingDesc").textContent=activeQuest.desc;document.getElementById("codingTask").textContent=activeQuest.task;document.getElementById("codingXp").textContent="+"+activeQuest.xp+" XP";document.getElementById("codeInput").value=activeQuest.starter.replaceAll("\\n","\n");document.getElementById("codeOutput").textContent="Output will appear here...";showPage("questdetail")}
+function runCode(){let c=document.getElementById("codeInput").value,o="Demo preview only. Real Python is not executed.";if(c.includes("Hello, Hunter!"))o="Hello, Hunter!";else if(c.includes("print(hunter)"))o="Ready";else if(c.includes("a + b"))o="12";else if(c.includes("Level up!"))o="Level up!";else if(c.includes("range(1, 6)"))o="1\n2\n3\n4\n5";else if(c.includes("def greet"))o="Hello, Hunter!";document.getElementById("codeOutput").textContent=o}
+function completeQuest(){if(!state.completed.includes(activeQuest.id)){state.completed.push(activeQuest.id);state.xp+=activeQuest.xp;save();toast("Quest completed! +"+activeQuest.xp+" XP");}else toast("XP already earned for this quest.");showPage("dashboard")}
+function saveSettings(){const n=document.getElementById("settingsName").value.trim();if(n)state.name=n;state.path=document.getElementById("settingsPath").value;save();toast("Demo settings saved.");showPage("profile")}
+function logout(){state.signedIn=false;save();toast("Demo signed out.");showPage("landing")}
+function resetDemo(){if(confirm("Reset demo progress?")){state.xp=120;state.completed=[];save();showPage("profile")}}
+document.getElementById("adminLinks").innerHTML=[["users","User management"],["questions","Question bank"],["managequests","Quest management"],["submissions","Submission review"],["rewards","Badge & reward rules"],["audit","Audit log"]].map(x=>`<div class="card"><h3>${x[1]}</h3><p>Open this admin screen preview.</p><button class="btn small" onclick="showPage('${x[0]}')">Open →</button></div>`).join("");
+renderStats();renderQuests();renderDashboard();showPage("landing");
+</script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+{
+  "format_version": 1,
+  "python_target": "3.14",
+  "status": "draft",
+  "topics": [
+    {
+      "id": 3,
+      "title": "Basic data types",
+      "skill_group": "G1",
+      "objectives": [
+        "Recognize integers, floating-point numbers, strings and Boolean values.",
+        "Use type() to inspect a value and distinguish quoted digits from numbers.",
+        "Explain None and why a new assignment can change the type of a name."
+      ],
+      "sources": [
+        "https://docs.python.org/3.14/tutorial/introduction.html",
+        "https://docs.python.org/3.14/library/stdtypes.html",
+        "https://docs.python.org/3.14/library/functions.html"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Input and type conversion",
+      "skill_group": "G2",
+      "objectives": [
+        "Explain that input() returns a string and that its prompt is printed.",
+        "Convert suitable values with int(), float() and str().",
+        "Recognize failed conversions and choose a deliberate conversion order."
+      ],
+      "sources": [
+        "https://docs.python.org/3.14/library/functions.html",
+        "https://docs.python.org/3.14/library/stdtypes.html"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Arithmetic operators",
+      "skill_group": "G2",
+      "objectives": [
+        "Use addition, subtraction, multiplication, division, floor division, remainder and powers.",
+        "Read operator precedence and use parentheses to express intent.",
+        "Distinguish floor division from truncation, including negative operands."
+      ],
+      "sources": [
+        "https://docs.python.org/3.14/tutorial/introduction.html",
+        "https://docs.python.org/3.14/library/stdtypes.html"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Comparison and logical operators",
+      "skill_group": "G2",
+      "objectives": [
+        "Compare values with ==, !=, <, <=, > and >=.",
+        "Combine Boolean expressions with and, or and not.",
+        "Recognize truthiness and short-circuit evaluation without confusing them with assignment."
+      ],
+      "sources": [
+        "https://docs.python.org/3.14/library/stdtypes.html",
+        "https://docs.python.org/3.14/tutorial/controlflow.html"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Conditions",
+      "skill_group": "G3",
+      "objectives": [
+        "Write if/elif/else branches with colons and consistent indentation.",
+        "Predict which branch runs and distinguish a chain from separate if statements.",
+        "Use nested conditions sparingly and order boundary checks correctly."
+      ],
+      "sources": [
+        "https://docs.python.org/3.14/tutorial/controlflow.html"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Loops",
+      "skill_group": "G3",
+      "objectives": [
+        "Use for and range() for a counted repetition.",
+        "Use while for repetition controlled by a changing condition.",
+        "Trace counters and accumulators, including zero-iteration cases."
+      ],
+      "sources": [
+        "https://docs.python.org/3.14/tutorial/controlflow.html",
+        "https://docs.python.org/3.14/library/functions.html"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Loop control",
+      "skill_group": "G3",
+      "objectives": [
+        "Use break to stop a loop and continue to skip one iteration.",
+        "Distinguish pass from loop control.",
+        "Explain when a loop's else block runs."
+      ],
+      "sources": [
+        "https://docs.python.org/3.14/tutorial/controlflow.html"
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Strings",
+      "skill_group": "G4",
+      "objectives": [
+        "Index and slice text safely.",
+        "Use common string methods and formatted strings.",
+        "Explain string immutability."
+      ],
+      "sources": [
+        "https://docs.python.org/3.14/tutorial/introduction.html",
+        "https://docs.python.org/3.14/library/stdtypes.html"
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Lists",
+      "skill_group": "G4",
+      "objectives": [
+        "Read and change ordered list items.",
+        "Distinguish append, extend and removal methods.",
+        "Recognize shared lists and shallow copies."
+      ],
+      "sources": [
+        "https://docs.python.org/3.14/tutorial/datastructures.html",
+        "https://docs.python.org/3.14/library/stdtypes.html"
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Tuples and sets",
+      "skill_group": "G4",
+      "objectives": [
+        "Use immutable ordered tuples and unpacking.",
+        "Use sets for unique membership and set operations.",
+        "Avoid depending on set iteration order."
+      ],
+      "sources": [
+        "https://docs.python.org/3.14/tutorial/datastructures.html",
+        "https://docs.python.org/3.14/library/stdtypes.html"
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Dictionaries",
+      "skill_group": "G4",
+      "objectives": [
+        "Store and retrieve values by keys.",
+        "Update entries and use get for optional keys.",
+        "Iterate through keys and key-value pairs."
+      ],
+      "sources": [
+        "https://docs.python.org/3.14/tutorial/datastructures.html",
+        "https://docs.python.org/3.14/library/stdtypes.html"
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Functions",
+      "skill_group": "G5",
+      "objectives": [
+        "Define and call functions with parameters.",
+        "Distinguish returned values from printed output.",
+        "Use defaults and understand local names."
+      ],
+      "sources": [
+        "https://docs.python.org/3.14/tutorial/controlflow.html"
+      ]
+    },
+    {
+      "id": 15,
+      "title": "Modules and imports",
+      "skill_group": "G5",
+      "objectives": [
+        "Import standard-library modules and selected names.",
+        "Use aliases and module-qualified names.",
+        "Recognize a local module and avoid name shadowing."
+      ],
+      "sources": [
+        "https://docs.python.org/3.14/tutorial/modules.html"
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Exceptions",
+      "skill_group": "G5",
+      "objectives": [
+        "Handle expected exceptions with try and except.",
+        "Distinguish else and finally.",
+        "Raise an appropriate exception for invalid input."
+      ],
+      "sources": [
+        "https://docs.python.org/3.14/tutorial/errors.html"
+      ]
+    },
+    {
+      "id": 17,
+      "title": "File handling",
+      "skill_group": "G6",
+      "objectives": [
+        "Read and write UTF-8 text with with blocks.",
+        "Distinguish read, write and append modes.",
+        "Handle missing files and understand the read position."
+      ],
+      "sources": [
+        "https://docs.python.org/3.14/tutorial/inputoutput.html",
+        "https://docs.python.org/3.14/tutorial/errors.html"
+      ]
+    },
+    {
+      "id": 18,
+      "title": "Basic object-oriented programming",
+      "skill_group": "G6",
+      "objectives": [
+        "Define classes and create instances.",
+        "Initialize instance attributes with __init__.",
+        "Call methods and distinguish instance and class attributes."
+      ],
+      "sources": [
+        "https://docs.python.org/3.14/tutorial/classes.html"
+      ]
+    }
+  ]
+}

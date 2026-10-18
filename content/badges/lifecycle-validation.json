@@ -1,0 +1,42 @@
+{
+  "mode": "REAL fixture API/Chrome, no mocks",
+  "actor": {
+    "id": 74,
+    "email": "b7.mv8y0eh8.admin@example.invalid"
+  },
+  "badges": [
+    {
+      "id": 72,
+      "name": "First Spark",
+      "price": 10
+    },
+    {
+      "id": 73,
+      "name": "Code Scout",
+      "price": 20
+    },
+    {
+      "id": 74,
+      "name": "Logic Seeker",
+      "price": 30
+    },
+    {
+      "id": 75,
+      "name": "Loop Voyager",
+      "price": 40
+    },
+    {
+      "id": 76,
+      "name": "Python Guardian",
+      "price": 60
+    },
+    {
+      "id": 77,
+      "name": "Shadow Scholar",
+      "price": 80
+    }
+  ],
+  "checks": 54,
+  "chrome": "155.0.8059.79",
+  "student": "m8b.mv93bsfc.student@example.invalid"
+}

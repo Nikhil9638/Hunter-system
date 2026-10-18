@@ -1,0 +1,471 @@
+[
+  {
+    "kind": "concept",
+    "stem": "What is an instance?",
+    "code_snippet": null,
+    "explanation": "A class can create many individual instances.",
+    "objective": "Distinguish instances",
+    "key": "py-18-01",
+    "topic_id": 18,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The class keyword itself",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Only a module file",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "A function parameter default",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "One object created from a class",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What does self conventionally refer to in an instance method?",
+    "code_snippet": null,
+    "explanation": "Python supplies the instance for a bound method call.",
+    "objective": "Understand self",
+    "key": "py-18-02",
+    "topic_id": 18,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The instance receiving the call",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "The entire Python interpreter",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Always the class name string",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "The previous function result",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What is the role of __init__?",
+    "code_snippet": null,
+    "explanation": "It assigns starting state after instance creation.",
+    "objective": "Initialize state",
+    "key": "py-18-03",
+    "topic_id": 18,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Destroy all instances",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Initialize a newly created instance",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "Print every object automatically",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Import all classes",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Where should a separate list for every instance normally be assigned?",
+    "code_snippet": null,
+    "explanation": "Creating the list in each initializer gives each instance its own list.",
+    "objective": "Separate mutable state",
+    "key": "py-18-04",
+    "topic_id": 18,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Only in an imported math module",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "As a default list argument shared by calls",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "To self.items inside __init__",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "As items = [] in the class body",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "class Box:\n    def __init__(self, size):\n        self.size = size\n\nprint(Box(4).size)",
+    "explanation": "The initializer stores the argument on the new instance.",
+    "objective": "Trace initialization",
+    "validation": {
+      "code": "class Box:\n    def __init__(self, size):\n        self.size = size\n\nprint(Box(4).size)",
+      "stdout": "4\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-18-05",
+    "topic_id": 18,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "None",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "size",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Box",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "4",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "class Number:\n    def __init__(self, value):\n        self.value = value\n    def double(self):\n        return self.value * 2\n\nprint(Number(3).double())",
+    "explanation": "The method reads the stored instance value.",
+    "objective": "Trace method result",
+    "validation": {
+      "code": "class Number:\n    def __init__(self, value):\n        self.value = value\n    def double(self):\n        return self.value * 2\n\nprint(Number(3).double())",
+      "stdout": "6\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-18-06",
+    "topic_id": 18,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "6",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "3",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "None",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "9",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "class Box:\n    def __init__(self):\n        self.items = []\n\na = Box()\nb = Box()\na.items.append(1)\nprint(len(b.items))",
+    "explanation": "Each initializer creates a fresh list.",
+    "objective": "Trace independent state",
+    "validation": {
+      "code": "class Box:\n    def __init__(self):\n        self.items = []\n\na = Box()\nb = Box()\na.items.append(1)\nprint(len(b.items))",
+      "stdout": "0\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-18-07",
+    "topic_id": 18,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "None",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "0",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "1",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "2",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "class Tool:\n    category = \"study\"\n\nprint(Tool().category)",
+    "explanation": "The instance can read the class attribute.",
+    "objective": "Trace class attribute",
+    "validation": {
+      "code": "class Tool:\n    category = \"study\"\n\nprint(Tool().category)",
+      "stdout": "study\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-18-08",
+    "topic_id": 18,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "None",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "category",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "study",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Tool",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "class Counter:\n    def __init__(self):\n        self.value = 0\n    def add(self):\n        self.value += 1\n\nc = Counter()\nc.add()\nc.add()\nprint(c.value)",
+    "explanation": "Both calls update the same instance.",
+    "objective": "Trace state change",
+    "validation": {
+      "code": "class Counter:\n    def __init__(self):\n        self.value = 0\n    def add(self):\n        self.value += 1\n\nc = Counter()\nc.add()\nc.add()\nprint(c.value)",
+      "stdout": "2\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-18-09",
+    "topic_id": 18,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "0",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "1",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "None",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "2",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "class Box:\n    pass\n\nprint(Box().missing)",
+    "explanation": "The instance and its class have no attribute named missing.",
+    "objective": "Identify absent attribute",
+    "validation": {
+      "code": "class Box:\n    pass\n\nprint(Box().missing)",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "AttributeError"
+    },
+    "key": "py-18-10",
+    "topic_id": 18,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "AttributeError",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "NameError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "KeyError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "IndexError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "class Box:\n    def __init__(self):\n        return 3\n\nBox()",
+    "explanation": "An initializer must return None rather than another value.",
+    "objective": "Identify invalid initializer",
+    "validation": {
+      "code": "class Box:\n    def __init__(self):\n        return 3\n\nBox()",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "TypeError"
+    },
+    "key": "py-18-11",
+    "topic_id": 18,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "SyntaxError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "TypeError",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "AttributeError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "A method assigns name = \"Ada\", but obj.name is missing. What was omitted?",
+    "code_snippet": null,
+    "explanation": "A local name does not automatically become an instance attribute.",
+    "objective": "Avoid local-attribute confusion",
+    "key": "py-18-12",
+    "topic_id": 18,
+    "skill_group": "G6",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Rename the class to name",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Import name from math",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Store it as self.name",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Print name twice",
+        "is_correct": false
+      }
+    ]
+  }
+]

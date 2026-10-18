@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 256 256">
+<title>Loop Voyager cosmetic badge proposal</title>
+<g stroke-linecap="round" stroke-linejoin="round" stroke-width="6" fill="none">
+<path d="m128 18 94 54v112l-94 54-94-54V72z" fill="#101a2a" stroke="#778ba7"/>
+<path d="m128 29 84 49v100l-84 49-84-49V78z" stroke="#344a64" stroke-width="3"/>
+<path d="m55 80 26-15m94 127 26-15" stroke="#72e8f2" stroke-width="4"/>
+<path d="M82 151a50 50 0 0 1 73-62m19 16a50 50 0 0 1-73 62" stroke="#72e8f2" stroke-width="10"/><path d="m144 69 14 22-25 4m-21 90-14-22 25-4" stroke="#72e8f2"/><circle cx="128" cy="128" r="20" fill="#a49afb"/></g></svg>

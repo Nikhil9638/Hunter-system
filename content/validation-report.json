@@ -1,0 +1,22 @@
+{
+  "python": "3.14.8 (tags/v3.14.8:8e6e75d, Sep 30 2026, 18:19:33) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "C:\\Python314\\python.exe",
+  "lessons": 16,
+  "questions": 192,
+  "foundation_cases": 24,
+  "reviewed_total_lessons": 18,
+  "reviewed_quiz_questions": 216,
+  "executed_cases": 187,
+  "question_mix": {
+    "concept": 64,
+    "output": 80,
+    "mistake": 48
+  },
+  "failures": [],
+  "scope": "Explicit reviewed manifests only; isolated temporary directories; no app execution feature.",
+  "human_review_required": [
+    "Educational progression and wording",
+    "Conceptual distractors",
+    "Publication approval"
+  ]
+}

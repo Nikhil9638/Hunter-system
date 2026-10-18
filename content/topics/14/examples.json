@@ -1,0 +1,23 @@
+[
+  {
+    "code": "def double(number):\n    return number * 2\n\nprint(double(4))",
+    "stdout": "8\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "def greet():\n    print(\"Hello\")\n\nresult = greet()\nprint(result)",
+    "stdout": "Hello\nNone\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "name = \"Ada\"\ndef greet(name=\"friend\"):\n    return f\"Hi {name}\"\n\nprint(greet())\nprint(greet(name=\"Lin\"))\nprint(name)",
+    "stdout": "Hi friend\nHi Lin\nAda\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "mode": "REAL fixture API and installed Chrome; no simulated responses",
+  "status": "passed",
+  "student": "m8a.mv9gdcqv.student@example.invalid",
+  "pools": [
+    {
+      "topic": 1,
+      "covered": 0
+    },
+    {
+      "topic": 2,
+      "covered": 0
+    },
+    {
+      "topic": 3,
+      "covered": 12
+    },
+    {
+      "topic": 4,
+      "covered": 12
+    },
+    {
+      "topic": 5,
+      "covered": 12
+    },
+    {
+      "topic": 6,
+      "covered": 12
+    },
+    {
+      "topic": 7,
+      "covered": 12
+    },
+    {
+      "topic": 8,
+      "covered": 12
+    },
+    {
+      "topic": 9,
+      "covered": 12
+    },
+    {
+      "topic": 10,
+      "covered": 12
+    },
+    {
+      "topic": 11,
+      "covered": 12
+    },
+    {
+      "topic": 12,
+      "covered": 12
+    },
+    {
+      "topic": 13,
+      "covered": 12
+    },
+    {
+      "topic": 14,
+      "covered": 12
+    },
+    {
+      "topic": 15,
+      "covered": 12
+    },
+    {
+      "topic": 16,
+      "covered": 12
+    },
+    {
+      "topic": 17,
+      "covered": 12
+    },
+    {
+      "topic": 18,
+      "covered": 12
+    }
+  ],
+  "checks": 52,
+  "chrome": "155.0.8059.79"
+}

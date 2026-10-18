@@ -1,0 +1,471 @@
+[
+  {
+    "kind": "concept",
+    "stem": "After import math, how do you access sqrt?",
+    "code_snippet": null,
+    "explanation": "Import math binds the module name.",
+    "objective": "Use qualified names",
+    "key": "py-15-01",
+    "topic_id": 15,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "math.sqrt",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "sqrt without qualification",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "import.sqrt",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "math[\"sqrt\"]",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What name does from math import sqrt bind directly?",
+    "code_snippet": null,
+    "explanation": "Only the requested name is bound by this statement.",
+    "objective": "Understand from import",
+    "key": "py-15-02",
+    "topic_id": 15,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "All names from math",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "sqrt",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "math",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "import",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Why avoid naming a study file math.py?",
+    "code_snippet": null,
+    "explanation": "Import resolution can find the local file instead of the library.",
+    "objective": "Avoid shadowing",
+    "key": "py-15-03",
+    "topic_id": 15,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It changes every number into text",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "It automatically installs packages",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "It can shadow the intended standard-library module",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Python forbids all short file names",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What is the purpose of the __main__ guard?",
+    "code_snippet": null,
+    "explanation": "Imported modules have their module name rather than __main__.",
+    "objective": "Understand main guard",
+    "key": "py-15-04",
+    "topic_id": 15,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Make every import rerun the block",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Encrypt module contents",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Create a new module account",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Run a block when the file is the main program",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "import math\nprint(math.sqrt(16))",
+    "explanation": "Sqrt returns a floating-point square root.",
+    "objective": "Trace standard function",
+    "validation": {
+      "code": "import math\nprint(math.sqrt(16))",
+      "stdout": "4.0\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-15-05",
+    "topic_id": 15,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "4.0",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "4",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "8.0",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "16.0",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "from math import floor\nprint(floor(-2.3))",
+    "explanation": "Floor moves toward negative infinity.",
+    "objective": "Trace floor",
+    "validation": {
+      "code": "from math import floor\nprint(floor(-2.3))",
+      "stdout": "-3\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-15-06",
+    "topic_id": 15,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "-2.3",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "-3",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "-2",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "2",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "import math as m\nprint(m.ceil(2.1))",
+    "explanation": "Ceil returns the least integer not below the argument.",
+    "objective": "Trace alias",
+    "validation": {
+      "code": "import math as m\nprint(m.ceil(2.1))",
+      "stdout": "3\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-15-07",
+    "topic_id": 15,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "2.1",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "3.0",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "3",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "2",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "from math import factorial\nprint(factorial(3))",
+    "explanation": "Factorial multiplies 3 by 2 by 1.",
+    "objective": "Trace imported function",
+    "validation": {
+      "code": "from math import factorial\nprint(factorial(3))",
+      "stdout": "6\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-15-08",
+    "topic_id": 15,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "3",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "9",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "1",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "6",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "import math\nroot = math.sqrt(25)\nprint(root + 1)",
+    "explanation": "The returned float 5.0 can be used in another expression.",
+    "objective": "Use module result",
+    "validation": {
+      "code": "import math\nroot = math.sqrt(25)\nprint(root + 1)",
+      "stdout": "6.0\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-15-09",
+    "topic_id": 15,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "6.0",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "6",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "26",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "5.0",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "import math\nprint(sqrt(9))",
+    "explanation": "Only math is bound; use math.sqrt.",
+    "objective": "Identify unqualified name",
+    "validation": {
+      "code": "import math\nprint(sqrt(9))",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "NameError"
+    },
+    "key": "py-15-10",
+    "topic_id": 15,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "NameError",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "ImportError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "TypeError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "import math as m\nprint(math.sqrt(9))",
+    "explanation": "The alias binds m, not math.",
+    "objective": "Identify alias misuse",
+    "validation": {
+      "code": "import math as m\nprint(math.sqrt(9))",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "NameError"
+    },
+    "key": "py-15-11",
+    "topic_id": 15,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "IndexError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "NameError",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "SyntaxError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Why avoid from math import * in beginner code?",
+    "code_snippet": null,
+    "explanation": "Explicit imports make dependencies and name conflicts clearer.",
+    "objective": "Avoid wildcard ambiguity",
+    "key": "py-15-12",
+    "topic_id": 15,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It always causes SyntaxError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "It imports nothing",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "It requires a network connection",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "It hides which names were imported",
+        "is_correct": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,471 @@
+[
+  {
+    "kind": "concept",
+    "stem": "What index selects the first character?",
+    "code_snippet": null,
+    "explanation": "Python sequences use zero-based indexing.",
+    "objective": "Use indices",
+    "key": "py-10-01",
+    "topic_id": 10,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "1",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "-1",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "The length",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "0",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What does strip() remove by default?",
+    "code_snippet": null,
+    "explanation": "Interior whitespace remains.",
+    "objective": "Use strip",
+    "key": "py-10-02",
+    "topic_id": 10,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Whitespace at both ends",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "All spaces everywhere",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Only the first character",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "All letters",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Why does upper() not change the original string?",
+    "code_snippet": null,
+    "explanation": "Assign the returned string to retain it.",
+    "objective": "Understand immutability",
+    "key": "py-10-03",
+    "topic_id": 10,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Strings cannot contain capitals",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Strings are immutable; upper returns a new string",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "Upper works only on numbers",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Upper returns nothing",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Which prefix enables expressions inside braces in an f-string?",
+    "code_snippet": null,
+    "explanation": "An f-string interpolates expressions inside braces.",
+    "objective": "Use f-strings",
+    "key": "py-10-04",
+    "topic_id": 10,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "i",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "p",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "f",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "s",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(\"Hunter\"[1:4])",
+    "explanation": "Indices 1, 2 and 3 are included.",
+    "objective": "Trace slices",
+    "validation": {
+      "code": "print(\"Hunter\"[1:4])",
+      "stdout": "unt\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-10-05",
+    "topic_id": 10,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Hun",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "unte",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "nter",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "unt",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(\"code\"[-1])",
+    "explanation": "Minus one selects the final character.",
+    "objective": "Trace negative indexing",
+    "validation": {
+      "code": "print(\"code\"[-1])",
+      "stdout": "e\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-10-06",
+    "topic_id": 10,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "e",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "c",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "d",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "IndexError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "text = \"cat\"\ntext.upper()\nprint(text)",
+    "explanation": "The returned uppercase string is not assigned.",
+    "objective": "Trace immutable methods",
+    "validation": {
+      "code": "text = \"cat\"\ntext.upper()\nprint(text)",
+      "stdout": "cat\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-10-07",
+    "topic_id": 10,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Cat",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "cat",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "CAT",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "None",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(\"banana\".replace(\"a\", \"o\"))",
+    "explanation": "Replace changes every matching occurrence by default in the returned string.",
+    "objective": "Use replace",
+    "validation": {
+      "code": "print(\"banana\".replace(\"a\", \"o\"))",
+      "stdout": "bonono\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-10-08",
+    "topic_id": 10,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "banana",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "bonana",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "bonono",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "banona",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "n = 3\nprint(f\"{n} coins\")",
+    "explanation": "The expression n becomes its value.",
+    "objective": "Trace interpolation",
+    "validation": {
+      "code": "n = 3\nprint(f\"{n} coins\")",
+      "stdout": "3 coins\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-10-09",
+    "topic_id": 10,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "{n} coins",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "n coins",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "coins 3",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "3 coins",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "print(\"hi\"[2])",
+    "explanation": "Valid indices are 0 and 1.",
+    "objective": "Identify invalid index",
+    "validation": {
+      "code": "print(\"hi\"[2])",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "IndexError"
+    },
+    "key": "py-10-10",
+    "topic_id": 10,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "IndexError",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "NameError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "word = \"cat\"\nword[0] = \"b\"",
+    "explanation": "A string does not support item assignment.",
+    "objective": "Identify mutation error",
+    "validation": {
+      "code": "word = \"cat\"\nword[0] = \"b\"",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "TypeError"
+    },
+    "key": "py-10-11",
+    "topic_id": 10,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "SyntaxError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "TypeError",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "IndexError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "ValueError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "A student expects \"abc\"[0:2] to be \"abc\". Which correction helps?",
+    "code_snippet": null,
+    "explanation": "The slice contains indices 0 and 1 only.",
+    "objective": "Avoid slice boundary mistakes",
+    "key": "py-10-12",
+    "topic_id": 10,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Strings start at index 1",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Slices always include the last character",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "The stop index is excluded",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "The start index is excluded",
+        "is_correct": false
+      }
+    ]
+  }
+]

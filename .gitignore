@@ -1,0 +1,45 @@
+# Hunter System — version-control exclusions.
+# Real configuration lives outside the project (C:\xampp\hunter-system-private\hunter.env)
+# and must never be committed. Only the *.example template is tracked.
+
+# Private configuration and credentials
+*.env
+!*.env.example
+.env*
+!*.env.example
+*.pem
+*.key
+hunter-system-private/
+
+# Dependencies and package-manager caches
+node_modules/
+.npm-audit-cache/
+.npm/
+
+# Generated build output (rebuilt with `npm run build`; a pre-redesign copy is kept
+# outside htdocs in C:\xampp\hunter-system-backups\)
+frontend/dist/
+
+# Logs and runtime data
+*.log
+logs/
+sessions/
+
+# Database exports/backups that may contain user data (schema, seed, migrations
+# and grant templates under database/ are tracked)
+*.sql.gz
+*.dump
+backups/
+mysql_backups/
+
+# Python / tooling caches
+__pycache__/
+*.pyc
+
+# Editor / OS noise
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+Desktop.ini
+.DS_Store

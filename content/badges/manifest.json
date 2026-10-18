@@ -1,0 +1,83 @@
+{
+  "milestone": "8B revision",
+  "status": "User-approved names/prices; artwork shown for review; not on sale",
+  "original_artwork": true,
+  "method": "Original code-authored SVG geometry rendered to transparent PNG using installed Chrome",
+  "max_first_completion_coins": 180,
+  "approved_total": 180,
+  "sample_retirement_approved": true,
+  "badges": [
+    {
+      "proposal_key": "shadow-recruit",
+      "name": "Shadow Recruit",
+      "description": "An angular cyan spark in a metallic frame. Purchased cosmetic, not an earned achievement or Python mastery certificate. Never unlocks lessons or changes E–S Hunter rank.",
+      "proposed_price": 10,
+      "approved_price": 10,
+      "image_ref": "badges/m8b-shadow-recruit-v2.png",
+      "source": "sources/shadow-recruit.svg",
+      "status": "off-sale preparation",
+      "user_names_prices_approved": true,
+      "price_approved": false
+    },
+    {
+      "proposal_key": "shadow-soldier",
+      "name": "Shadow Soldier",
+      "description": "A violet compass with cyan guide points. Purchased cosmetic, not an earned achievement or Python mastery certificate. Never unlocks lessons or changes E–S Hunter rank.",
+      "proposed_price": 15,
+      "approved_price": 15,
+      "image_ref": "badges/m8b-shadow-soldier-v2.png",
+      "source": "sources/shadow-soldier.svg",
+      "status": "off-sale preparation",
+      "user_names_prices_approved": true,
+      "price_approved": false
+    },
+    {
+      "proposal_key": "shadow-knight",
+      "name": "Shadow Knight",
+      "description": "A branching cyan path joining three violet nodes. Purchased cosmetic, not an earned achievement or Python mastery certificate. Never unlocks lessons or changes E–S Hunter rank.",
+      "proposed_price": 20,
+      "approved_price": 20,
+      "image_ref": "badges/m8b-shadow-knight-v2.png",
+      "source": "sources/shadow-knight.svg",
+      "status": "off-sale preparation",
+      "user_names_prices_approved": true,
+      "price_approved": false
+    },
+    {
+      "proposal_key": "elite-shadow-knight",
+      "name": "Elite Shadow Knight",
+      "description": "Two open orbital arcs around a violet core. Purchased cosmetic, not an earned achievement or Python mastery certificate. Never unlocks lessons or changes E–S Hunter rank.",
+      "proposed_price": 30,
+      "approved_price": 30,
+      "image_ref": "badges/m8b-elite-shadow-knight-v2.png",
+      "source": "sources/elite-shadow-knight.svg",
+      "status": "off-sale preparation",
+      "user_names_prices_approved": true,
+      "price_approved": false
+    },
+    {
+      "proposal_key": "shadow-commander",
+      "name": "Shadow Commander",
+      "description": "A cyan shield holding two abstract linked curves. Purchased cosmetic, not an earned achievement or Python mastery certificate. Never unlocks lessons or changes E–S Hunter rank.",
+      "proposed_price": 45,
+      "approved_price": 45,
+      "image_ref": "badges/m8b-shadow-commander-v2.png",
+      "source": "sources/shadow-commander.svg",
+      "status": "off-sale preparation",
+      "user_names_prices_approved": true,
+      "price_approved": false
+    },
+    {
+      "proposal_key": "shadow-monarch",
+      "name": "Shadow Monarch",
+      "description": "An open metallic book beneath a violet crescent. Purchased cosmetic, not an earned achievement or Python mastery certificate. Never unlocks lessons or changes E–S Hunter rank.",
+      "proposed_price": 60,
+      "approved_price": 60,
+      "image_ref": "badges/m8b-shadow-monarch-v2.png",
+      "source": "sources/shadow-monarch.svg",
+      "status": "off-sale preparation",
+      "user_names_prices_approved": true,
+      "price_approved": false
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+# The only public PHP entry point (reached via the root rewrite of /hunter-system/api/v1/*).
+Require all granted

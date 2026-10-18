@@ -1,0 +1,23 @@
+[
+  {
+    "code": "for number in range(3):\n    print(number)",
+    "stdout": "0\n1\n2\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "total = 0\nfor number in range(1, 4):\n    total += number\nprint(total)",
+    "stdout": "6\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "count = 1\nwhile count <= 3:\n    print(count)\n    count += 1",
+    "stdout": "1\n2\n3\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  }
+]

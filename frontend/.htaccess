@@ -1,0 +1,4 @@
+# Private: frontend source, node_modules, configuration and tests are never served.
+# Only frontend/dist (its own .htaccess, generated from frontend/public/.htaccess)
+# is reachable, and only through the allowlisted rewrites in /hunter-system/.htaccess.
+Require all denied

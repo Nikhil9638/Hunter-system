@@ -1,0 +1,16 @@
+[
+  {
+    "code": "import tempfile\nwith tempfile.TemporaryDirectory() as folder:\n    path = folder + \"/note.txt\"\n    with open(path, \"w\", encoding=\"utf-8\") as handle:\n        handle.write(\"Hello\\n\")\n    with open(path, \"r\", encoding=\"utf-8\") as handle:\n        print(handle.read(), end=\"\")",
+    "stdout": "Hello\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "import tempfile\nwith tempfile.TemporaryDirectory() as folder:\n    path = folder + \"/note.txt\"\n    with open(path, \"w\", encoding=\"utf-8\") as handle:\n        handle.write(\"A\")\n    with open(path, \"a\", encoding=\"utf-8\") as handle:\n        handle.write(\"B\")\n    with open(path, \"r\", encoding=\"utf-8\") as handle:\n        print(handle.read())\n        print(repr(handle.read()))",
+    "stdout": "AB\n''\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  }
+]

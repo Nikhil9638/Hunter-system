@@ -1,0 +1,170 @@
+[
+  {
+    "code": "print(\"Hello, World!\")",
+    "stdout": "Hello, World!\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "# This line is ignored\nprint(\"Shown\")  # this part is ignored too",
+    "stdout": "Shown\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "count = 0\nname = \"Ana\"",
+    "stdout": "",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "x = 5\nx = x + 2   # uses the old value 5, then stores 7",
+    "stdout": "",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "x, y = 3, 4      # x is 3, y is 4\na, b = 1, 2      # give both names starting values\na, b = b, a      # now a is 2 and b is 1\nprint(a, b)\na = b = 0        # both names get 0",
+    "stdout": "2 1\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "a = 10\nb = a\na = 20\nprint(b)   # 10",
+    "stdout": "10\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "print(\"Hello, World!\")",
+    "stdout": "Hello, World!\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "print(\"A\")\n# print(\"B\")\nprint(\"C\")",
+    "stdout": "A\nC\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "print(2 + 3)",
+    "stdout": "5\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "print(\"2\" + \"3\")",
+    "stdout": "23\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "print(\"Hi\", \"there\")",
+    "stdout": "Hi there\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "print(\"Start\")\n    print(\"End\")",
+    "stdout": "",
+    "stdin": "",
+    "files": {},
+    "exception": "IndentationError"
+  },
+  {
+    "code": "print(\"Line1\\nLine2\")",
+    "stdout": "Line1\nLine2\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "x = 5\nx = x + 2\nprint(x)",
+    "stdout": "7\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "a = 10\nb = a\na = 20\nprint(b)",
+    "stdout": "10\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "x, y = 3, 4\nprint(x, y)",
+    "stdout": "3 4\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "score = 10\nscore += 5\nprint(score)",
+    "stdout": "15\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "name = \"Ana\"\nName = \"Ben\"\nprint(name)",
+    "stdout": "Ana\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "a = 1\nb = 2\na, b = b, a\nprint(a, b)",
+    "stdout": "2 1\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "print(total)",
+    "stdout": "",
+    "stdin": "",
+    "files": {},
+    "exception": "NameError"
+  },
+  {
+    "code": "x = 4\nx = \"four\"\nprint(x)",
+    "stdout": "four\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "n = 7\nn -= 2\nn *= 3\nprint(n)",
+    "stdout": "15\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "a = b = 0\nb = 5\nprint(a, b)",
+    "stdout": "0 5\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "x = 3\ny = x\nx = x * 2\nprint(x, y)",
+    "stdout": "6 3\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  }
+]

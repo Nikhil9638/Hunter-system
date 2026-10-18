@@ -1,0 +1,53 @@
+# =============================================================================
+# Hunter System - Apache access rules for /hunter-system/ (deny by default)
+#
+# Public:  /hunter-system/api/v1/*        -> backend/public/index.php (only PHP entry)
+#          /hunter-system/assets/badges/<name>.png|webp -> static badge artwork only
+#          /hunter-system/static/<hashed>.js|css, /favicon.svg -> frontend/dist/ (built app files)
+#          /hunter-system/ and app routes (login, dashboard, topics/…, quiz/…, …)
+#                                          -> frontend/dist/index.html (SPA fallback, allowlisted)
+# Private: everything else (database/, docs/, backend/ code, config, tests, CLI,
+#          logs, dot-files) -> 404. Private folders also carry their own
+#          "Require all denied" as a second layer.
+#
+# Requires AllowOverride (XAMPP: AllowOverride All for htdocs), mod_rewrite, mod_headers.
+# If mod_rewrite is unavailable, nothing is served.
+# =============================================================================
+
+Options -Indexes -Includes -ExecCGI
+DirectoryIndex disabled
+
+<IfModule !mod_rewrite.c>
+    Require all denied
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set Referrer-Policy "same-origin"
+    Header always set Content-Security-Policy "default-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+</IfModule>
+
+RewriteEngine On
+RewriteBase /hunter-system/
+
+# 1. API -> front controller (END: no further rewriting of the result)
+RewriteRule ^api/v1(?:/.*)?$ backend/public/index.php [END]
+
+# 1b. Badge artwork: static PNG/WebP files only, lower-case names, no sub-folders
+#     (assets/badges/.htaccess also refuses anything else and disables handlers)
+RewriteCond %{DOCUMENT_ROOT}/hunter-system/assets/badges/$1 -f
+RewriteRule ^assets/badges/([a-z0-9][a-z0-9-]{0,62}\.(?:png|webp))$ assets/badges/$1 [END]
+
+# 2. Built student app (frontend/dist), only when a build exists. ALLOWLISTS, not a
+#    catch-all: private paths keep returning 404 even though a build exists.
+# 2a. Hashed build files (dist/static/) and the favicon; the file must exist.
+RewriteCond %{DOCUMENT_ROOT}/hunter-system/frontend/dist/$1 -f
+RewriteRule ^(static/[A-Za-z0-9_-]+\.(?:js|css|svg|png|webp|woff2)|favicon\.svg)$ frontend/dist/$1 [END]
+# 2b. SPA fallback for the app's own routes only (direct navigation and refresh).
+#     Keep this list in step with frontend/src/App.jsx.
+RewriteCond %{DOCUMENT_ROOT}/hunter-system/frontend/dist/index.html -f
+RewriteRule ^(?:(?:login|register|start|assessment|dashboard|topics|quiz|history|store|profile|admin|admin-pending)(?:/[A-Za-z0-9_-]+)*/?)?$ frontend/dist/index.html [END]
+
+# 3. Everything else does not exist
+RewriteRule ^ - [R=404,L]

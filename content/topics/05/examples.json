@@ -1,0 +1,30 @@
+[
+  {
+    "code": "print(8 + 2)\nprint(8 - 2)\nprint(8 * 2)\nprint(8 / 2)\nprint(2 ** 3)",
+    "stdout": "10\n6\n16\n4.0\n8\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "items = 17\nprint(items // 5)\nprint(items % 5)",
+    "stdout": "3\n2\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "print(-7 // 3)\nprint(-7 % 3)",
+    "stdout": "-3\n2\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "print(2 + 3 * 4)\nprint((2 + 3) * 4)",
+    "stdout": "14\n20\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  }
+]

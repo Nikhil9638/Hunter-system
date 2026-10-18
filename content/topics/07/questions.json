@@ -1,0 +1,471 @@
+[
+  {
+    "kind": "concept",
+    "stem": "What must end an if header before its indented body?",
+    "code_snippet": null,
+    "explanation": "Python uses a colon followed by indentation to introduce the body.",
+    "objective": "Write branch syntax",
+    "key": "py-07-01",
+    "topic_id": 7,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A colon",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "A semicolon",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "A closing brace",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "The word then",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "In one if/elif/else chain, which branch body runs?",
+    "code_snippet": null,
+    "explanation": "Once one branch matches, later branches in that chain are skipped.",
+    "objective": "Trace a branch chain",
+    "key": "py-07-02",
+    "topic_id": 7,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The else body always runs",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "The first matching branch, or else if none match",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "Every branch with a true condition",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Only the last elif",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "When is else useful?",
+    "code_snippet": null,
+    "explanation": "else supplies the remaining path and has no condition of its own.",
+    "objective": "Use a fallback",
+    "key": "py-07-03",
+    "topic_id": 7,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Only when there are exactly three conditions",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "When all branches must execute",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "When a fallback action is needed if earlier tests fail",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "When a variable must become a float",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Why test a score >= 90 before score >= 60 in a grading chain?",
+    "code_snippet": null,
+    "explanation": "Branch order matters. A broad first test can prevent the stricter branch from being reached.",
+    "objective": "Order thresholds",
+    "key": "py-07-04",
+    "topic_id": 7,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Python always sorts thresholds automatically",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "elif cannot contain >=",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "The numbers would otherwise become strings",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "The broader >= 60 test would also catch 90 first",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "x = 2\nif x > 3:\n    print(\"High\")\nelse:\n    print(\"Low\")",
+    "explanation": "2 > 3 is false, so only else runs.",
+    "objective": "Trace if/else",
+    "validation": {
+      "code": "x = 2\nif x > 3:\n    print(\"High\")\nelse:\n    print(\"Low\")",
+      "stdout": "Low\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-07-05",
+    "topic_id": 7,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Low",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "High",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "High\nLow",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "No output",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "x = 5\nif x > 0:\n    print(\"A\")\nelif x > 3:\n    print(\"B\")",
+    "explanation": "The first test succeeds. Even though the second would also be true, elif is skipped.",
+    "objective": "Trace elif",
+    "validation": {
+      "code": "x = 5\nif x > 0:\n    print(\"A\")\nelif x > 3:\n    print(\"B\")",
+      "stdout": "A\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-07-06",
+    "topic_id": 7,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "No output",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "A",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "B",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "A\nB",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "x = 5\nif x > 0:\n    print(\"A\")\nif x > 3:\n    print(\"B\")",
+    "explanation": "These are separate if statements, so both true checks run.",
+    "objective": "Distinguish independent checks",
+    "validation": {
+      "code": "x = 5\nif x > 0:\n    print(\"A\")\nif x > 3:\n    print(\"B\")",
+      "stdout": "A\nB\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-07-07",
+    "topic_id": 7,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "B",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "No output",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "A\nB",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "A",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "x = 0\nif x:\n    print(\"Inside\")\nprint(\"Done\")",
+    "explanation": "Zero is falsy. The unindented final print runs regardless.",
+    "objective": "Use truthiness in branches",
+    "validation": {
+      "code": "x = 0\nif x:\n    print(\"Inside\")\nprint(\"Done\")",
+      "stdout": "Done\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-07-08",
+    "topic_id": 7,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Inside",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Inside\nDone",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "No output",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Done",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "ready = True\nlevel = 1\nif ready:\n    if level >= 2:\n        print(\"Start\")\n    else:\n        print(\"Wait\")",
+    "explanation": "The outer branch is entered, but the inner comparison is false, so its else prints Wait.",
+    "objective": "Trace nesting",
+    "validation": {
+      "code": "ready = True\nlevel = 1\nif ready:\n    if level >= 2:\n        print(\"Start\")\n    else:\n        print(\"Wait\")",
+      "stdout": "Wait\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-07-09",
+    "topic_id": 7,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Wait",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "Start",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Start\nWait",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "No output",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "if True\n    print(\"Ready\")",
+    "explanation": "The if header is missing its required colon.",
+    "objective": "Identify missing colon",
+    "validation": {
+      "code": "if True\n    print(\"Ready\")",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "SyntaxError"
+    },
+    "key": "py-07-10",
+    "topic_id": 7,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "SyntaxError",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "NameError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "x = 1\nif x = 1:\n    print(\"One\")",
+    "explanation": "Ordinary assignment with = is not this condition syntax. Equality needs ==.",
+    "objective": "Identify assignment confusion",
+    "validation": {
+      "code": "x = 1\nif x = 1:\n    print(\"One\")",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "SyntaxError"
+    },
+    "key": "py-07-11",
+    "topic_id": 7,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "ZeroDivisionError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "SyntaxError",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "NameError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "An else should belong to an inner if. Where must else align?",
+    "code_snippet": null,
+    "explanation": "Indentation determines which if an else belongs to; align it with the intended if.",
+    "objective": "Correct nested indentation",
+    "key": "py-07-12",
+    "topic_id": 7,
+    "skill_group": "G3",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "With the inner print line",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Always at the left edge of the file",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "One level deeper than the inner body",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "With that inner if header",
+        "is_correct": true
+      }
+    ]
+  }
+]

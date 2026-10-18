@@ -1,0 +1,471 @@
+[
+  {
+    "kind": "concept",
+    "stem": "Which value is a float?",
+    "code_snippet": null,
+    "explanation": "A decimal-point numeric literal such as 4.0 is a float, even when its value is a whole number.",
+    "objective": "Recognize basic types",
+    "key": "py-03-01",
+    "topic_id": 3,
+    "skill_group": "G1",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "4.0",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "4",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "\"4\"",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "False",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Which value is a Boolean?",
+    "code_snippet": null,
+    "explanation": "True without quotes is one of the two bool values. Quoted text is a string.",
+    "objective": "Recognize basic types",
+    "key": "py-03-02",
+    "topic_id": 3,
+    "skill_group": "G1",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "\"yes\"",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "True",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "\"True\"",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "1.5",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What does None usually represent?",
+    "code_snippet": null,
+    "explanation": "None is a distinct special value; it is not a number, text or Boolean.",
+    "objective": "Understand None",
+    "key": "py-03-03",
+    "topic_id": 3,
+    "skill_group": "G1",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "An empty string",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "A spelling of False",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "The absence of a value",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "The integer zero",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "After x = 7 and then x = 'seven', what is true?",
+    "code_snippet": null,
+    "explanation": "Reassignment changes what a name refers to. Names are not permanently tied to one value type.",
+    "objective": "Understand reassignment",
+    "key": "py-03-04",
+    "topic_id": 3,
+    "skill_group": "G1",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "x must still refer to an integer",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Python changes every 7 in the program into text",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "The second assignment is always invalid",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "x now refers to a string",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(type(-5))",
+    "explanation": "-5 is an integer, so type() reports int.",
+    "objective": "Inspect types",
+    "validation": {
+      "code": "print(type(-5))",
+      "stdout": "<class 'int'>\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-03-05",
+    "topic_id": 3,
+    "skill_group": "G1",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "<class 'int'>",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "<class 'float'>",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "<class 'str'>",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "<class 'bool'>",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(type(\"7\"))",
+    "explanation": "Quotes make 7 text, so type() reports str.",
+    "objective": "Distinguish text from numbers",
+    "validation": {
+      "code": "print(type(\"7\"))",
+      "stdout": "<class 'str'>\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-03-06",
+    "topic_id": 3,
+    "skill_group": "G1",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "<class 'bool'>",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "<class 'str'>",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "<class 'int'>",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "<class 'float'>",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(\"7\" + \"2\")",
+    "explanation": "Both operands are strings. + joins them without inserting a space.",
+    "objective": "Distinguish operations",
+    "validation": {
+      "code": "print(\"7\" + \"2\")",
+      "stdout": "72\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-03-07",
+    "topic_id": 3,
+    "skill_group": "G1",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "7 2",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "72",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "9",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "flag = False\nprint(type(flag))\nprint(flag)",
+    "explanation": "False is a bool and print preserves the capital F.",
+    "objective": "Recognize Booleans",
+    "validation": {
+      "code": "flag = False\nprint(type(flag))\nprint(flag)",
+      "stdout": "<class 'bool'>\nFalse\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-03-08",
+    "topic_id": 3,
+    "skill_group": "G1",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "<class 'str'>\nFalse",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "<class 'int'>\n0",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "<class 'bool'>\nfalse",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "<class 'bool'>\nFalse",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "item = 4\nitem = 4.0\nprint(type(item))",
+    "explanation": "The latest assigned value is 4.0, a float.",
+    "objective": "Understand reassignment",
+    "validation": {
+      "code": "item = 4\nitem = 4.0\nprint(type(item))",
+      "stdout": "<class 'float'>\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-03-09",
+    "topic_id": 3,
+    "skill_group": "G1",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "<class 'float'>",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "<class 'int'>",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "<class 'str'>",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "<class 'NoneType'>",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "print(\"4\" + 2)",
+    "explanation": "String joining needs strings; numeric addition needs compatible numbers. Python does not convert this mixed pair automatically.",
+    "objective": "Identify mixed-type mistakes",
+    "validation": {
+      "code": "print(\"4\" + 2)",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "TypeError"
+    },
+    "key": "py-03-10",
+    "topic_id": 3,
+    "skill_group": "G1",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "SyntaxError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "TypeError",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "NameError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "ready = true\nprint(ready)",
+    "explanation": "Lowercase true is read as an ordinary name. Since it was never assigned, it causes NameError. The Boolean spelling is True.",
+    "objective": "Use correct capitalization",
+    "validation": {
+      "code": "ready = true\nprint(ready)",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "NameError"
+    },
+    "key": "py-03-11",
+    "topic_id": 3,
+    "skill_group": "G1",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "SyntaxError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "NameError",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "TypeError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "A student says '12 and \"12\" have the same type because both contain digits.' What is the correction?",
+    "code_snippet": null,
+    "explanation": "The literal's syntax matters: quotes create text, not a numeric value.",
+    "objective": "Correct type confusion",
+    "key": "py-03-12",
+    "topic_id": 3,
+    "skill_group": "G1",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Both are int",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Both are float",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Both are bool",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "12 is int; quoted \"12\" is str",
+        "is_correct": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 256 256">
+<title>Shadow Soldier cosmetic badge proposal</title>
+<g stroke-linecap="round" stroke-linejoin="round" stroke-width="6" fill="none">
+<path d="m128 18 94 54v112l-94 54-94-54V72z" fill="#101a2a" stroke="#778ba7"/>
+<path d="m128 29 84 49v100l-84 49-84-49V78z" stroke="#344a64" stroke-width="3"/>
+<path d="m55 80 26-15m94 127 26-15" stroke="#72e8f2" stroke-width="4"/>
+<circle cx="128" cy="128" r="49" stroke="#8999b1"/><path d="m153 91-11 51-39 23 11-51z" fill="#a49afb"/><path d="m153 91-39 23 28 28z" fill="#72e8f2"/><path d="M128 63v12m0 106v12M63 128h12m106 0h12" stroke="#72e8f2"/></g></svg>

@@ -1,0 +1,146 @@
+{
+  "api": "http://127.0.0.1:8098/hunter-system/api/v1",
+  "source_hash": "bbe1edf17581bdd546ad1d4c02d23164abce8b0cf389affe40d204faa06f2c65",
+  "planned_by": {
+    "id": 74,
+    "email": "b7.mv8y0eh8.admin@example.invalid"
+  },
+  "records": {
+    "fx-reviewed-shadow-recruit": {
+      "current": {
+        "id": 78,
+        "slug": "fx-reviewed-shadow-recruit",
+        "name": "Shadow Recruit",
+        "description": "An angular cyan spark in a metallic frame. Purchased cosmetic, not an earned achievement or Python mastery certificate. Never unlocks lessons or changes E–S Hunter rank.",
+        "image_ref": "badges/m8b-shadow-recruit-v2.png",
+        "price": 10,
+        "price_status": "approved",
+        "status": "on_sale",
+        "version": "2026-10-15T09:44:12.991Z"
+      }
+    },
+    "fx-reviewed-shadow-soldier": {
+      "current": {
+        "id": 79,
+        "slug": "fx-reviewed-shadow-soldier",
+        "name": "Shadow Soldier",
+        "description": "A violet compass with cyan guide points. Purchased cosmetic, not an earned achievement or Python mastery certificate. Never unlocks lessons or changes E–S Hunter rank.",
+        "image_ref": "badges/m8b-shadow-soldier-v2.png",
+        "price": 15,
+        "price_status": "approved",
+        "status": "on_sale",
+        "version": "2026-10-15T09:44:13.456Z"
+      }
+    },
+    "fx-reviewed-shadow-knight": {
+      "current": {
+        "id": 80,
+        "slug": "fx-reviewed-shadow-knight",
+        "name": "Shadow Knight",
+        "description": "A branching cyan path joining three violet nodes. Purchased cosmetic, not an earned achievement or Python mastery certificate. Never unlocks lessons or changes E–S Hunter rank.",
+        "image_ref": "badges/m8b-shadow-knight-v2.png",
+        "price": 20,
+        "price_status": "approved",
+        "status": "on_sale",
+        "version": "2026-10-15T09:44:13.881Z"
+      }
+    },
+    "fx-reviewed-elite-shadow-knight": {
+      "current": {
+        "id": 81,
+        "slug": "fx-reviewed-elite-shadow-knight",
+        "name": "Elite Shadow Knight",
+        "description": "Two open orbital arcs around a violet core. Purchased cosmetic, not an earned achievement or Python mastery certificate. Never unlocks lessons or changes E–S Hunter rank.",
+        "image_ref": "badges/m8b-elite-shadow-knight-v2.png",
+        "price": 30,
+        "price_status": "approved",
+        "status": "on_sale",
+        "version": "2026-10-15T09:44:14.349Z"
+      }
+    },
+    "fx-reviewed-shadow-commander": {
+      "current": {
+        "id": 82,
+        "slug": "fx-reviewed-shadow-commander",
+        "name": "Shadow Commander",
+        "description": "A cyan shield holding two abstract linked curves. Purchased cosmetic, not an earned achievement or Python mastery certificate. Never unlocks lessons or changes E–S Hunter rank.",
+        "image_ref": "badges/m8b-shadow-commander-v2.png",
+        "price": 45,
+        "price_status": "approved",
+        "status": "on_sale",
+        "version": "2026-10-15T09:44:14.841Z"
+      }
+    },
+    "fx-reviewed-shadow-monarch": {
+      "current": {
+        "id": 83,
+        "slug": "fx-reviewed-shadow-monarch",
+        "name": "Shadow Monarch",
+        "description": "An open metallic book beneath a violet crescent. Purchased cosmetic, not an earned achievement or Python mastery certificate. Never unlocks lessons or changes E–S Hunter rank.",
+        "image_ref": "badges/m8b-shadow-monarch-v2.png",
+        "price": 60,
+        "price_status": "approved",
+        "status": "on_sale",
+        "version": "2026-10-15T09:44:15.451Z"
+      }
+    },
+    "syntax-scout": {
+      "current": {
+        "id": 1,
+        "slug": "syntax-scout",
+        "name": "Syntax Scout",
+        "description": "Sample badge for development. Price is provisional.",
+        "image_ref": null,
+        "price": 20,
+        "price_status": "provisional",
+        "status": "retired",
+        "version": "2026-10-15T09:44:08.713Z"
+      }
+    },
+    "variable-voyager": {
+      "current": {
+        "id": 2,
+        "slug": "variable-voyager",
+        "name": "Variable Voyager",
+        "description": "Sample badge for development. Price is provisional.",
+        "image_ref": null,
+        "price": 40,
+        "price_status": "provisional",
+        "status": "retired",
+        "version": "2026-10-15T09:44:08.953Z"
+      }
+    },
+    "loop-ranger": {
+      "current": {
+        "id": 3,
+        "slug": "loop-ranger",
+        "name": "Loop Ranger",
+        "description": "Sample badge for development. Price is provisional.",
+        "image_ref": null,
+        "price": 60,
+        "price_status": "provisional",
+        "status": "retired",
+        "version": "2026-10-15T09:44:09.189Z"
+      }
+    },
+    "gate-breaker": {
+      "current": {
+        "id": 4,
+        "slug": "gate-breaker",
+        "name": "Gate Breaker",
+        "description": "Sample badge for development. Price is provisional.",
+        "image_ref": null,
+        "price": 100,
+        "price_status": "provisional",
+        "status": "retired",
+        "version": "2026-10-15T09:44:09.438Z"
+      }
+    }
+  },
+  "complete": true,
+  "last_actor": {
+    "id": 74,
+    "email": "b7.mv8y0eh8.admin@example.invalid"
+  },
+  "activated": true
+}

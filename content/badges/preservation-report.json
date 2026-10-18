@@ -1,0 +1,26 @@
+{
+  "dev_mutations": 0,
+  "administrators_created": 0,
+  "course_imports": 0,
+  "before_and_after_dev_checksums": {
+    "badges": 2742955606,
+    "audit_log": 3663059478,
+    "topics": 3724271315,
+    "lessons": 3167391072,
+    "questions": 4102142839,
+    "question_choices": 1532109024
+  },
+  "dev_audit_rows": 1,
+  "IR_1_question_106": {"status":"active","revision":1,"retired_at":null},
+  "fixture_original_badge_and_audit_rows_unchanged": 1007,
+  "fixture_original_history_rows_unchanged": 11735,
+  "fixture_m8b_badges_remaining_on_sale": 0,
+  "existing_dev_badges": [
+    {"id":1,"slug":"syntax-scout","price":20,"status":"draft","price_status":"provisional"},
+    {"id":2,"slug":"variable-voyager","price":40,"status":"draft","price_status":"provisional"},
+    {"id":3,"slug":"loop-ranger","price":60,"status":"draft","price_status":"provisional"},
+    {"id":4,"slug":"gate-breaker","price":100,"status":"draft","price_status":"provisional"}
+  ],
+  "public_changes": "Only six intended proposal PNG files; no dev catalogue references or publication.",
+  "fixture_policy": "Existing fixture actor reused. Unique fx-m8b slugs; labelled students earn coins through quizzes. Tested proposals left off sale; ownership/audit/history retained."
+}

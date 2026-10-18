@@ -1,0 +1,2 @@
+# Second layer: nothing under assets/ is served except what assets/badges/.htaccess allows.
+Require all denied

@@ -1,0 +1,23 @@
+[
+  {
+    "code": "print(type(8))\nprint(type(2.5))\nprint(type(\"hello\"))\nprint(type(True))",
+    "stdout": "<class 'int'>\n<class 'float'>\n<class 'str'>\n<class 'bool'>\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "print(4 + 2)\nprint(\"4\" + \"2\")",
+    "stdout": "6\n42\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "value = 3\nvalue = \"many\"\nprint(type(value))\nprint(None)",
+    "stdout": "<class 'str'>\nNone\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  }
+]

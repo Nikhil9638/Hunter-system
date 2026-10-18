@@ -1,0 +1,23 @@
+[
+  {
+    "code": "import math\nprint(math.sqrt(9))",
+    "stdout": "3.0\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "from math import floor\nimport math as m\nprint(floor(2.8))\nprint(m.ceil(2.2))",
+    "stdout": "2\n3\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "import math\nprint(math.factorial(4))",
+    "stdout": "24\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  }
+]

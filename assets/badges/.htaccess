@@ -1,0 +1,17 @@
+# Badge artwork (api-contract.md §10.5, architecture.md §3). Static images only:
+# lower-case <name>.png / <name>.webp; no listings, no scripts, no handlers.
+Options -Indexes -ExecCGI -Includes
+SetHandler none
+<IfModule php_module>
+    php_flag engine off
+</IfModule>
+Require all denied
+<FilesMatch "^[a-z0-9][a-z0-9-]{0,62}\.(png|webp)$">
+    Require all granted
+</FilesMatch>
+AddType image/png .png
+AddType image/webp .webp
+<IfModule mod_headers.c>
+    Header always set Content-Security-Policy "default-src 'none'"
+    Header always set X-Content-Type-Options "nosniff"
+</IfModule>

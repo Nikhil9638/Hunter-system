@@ -1,0 +1,478 @@
+[
+  {
+    "kind": "concept",
+    "stem": "Which expression creates a one-item tuple?",
+    "code_snippet": null,
+    "explanation": "The comma distinguishes the tuple from grouping.",
+    "objective": "Construct tuples",
+    "key": "py-12-01",
+    "topic_id": 12,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "{4}",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "(4,)",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "(4)",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "[4]",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Which expression creates an empty set?",
+    "code_snippet": null,
+    "explanation": "Empty braces are an empty dictionary.",
+    "objective": "Construct sets",
+    "key": "py-12-02",
+    "topic_id": 12,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "()",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "[]",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "set()",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "{}",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What does a & b mean for sets?",
+    "code_snippet": null,
+    "explanation": "Intersection selects shared membership.",
+    "objective": "Use intersection",
+    "key": "py-12-03",
+    "topic_id": 12,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Elements in either set",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Elements only in a",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Ordered concatenation",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Elements present in both sets",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Which property may you rely on for a set?",
+    "code_snippet": null,
+    "explanation": "Set membership is unique; positions are not defined.",
+    "objective": "Understand sets",
+    "key": "py-12-04",
+    "topic_id": 12,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Its elements are unique",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "Its first element has index zero",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "It preserves duplicates",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Its printed order is fixed",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "point = (2, 8)\nx, y = point\nprint(y - x)",
+    "explanation": "Unpacking binds x to 2 and y to 8.",
+    "objective": "Trace unpacking",
+    "validation": {
+      "code": "point = (2, 8)\nx, y = point\nprint(y - x)",
+      "stdout": "6\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-12-05",
+    "topic_id": 12,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "(2, 8)",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "6",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "10",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "-6",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(len({1, 1, 2, 2, 3}))",
+    "explanation": "Only three distinct integers remain.",
+    "objective": "Trace uniqueness",
+    "validation": {
+      "code": "print(len({1, 1, 2, 2, 3}))",
+      "stdout": "3\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-12-06",
+    "topic_id": 12,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "2",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "1",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "3",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "5",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "a = {1, 3}\na.add(3)\nprint(len(a))",
+    "explanation": "Adding an existing member leaves the size unchanged.",
+    "objective": "Trace set addition",
+    "validation": {
+      "code": "a = {1, 3}\na.add(3)\nprint(len(a))",
+      "stdout": "2\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-12-07",
+    "topic_id": 12,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "3",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "1",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "0",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "2",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "print(sorted({1, 2} | {2, 4}))",
+    "explanation": "Union includes each distinct member once; sorted makes display deterministic.",
+    "objective": "Trace union",
+    "validation": {
+      "code": "print(sorted({1, 2} | {2, 4}))",
+      "stdout": "[1, 2, 4]\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-12-08",
+    "topic_id": 12,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "[1, 2, 4]",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "[1, 2, 2, 4]",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "[2]",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "[1, 4]",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "a = {1, 2, 3}\na.discard(9)\nprint(sorted(a - {2}))",
+    "explanation": "Discarding an absent item is harmless; difference excludes 2.",
+    "objective": "Trace discard and difference",
+    "validation": {
+      "code": "a = {1, 2, 3}\na.discard(9)\nprint(sorted(a - {2}))",
+      "stdout": "[1, 3]\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-12-09",
+    "topic_id": 12,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "KeyError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "[1, 3]",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "[1, 2, 3]",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "[2]",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "point = (1, 2)\npoint[0] = 3",
+    "explanation": "Tuple positions cannot be reassigned.",
+    "objective": "Identify tuple mutation",
+    "validation": {
+      "code": "point = (1, 2)\npoint[0] = 3",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "TypeError"
+    },
+    "key": "py-12-10",
+    "topic_id": 12,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "KeyError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "TypeError",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "IndexError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "x, y = (1, 2, 3)",
+    "explanation": "Three items cannot fit two names in this unpacking.",
+    "objective": "Identify unpacking mismatch",
+    "validation": {
+      "code": "x, y = (1, 2, 3)",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "ValueError"
+    },
+    "key": "py-12-11",
+    "topic_id": 12,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "IndexError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "NameError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "ValueError",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "values = {[1, 2]}",
+    "explanation": "A mutable list is unhashable and cannot be a set element.",
+    "objective": "Identify invalid element",
+    "validation": {
+      "code": "values = {[1, 2]}",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "TypeError"
+    },
+    "key": "py-12-12",
+    "topic_id": 12,
+    "skill_group": "G4",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "TypeError",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "SyntaxError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "IndexError",
+        "is_correct": false
+      }
+    ]
+  }
+]

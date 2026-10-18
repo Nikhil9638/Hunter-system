@@ -1,0 +1,24 @@
+﻿{
+    "database": "hunter_system_dev",
+    "content_audit_before": {
+        "topics": 3724271315,
+        "lessons": 3167391072,
+        "questions": 4102142839,
+        "question_choices": 1532109024,
+        "badges": 2742955606,
+        "audit_log": 3663059478
+    },
+    "content_audit_after": {
+        "topics": 3724271315,
+        "lessons": 3167391072,
+        "questions": 4102142839,
+        "question_choices": 1532109024,
+        "badges": 2742955606,
+        "audit_log": 3663059478
+    },
+    "unchanged": true,
+    "authentic_admin_count": 0,
+    "published_lessons": 2,
+    "on_sale_badges": 0,
+    "draft_samples": 4
+}

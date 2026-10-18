@@ -1,0 +1,30 @@
+[
+  {
+    "code": "score = 3\nif score >= 3:\n    print(\"Pass\")\nprint(\"Checked\")",
+    "stdout": "Pass\nChecked\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "points = 5\nif points == 5:\n    print(\"Full score\")\nelif points >= 3:\n    print(\"Pass\")\nelse:\n    print(\"Try again\")",
+    "stdout": "Full score\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "number = 4\nif number > 0:\n    print(\"Positive\")\nif number % 2 == 0:\n    print(\"Even\")",
+    "stdout": "Positive\nEven\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "ready = True\nlevel = 2\nif ready:\n    if level >= 2:\n        print(\"Begin\")",
+    "stdout": "Begin\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  }
+]

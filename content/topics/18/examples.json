@@ -1,0 +1,23 @@
+[
+  {
+    "code": "class Greeter:\n    def hello(self):\n        return \"Hello\"\n\ngreeter = Greeter()\nprint(greeter.hello())",
+    "stdout": "Hello\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "class Student:\n    def __init__(self, name):\n        self.name = name\n\na = Student(\"Ada\")\nb = Student(\"Lin\")\nprint(a.name)\nprint(b.name)",
+    "stdout": "Ada\nLin\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  },
+  {
+    "code": "class Counter:\n    category = \"practice\"\n    def __init__(self):\n        self.value = 0\n    def add(self):\n        self.value += 1\n\na = Counter()\nb = Counter()\na.add()\nprint(a.value, b.value)\nprint(b.category)",
+    "stdout": "1 0\npractice\n",
+    "stdin": "",
+    "files": {},
+    "exception": null
+  }
+]

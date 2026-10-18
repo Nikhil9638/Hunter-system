@@ -1,0 +1,26 @@
+{
+  "name": "hunter-system-frontend",
+  "private": true,
+  "version": "0.6.0",
+  "type": "module",
+  "description": "Hunter System student interface (React + Vite). Built into frontend/dist and served by Apache under /hunter-system/.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test:browser": "node tests/browser-journeys.mjs",
+    "test:browser:isolated": "node tests/browser-journeys.mjs --isolated",
+    "test:admin": "node tests/admin-journeys.mjs",
+    "test:admin:ui": "node tests/admin-journeys.mjs --mock"
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "playwright-core": "^1.64.1",
+    "vite": "^8.3.4"
+  }
+}

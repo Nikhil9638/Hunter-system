@@ -1,0 +1,471 @@
+[
+  {
+    "kind": "concept",
+    "stem": "Why catch a specific exception class?",
+    "code_snippet": null,
+    "explanation": "A narrow handler leaves unexpected failures visible.",
+    "objective": "Choose handlers",
+    "key": "py-16-01",
+    "topic_id": 16,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "To disable exceptions globally",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "To handle expected failures without hiding unrelated bugs",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "To prevent all syntax errors",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "To make the try body repeat forever",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "When does try else run?",
+    "code_snippet": null,
+    "explanation": "Else is the success path.",
+    "objective": "Understand else",
+    "key": "py-16-02",
+    "topic_id": 16,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Before the try body",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Only after an unmatched exception",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "When the try body finishes without an exception",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "Whenever except runs",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "What does finally normally provide?",
+    "code_snippet": null,
+    "explanation": "Finally runs on success and on exception paths.",
+    "objective": "Understand finally",
+    "key": "py-16-03",
+    "topic_id": 16,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A retry of the failed statement",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "Only success-only work",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Automatic conversion to integers",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Cleanup when leaving the try statement",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "concept",
+    "stem": "Which statement explicitly signals an invalid value?",
+    "code_snippet": null,
+    "explanation": "Raise starts exception handling.",
+    "objective": "Raise exceptions",
+    "key": "py-16-04",
+    "topic_id": 16,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "easy",
+    "choices": [
+      {
+        "label": "A",
+        "text": "raise ValueError(\"invalid value\")",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "return ValueError alone",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "except ValueError alone",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "pass ValueError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "try:\n    print(int(\"x\"))\nexcept ValueError:\n    print(\"invalid\")",
+    "explanation": "Conversion fails and the handler prints.",
+    "objective": "Trace conversion handler",
+    "validation": {
+      "code": "try:\n    print(int(\"x\"))\nexcept ValueError:\n    print(\"invalid\")",
+      "stdout": "invalid\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-16-05",
+    "topic_id": 16,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "None",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "invalid",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "x",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "0",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "try:\n    print(6 // 2)\nexcept ZeroDivisionError:\n    print(\"zero\")\nelse:\n    print(\"ok\")",
+    "explanation": "No exception occurs, so else follows the try output.",
+    "objective": "Trace success path",
+    "validation": {
+      "code": "try:\n    print(6 // 2)\nexcept ZeroDivisionError:\n    print(\"zero\")\nelse:\n    print(\"ok\")",
+      "stdout": "3\nok\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-16-06",
+    "topic_id": 16,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "ok",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "zero",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "3\nok",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "3\nzero",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "try:\n    print(1 / 0)\nexcept ZeroDivisionError:\n    print(\"handled\")\nfinally:\n    print(\"end\")",
+    "explanation": "The division fails; handler and finally both run.",
+    "objective": "Trace cleanup path",
+    "validation": {
+      "code": "try:\n    print(1 / 0)\nexcept ZeroDivisionError:\n    print(\"handled\")\nfinally:\n    print(\"end\")",
+      "stdout": "handled\nend\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-16-07",
+    "topic_id": 16,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "end",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "handled",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "0\nend",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "handled\nend",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "try:\n    int(\"bad\")\n    print(\"after\")\nexcept ValueError:\n    print(\"caught\")\nprint(\"outside\")",
+    "explanation": "The rest of the failing try block is skipped.",
+    "objective": "Trace skipped statements",
+    "validation": {
+      "code": "try:\n    int(\"bad\")\n    print(\"after\")\nexcept ValueError:\n    print(\"caught\")\nprint(\"outside\")",
+      "stdout": "caught\noutside\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-16-08",
+    "topic_id": 16,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "caught\noutside",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "after\ncaught\noutside",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "outside",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "caught\nafter",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "output",
+    "stem": "What does this code print?",
+    "code_snippet": "try:\n    raise ValueError(\"too small\")\nexcept ValueError as error:\n    print(str(error))",
+    "explanation": "The bound exception carries the supplied message.",
+    "objective": "Read exception message",
+    "validation": {
+      "code": "try:\n    raise ValueError(\"too small\")\nexcept ValueError as error:\n    print(str(error))",
+      "stdout": "too small\n",
+      "stdin": "",
+      "files": {},
+      "exception": null
+    },
+    "key": "py-16-09",
+    "topic_id": 16,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "error",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "too small",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "ValueError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "None",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "try:\n    int(\"bad\")\nexcept ZeroDivisionError:\n    print(\"handled\")",
+    "explanation": "The handler does not match the conversion failure.",
+    "objective": "Identify unmatched handler",
+    "validation": {
+      "code": "try:\n    int(\"bad\")\nexcept ZeroDivisionError:\n    print(\"handled\")",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "ValueError"
+    },
+    "key": "py-16-10",
+    "topic_id": 16,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "SyntaxError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "ValueError",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "ZeroDivisionError",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "Which exception class stops this code?",
+    "code_snippet": "raise ValueError(\"invalid\")",
+    "explanation": "An explicit unhandled raise stops execution.",
+    "objective": "Identify explicit failure",
+    "validation": {
+      "code": "raise ValueError(\"invalid\")",
+      "stdout": "",
+      "stdin": "",
+      "files": {},
+      "exception": "ValueError"
+    },
+    "key": "py-16-11",
+    "topic_id": 16,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "NameError",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "TypeError",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "SyntaxError",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "ValueError",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "kind": "mistake",
+    "stem": "A bare except silently ignores every failure. What improves it?",
+    "code_snippet": null,
+    "explanation": "Specific handling avoids concealing unrelated bugs and sensitive data.",
+    "objective": "Avoid silent failures",
+    "key": "py-16-12",
+    "topic_id": 16,
+    "skill_group": "G5",
+    "for_quiz": true,
+    "for_assessment": false,
+    "difficulty": "medium",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Catch the expected class and provide a meaningful response",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "Add another pass",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "Remove all validation",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "Print credentials for debugging",
+        "is_correct": false
+      }
+    ]
+  }
+]

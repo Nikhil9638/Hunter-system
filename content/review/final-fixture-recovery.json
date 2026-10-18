@@ -1,0 +1,26 @@
+{
+  "target": "hunter_system_m3_fixture",
+  "actor": {
+    "id": 110,
+    "email": "m8a.8f4b297b03.admin@example.invalid"
+  },
+  "reason": "Browser harness incorrectly attempted permanent-retirement reversal; equivalent authored replacements created through audited API. No original row deleted.",
+  "replacements": [
+    {
+      "key": "py-17-01",
+      "retired_id": 9506,
+      "replacement_id": 9531
+    },
+    {
+      "key": "py-17-11",
+      "retired_id": 9516,
+      "replacement_id": 9532
+    },
+    {
+      "key": "py-17-12",
+      "retired_id": 9517,
+      "replacement_id": 9533
+    }
+  ],
+  "lesson18_restored": true
+}
