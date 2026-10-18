@@ -4,10 +4,11 @@ import { chromium } from 'playwright-core';
 import { readFileSync,writeFileSync } from 'node:fs';
 import assert from 'node:assert/strict';
 import path from 'node:path';
+import { readAppCss } from './app-css.mjs';
 const root=path.resolve('..');
 const lessons=Array.from({length:18},(_,i)=>({topic:i+1,body:readFileSync(i<2?`../content/review/topic-0${i+1}-reviewed.md`:`../content/topics/${String(i+1).padStart(2,'0')}/lesson.md`,'utf8').replace(/\r\n?/g,'\n')}));
 const result=await build({root:process.cwd(),logLevel:'error',define:{'process.env.NODE_ENV':'"production"'},build:{write:false,minify:false,lib:{entry:path.resolve('tests/course-review-entry.jsx'),name:'ReviewRender',formats:['iife']}}});
-const bundle=(Array.isArray(result)?result[0].output:result.output).find(o=>o.type==='chunk').code,css=readFileSync('src/styles.css','utf8');
+const bundle=(Array.isArray(result)?result[0].output:result.output).find(o=>o.type==='chunk').code,css=readAppCss();
 const browserLabel=process.env.HUNTER_BROWSER_LABEL||'Chrome';
 const browser=await chromium.launch({executablePath:process.env.HUNTER_BROWSER_EXECUTABLE||'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});let checks=0;
 try{

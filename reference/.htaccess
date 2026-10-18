@@ -1,0 +1,4 @@
+# Private: development-only design references (images, video, prompts).
+# Never served over HTTP. Defense in depth behind the root /hunter-system/.htaccess,
+# which already returns 404 for every non-allowlisted path.
+Require all denied

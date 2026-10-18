@@ -50,7 +50,7 @@ The tokens replace the current yellow and blue Python palette in `styles.css`. T
 | `--surface-2` | `#151938` | Inputs, nested panels |
 | `--surface-3` | `#1d2252` | Hover and selected surfaces |
 | `--line` | `#272c5a` | Hairlines and dividers |
-| `--line-strong` | `#4a4f8f` | Input borders, frames |
+| `--line-strong` | `#5f66ad` | Input borders, frames. Raised from `#4a4f8f` in Phase 2 to meet WCAG 1.4.11: 3.64:1 on the input fill, 3.25:1 on `--surface-2`. |
 | `--hud` | `#4cc9ff` | Electric blue/cyan: System HUD, Mana, focus-adjacent interactive accents |
 | `--hud-strong` | `#8be3ff` | HUD text on dark, focus ring |
 | `--hud-glow` | `rgba(76, 201, 255, .35)` | Outer glow (box-shadow only) |

@@ -4,9 +4,10 @@ import { useAuth } from '../auth/AuthContext.jsx';
 import { AmbientBackground } from './AmbientBackground.jsx';
 import { Icon } from './Icon.jsx';
 
-const STUDENT_NAV = [['/dashboard','Dashboard','dashboard'],['/topics','Topics','topics'],['/history','Rank & coins','history'],['/store','Badge store','store'],['/profile','Profile','profile']];
+// Labels are presentation only; routes are unchanged ("Missions" is /topics).
+const STUDENT_NAV = [['/dashboard','Dashboard','dashboard'],['/topics','Missions','topics'],['/history','Rank & Mana','history'],['/store','Badge store','store'],['/profile','Profile','profile']];
 const ADMIN_NAV = [['/admin','Overview','dashboard'],['/admin/students','Students','students'],['/admin/topics','Topics','topics'],['/admin/questions','Questions','questions'],['/admin/badges','Badges','badges'],['/admin/audit','Audit','audit']];
-function Brand() { return <span className="brand"><span className="brand-mark"><Icon name="code" /></span><span>Hunter System<small>LEARN PYTHON · KEEP GROWING</small></span></span>; }
+function Brand() { return <span className="brand"><span className="brand-mark"><Icon name="code" /></span><span>Hunter System<small>AWAKEN · LEARN · LEVEL UP</small></span></span>; }
 function Navigation({ items, onNavigate }) { return <nav aria-label="Main" className="nav"><ul>{items.map(([to,label,icon])=><li key={to}><NavLink to={to} end={to==='/admin'} onClick={onNavigate}><Icon name={icon}/>{label}</NavLink></li>)}</ul></nav>; }
 
 /** One shell/background; modal drawer supplies native focus containment/inertness. */
@@ -52,9 +53,9 @@ export function Layout({ minimal = false }) {
   };
   return <div className={`app${hasNavigation?' app-with-sidebar':' app-minimal'}`}>
     <a className="skip-link" href="#main">Skip to content</a>
-    <AmbientBackground/>
+    <AmbientBackground variant={user?.role==='admin'?'quiet':'motes'}/>
     {hasNavigation && <>
-      <aside className="desktop-sidebar"><Brand/><p className="nav-label">{user.role==='admin'?'ADMINISTRATION':'YOUR WORKSPACE'}</p><Navigation items={items}/><div className="sidebar-bottom"><span className="sidebar-avatar" aria-hidden="true">{user.display_name.slice(0,1).toUpperCase()}</span><div><strong>{user.display_name}</strong><small>{user.role==='admin'?'Administrator':'Python learner'}</small></div></div></aside>
+      <aside className="desktop-sidebar"><Brand/><p className="nav-label">{user.role==='admin'?'ADMINISTRATION':'SYSTEM MENU'}</p><Navigation items={items}/><div className="sidebar-bottom"><span className="sidebar-avatar" aria-hidden="true">{user.display_name.slice(0,1).toUpperCase()}</span><div><strong>{user.display_name}</strong><small>{user.role==='admin'?'Administrator':'Python learner'}</small></div></div></aside>
       <dialog ref={drawerRef} id="navigation-drawer" className="mobile-drawer" aria-labelledby="drawer-title" onKeyDown={containDrawerFocus} onCancel={()=>setMenuOpen(false)} onClose={()=>setMenuOpen(false)} onClick={e=>{if(e.target===e.currentTarget)closeMenu();}}>
         <div className="drawer-heading"><h2 id="drawer-title">{user.role==='admin'?'Administrator navigation':'Student navigation'}</h2><button type="button" className="btn btn-ghost" onClick={closeMenu} aria-label="Close navigation"><Icon name="close"/></button></div>
         <Brand/><Navigation items={items} onNavigate={()=>setMenuOpen(false)}/>
@@ -66,7 +67,7 @@ export function Layout({ minimal = false }) {
         {user && <div className="topbar-user"><span className="muted user-name">{user.display_name}</span><button type="button" className="btn btn-ghost" disabled={logoutPending} onClick={onLogout}>{logoutPending?'Logging out…':'Log out'}</button></div>}
       </div></header>
       <main id="main" ref={mainRef} tabIndex={-1} className="main"><Outlet/></main>
-      <footer className="footer muted">Hunter System — learn Python, one topic at a time.</footer>
+      <footer className="footer"><strong>Hunter System</strong> · Learn Python, clear missions, level up.</footer>
     </div>
   </div>;
 }

@@ -12,6 +12,13 @@ export function Icon({ name, className = '' }) {
     audit: 'M6 3h12v18H6z M9 7h6 M9 11h6 M9 15h4',
     menu: 'M4 6h16 M4 12h16 M4 18h16', close: 'M6 6l12 12 M18 6 6 18',
     code: 'M8 6 2 12l6 6 M16 6l6 6-6 6 M14 3l-4 18', lock: 'M5 10h14v11H5z M8 10V6a4 4 0 0 1 8 0v4',
+    mana: 'M12 2 19 9 12 22 5 9z M5 9h14 M9 9l3 13 3-13 M9 9l3-7 3 7',
+    gate: 'M4 21V9a8 8 0 0 1 16 0v12 M4 21h16 M8 21v-9a4 4 0 0 1 8 0v9 M12 5v3',
+    seal: 'M12 2l2.4 2.4 3.3-.6.6 3.3L21 9.5l-1.6 3 1.6 3-2.7 2.4-.6 3.3-3.3-.6L12 23l-2.4-2.4-3.3.6-.6-3.3L3 15.5l1.6-3L3 9.5l2.7-2.4.6-3.3 3.3.6z M8.5 12.5l2.5 2.5 4.5-5',
+    hourglass: 'M6 2h12 M6 22h12 M7 2c0 5 10 6 10 10S7 17 7 22 M17 2c0 5-10 6-10 10s10 5 10 10',
+    sword: 'M14.5 3H21v6.5L10 20.5 3.5 14z M6 17l-3 3 M3 20l1 1 M8 12l4 4',
+    shield: 'M12 2 20 5v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z',
+    info: 'M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20z M12 11v6 M12 7h.01',
   };
   return <svg className={`icon ${className}`} aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d={paths[name] || paths.code} /></svg>;
 }

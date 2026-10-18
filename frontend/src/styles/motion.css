@@ -1,0 +1,5 @@
+/* Reduced motion (spec §7.2): no animation, no transitions, no smooth scrolling.
+   The ambient canvas separately stops its frame loop and draws one static frame. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+}

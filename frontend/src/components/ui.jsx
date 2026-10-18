@@ -1,15 +1,24 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { Icon } from './Icon.jsx';
+import { rankCode, rankDisplay } from '../config/presentation.js';
 
-/** E–S rank indicator: letter + name, distinct shape per rank (never colour alone). */
-export function RankBadge({ rank, size = 'md', label }) {
+/**
+ * E–S rank indicator: letter + "D-Rank · Apprentice", distinct shape per rank (never
+ * colour alone). The label is built from the rank CODE only (config/presentation.js);
+ * the API's own name/title (e.g. "Rookie") is not displayed. Accepts {code}, 'D' or
+ * 'D-Rank'. variant="theme" is the outlined experience-card look: NOT a real rank.
+ */
+export function RankBadge({ rank, size = 'md', label, variant }) {
   if (!rank) return <span className="rank rank-none">Not ranked yet</span>;
-  const code = rank.code ?? rank;
+  const code = rankCode(rank);
+  const prefix = `${variant === 'theme' ? 'Theme · ' : ''}${label ? `${label}: ` : ''}`;
+  if (!code) return <span className="rank rank-unknown">{prefix}{String(rank.code ?? rank)}</span>;
+  const text = rankDisplay(code);
   return (
-    <span className={`rank rank-${code} rank-${size}`} title={rank.name ?? `${code}-Rank`}>
+    <span className={`rank rank-${code} rank-${size}${variant === 'theme' ? ' rank-theme' : ''}`} title={text}>
       <span className="rank-letter" aria-hidden="true">{code}</span>
-      <span className="rank-text">{label ? `${label}: ` : ''}{rank.name ?? `${code}-Rank`}{rank.title ? ` (${rank.title})` : ''}</span>
+      <span className="rank-text">{prefix}{text}</span>
     </span>
   );
 }

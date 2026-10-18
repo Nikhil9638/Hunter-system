@@ -1,0 +1,114 @@
+/* Application shell: ambient layer, sidebar, top bar, mobile drawer, footer. */
+.app { min-height: 100vh; position: relative; isolation: isolate; }
+.workspace { display: flex; flex-direction: column; min-height: 100vh; min-width: 0; }
+.app-with-sidebar .workspace { margin-left: var(--sidebar-width); }
+
+/* Decorative background: night gradient + faint HUD grid; canvas motes on top. */
+.ambient-background { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden;
+  background:
+    radial-gradient(ellipse at 8% -10%, rgba(139, 92, 246, .20), transparent 50%),
+    radial-gradient(ellipse at 105% 85%, rgba(67, 56, 202, .18), transparent 50%),
+    radial-gradient(ellipse at 60% 120%, rgba(217, 70, 239, .07), transparent 45%),
+    linear-gradient(rgba(76, 201, 255, .022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(76, 201, 255, .022) 1px, transparent 1px),
+    var(--bg-night);
+  background-size: auto, auto, auto, 72px 72px, 72px 72px, auto; }
+.ambient-quiet { background:
+    radial-gradient(ellipse at 0% 0%, rgba(139, 92, 246, .10), transparent 45%),
+    linear-gradient(rgba(76, 201, 255, .018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(76, 201, 255, .018) 1px, transparent 1px),
+    var(--bg-night);
+  background-size: auto, 72px 72px, 72px 72px, auto; }
+.ambient-canvas { display: block; width: 100%; height: 100%; pointer-events: none; }
+/* Static fallback when canvas is unavailable: a few fixed motes. */
+.ambient-static { position: absolute; inset: 0; }
+.ambient-static span { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: var(--hud); box-shadow: 0 0 8px 2px var(--hud-glow); opacity: .55; }
+.ambient-static span:nth-child(1) { top: 18%; left: 12%; }
+.ambient-static span:nth-child(2) { top: 62%; left: 74%; background: var(--violet-soft); box-shadow: 0 0 8px 2px var(--violet-glow); }
+.ambient-static span:nth-child(3) { top: 84%; left: 28%; }
+.ambient-static span:nth-child(4) { top: 32%; left: 88%; background: var(--violet-soft); box-shadow: 0 0 8px 2px var(--violet-glow); }
+
+.icon { width: 20px; height: 20px; flex: none; }
+
+/* Sidebar: dark glass "System" frame. */
+.desktop-sidebar { position: fixed; inset: 0 auto 0 0; width: var(--sidebar-width); display: flex; flex-direction: column; padding: 24px 15px; z-index: 10; overflow-y: auto;
+  background: linear-gradient(180deg, rgba(14, 18, 48, .97), rgba(8, 9, 22, .98)); border-right: 1px solid var(--line);
+  box-shadow: inset -1px 0 0 rgba(76, 201, 255, .06); }
+.brand { display: flex; align-items: center; gap: 10px; white-space: nowrap; font-family: var(--font-display); font-weight: 700; font-size: 1.02rem; letter-spacing: .1em; text-transform: uppercase; }
+.brand small { display: block; font-family: var(--font); font-size: .55rem; font-weight: 600; letter-spacing: .16em; color: var(--hud-strong); margin-top: 3px; opacity: .85; }
+.brand-mark { display: inline-grid; place-items: center; width: 38px; height: 38px; flex: none; color: #fff;
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  background: linear-gradient(150deg, var(--hud) 0%, var(--violet-strong) 60%, var(--violet-deep) 100%); }
+.brand-mark .icon { width: 18px; height: 18px; }
+.nav-label { font-size: .68rem; letter-spacing: .18em; font-weight: 700; color: var(--text-dim); margin: 32px 12px 10px; }
+.nav ul { list-style: none; display: grid; gap: 4px; margin: 0; padding: 0; }
+.nav a { position: relative; display: flex; gap: 12px; align-items: center; min-height: 46px; padding: 10px 12px; border-radius: var(--radius-sm);
+  color: var(--text-muted); text-decoration: none; font-size: .925rem; font-weight: 600; border: 1px solid transparent;
+  transition: color var(--dur-fast), background-color var(--dur-fast), border-color var(--dur-fast); }
+.nav a:hover { color: var(--text); background: rgba(29, 34, 82, .6); border-color: var(--line); }
+.nav a.active { color: var(--violet-soft); background: linear-gradient(90deg, rgba(124, 58, 237, .26), rgba(29, 34, 82, .55));
+  border-color: rgba(139, 92, 246, .45); box-shadow: inset 3px 0 0 var(--violet), 0 0 18px -6px var(--violet-glow); }
+.nav a.active .icon { color: var(--hud-strong); }
+.sidebar-bottom { margin-top: auto; padding: 20px 8px 0; border-top: 1px solid var(--line); display: flex; align-items: center; gap: 10px; overflow-wrap: anywhere; }
+.sidebar-bottom > div { min-width: 0; }
+.sidebar-bottom strong { display: block; font-size: .875rem; }
+.sidebar-bottom small { color: var(--text-muted); font-size: .75rem; }
+.sidebar-avatar { display: grid; place-items: center; width: 36px; height: 36px; flex: none; border-radius: var(--radius-hud); font-family: var(--font-display); font-weight: 700;
+  color: var(--hud-strong); background: rgba(76, 201, 255, .08); border: 1px solid rgba(76, 201, 255, .35); }
+
+/* Top bar */
+.topbar { position: sticky; top: 0; z-index: 5; background: rgba(8, 9, 22, .88); border-bottom: 1px solid var(--line);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.topbar::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(76, 201, 255, .45), rgba(139, 92, 246, .45), transparent); }
+.topbar-inner { max-width: 1450px; min-height: 72px; margin: 0 auto; padding: 12px 32px; display: flex; align-items: center; gap: 16px; }
+.breadcrumbs { display: flex; align-items: center; gap: 12px; color: var(--text-muted); font-size: .875rem; min-width: 0; }
+.breadcrumbs strong { color: var(--text); font-weight: 600; letter-spacing: .02em; }
+.topbar-user { margin-left: auto; display: flex; align-items: center; gap: var(--space-3); }
+.btn.menu-toggle { display: none; }            /* .btn sets display; this must win on desktop */
+
+.main { flex: 1; width: 100%; min-width: 0; max-width: 1450px; margin: 0 auto; padding: 30px 32px 60px; }
+
+/* Mobile drawer (native modal dialog) */
+.mobile-drawer { width: min(320px, calc(100vw - 32px)); max-width: none; max-height: 100dvh; height: 100dvh; margin: 0 auto 0 0; padding: 20px; color: var(--text); overflow-y: auto;
+  border: 0; border-right: 1px solid rgba(76, 201, 255, .3); background: linear-gradient(180deg, #0e1230, #07081a); box-shadow: 0 0 40px -10px var(--hud-glow); }
+.mobile-drawer::backdrop { background: var(--overlay); }
+.mobile-drawer .brand { margin: 16px 0 24px; }
+.drawer-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.drawer-heading h2 { font-size: .8rem; margin: 0; letter-spacing: .14em; text-transform: uppercase; color: var(--hud-strong); }
+
+.footer { text-align: center; padding: var(--space-5); border-top: 1px solid var(--line); font-size: .875rem; color: var(--text-muted); }
+.footer strong { font-family: var(--font-display); letter-spacing: .12em; text-transform: uppercase; color: var(--text); font-weight: 600; }
+
+/* Page frames */
+.narrow { max-width: 520px; margin: 0 auto; }
+.narrow-wide { max-width: 760px; margin: 0 auto; }
+.page-header { margin-bottom: var(--space-5); }
+.page-title, .page-header h1 { font-family: var(--font-display); font-size: clamp(1.75rem, 2.2vw + 1rem, 2.5rem); font-weight: 700; letter-spacing: .02em; }
+.page-header::before { content: 'Hunter System'; display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+  color: var(--hud-strong); font-size: .7rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; }
+
+/* Shell responsive behaviour (sidebar widths unchanged: 245px / 210px / drawer). */
+@media (min-width: 761px) and (max-width: 1100px) {
+  :root { --sidebar-width: 210px; }
+  .desktop-sidebar { padding: 20px 12px; }
+  .desktop-sidebar .brand { font-size: .875rem; gap: 8px; }
+  .brand small { font-size: .48rem; }
+  .main, .topbar-inner { padding-left: 24px; padding-right: 24px; }
+  .topbar-user .user-name { display: none; }
+}
+@media (max-width: 760px) {
+  .desktop-sidebar { display: none; }
+  .app-with-sidebar .workspace { margin-left: 0; }
+  .main { padding: var(--space-5) var(--space-3) var(--space-6); }
+  .btn.menu-toggle { display: inline-flex; padding: 0 var(--space-3); }
+  .topbar-inner { gap: var(--space-2); padding: var(--space-2) var(--space-3); min-height: 64px; }
+  .topbar-user .btn { padding: 0 var(--space-3); }
+  .breadcrumbs { font-size: .8rem; gap: 6px; }
+  .breadcrumbs > span:first-child, .breadcrumbs > span:nth-child(2) { display: none; }
+  .topbar-user { gap: 0; }
+  .topbar-user .user-name { display: none; }
+  .ambient-background { background-size: auto, auto, auto, 88px 88px, 88px 88px, auto; }
+  .app-minimal .brand small { display: none; }
+  .app-minimal .brand { font-size: .9rem; }
+}

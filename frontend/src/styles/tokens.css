@@ -1,0 +1,82 @@
+/* Design tokens — Solo Leveling-inspired "System" theme (docs/frontend-design-spec.md §1).
+   New names first; the older semantic names used across existing components are kept
+   as aliases at the bottom so every page keeps working while pages are redesigned. */
+:root {
+  /* base */
+  --bg-void: #05060d;
+  --bg-night: #0a0b1a;
+  --bg-navy: #0e1230;
+  --surface-1: rgba(16, 18, 42, .86);
+  --surface-2: #151938;
+  --surface-3: #1d2252;
+  --line: #272c5a;
+  --line-strong: #5f66ad;            /* control boundaries: >= 3:1 on night, input and surface-2 */
+
+  /* accents */
+  --hud: #4cc9ff;
+  --hud-strong: #8be3ff;
+  --hud-glow: rgba(76, 201, 255, .35);
+  --violet: #8b5cf6;
+  --violet-strong: #7c3aed;          /* button fill: white text 5.7:1 */
+  --violet-deep: #6d28d9;
+  --violet-soft: #b69cff;
+  --violet-glow: rgba(139, 92, 246, .35);
+  --magenta: #d946ef;                /* ambient light only, never text */
+  --gold: #e8b64c;
+  --gold-soft: #f5d48a;
+
+  /* text and states */
+  --text: #eef1ff;
+  --text-muted: #a3a9cf;
+  --text-dim: #7c82ad;
+  --success: #4ade80;
+  --warning: #fbbf24;
+  --danger: #ff6b81;
+  --focus: #8be3ff;
+  --link: #9ecbff;
+  --disabled: #6e7399;
+
+  /* ranks: always paired with the letter, a distinct shape and the label */
+  --rank-E: #9aa3b5; --rank-D: #5fd4b0; --rank-C: #4cc9ff; --rank-B: #8b5cf6; --rank-A: #ff9f43; --rank-S: #e8b64c;
+
+  /* gradients */
+  --grad-night: radial-gradient(ellipse at 0% 0%, rgba(139, 92, 246, .18), transparent 50%),
+                radial-gradient(ellipse at 100% 100%, rgba(67, 56, 202, .16), transparent 55%);
+  --grad-hud-frame: linear-gradient(135deg, var(--hud), var(--violet));
+
+  /* type */
+  --font: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  --font-display: "Bahnschrift", "Segoe UI Variable Display", "Arial Narrow", system-ui, sans-serif;
+  --font-lore: "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  --mono: "Cascadia Code", Consolas, "Liberation Mono", ui-monospace, monospace;
+
+  /* space, shape, depth */
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px; --space-9: 96px;
+  --radius: 10px;
+  --radius-sm: 8px;
+  --radius-hud: 3px;
+  --shadow: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 10px 30px rgba(0, 0, 0, .35);
+  --sidebar-width: 245px;
+
+  /* motion */
+  --dur-fast: 120ms;
+  --dur: 220ms;
+  --dur-slow: 480ms;
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
+
+  /* legacy aliases (existing components) */
+  --bg: var(--bg-night);
+  --surface: var(--bg-navy);
+  --surface-raised: var(--surface-2);
+  --border: var(--line);
+  --accent-primary: var(--violet);
+  --accent-secondary: var(--hud);
+  --bg-raised: var(--surface-2);
+  --bg-card: var(--surface-1);
+  --bg-input: #0b0d22;
+  --selection: rgba(139, 92, 246, .22);
+  --overlay: rgba(3, 4, 12, .8);
+  --cyan: var(--hud);
+  --cyan-strong: var(--hud-strong);
+  color-scheme: dark;
+}

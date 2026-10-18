@@ -43,10 +43,11 @@ try {
   const c=await context(),p=await c.newPage();await go(p,'/login','input[type=email]');
   const actual=await p.evaluate(()=>{
     const css=getComputedStyle(document.documentElement);const primary=getComputedStyle(document.querySelector('.btn-primary'));
-    return {tokens:['--bg','--surface','--surface-raised','--border','--accent-primary','--accent-secondary','--text','--text-muted','--success','--danger'].map(k=>css.getPropertyValue(k).trim()),primary:[primary.color,primary.backgroundColor],radius:getComputedStyle(document.querySelector('.card')).borderRadius};
+    return {tokens:['--bg-night','--surface-2','--line','--violet','--hud','--text','--text-muted','--success','--danger','--focus'].map(k=>css.getPropertyValue(k).trim()),primary:[primary.color,primary.backgroundImage],radius:getComputedStyle(document.querySelector('.card')).borderRadius};
   });
-  check('Shared exact theme tokens and16px cards',actual.tokens.join(',')==='#07090e,#0d111b,#111827,#222d3d,#ffd43b,#387eb8,#f4f7fb,#94a1b5,#59d98e,#ff707c'&&actual.radius==='16px');
-  check('Yellow primary uses dark text',actual.primary.join('|')==='rgb(23, 23, 23)|rgb(255, 212, 59)');
+  // Redesign Phase 2 System theme tokens (docs/frontend-design-spec.md §1.2).
+  check('Shared exact System theme tokens and10px cards',actual.tokens.join(',')==='#0a0b1a,#151938,#272c5a,#8b5cf6,#4cc9ff,#eef1ff,#a3a9cf,#4ade80,#ff6b81,#8be3ff'&&actual.radius==='10px');
+  check('Violet primary uses white text on the AA-contrast violet fill',actual.primary[0]==='rgb(255, 255, 255)'&&actual.primary[1].includes('rgb(124, 58, 237)'));
   check('One decorative aria-hidden pointer-free background',await p.locator('.ambient-background[aria-hidden=true]').count()===1&&await p.locator('.ambient-background').evaluate(e=>getComputedStyle(e).pointerEvents==='none'));
   for(const width of [1440,900,768,390,320]){
     await p.setViewportSize({width,height:900});await go(p,'/register','input[type=email]');check(`Registration ${width}px: no document overflow`,await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
@@ -67,12 +68,12 @@ try {
   await p.keyboard.press('Escape');await p.locator('dialog[open]').waitFor({state:'hidden'});
   check('Escape closes and returns focus to Menu',await p.getByRole('button',{name:'Menu',exact:true}).evaluate(e=>e===document.activeElement));
   check('Drawer restores body scrolling',await p.evaluate(()=>document.body.style.overflow===''));
-  await p.getByRole('button',{name:'Menu',exact:true}).click();await p.locator('dialog nav').getByRole('link',{name:'Topics',exact:true}).click();await p.waitForURL(/\/topics$/);
+  await p.getByRole('button',{name:'Menu',exact:true}).click();await p.locator('dialog nav').getByRole('link',{name:'Missions',exact:true}).click();await p.waitForURL(/\/topics$/);
   await p.waitForFunction(()=>document.querySelector('h1')===document.activeElement,{},{timeout:3000});
   check('Drawer destination closes overlay and focuses next page title',await p.locator('dialog[open]').count()===0&&await p.locator('h1').evaluate(e=>e===document.activeElement));
   await p.reload();await p.locator('.roadmap-item').first().waitFor();check('Authenticated deep-link refresh retains themed shell',await p.locator('.ambient-background').count()===1);
   await p.setViewportSize({width:1440,height:900});await go(p,'/dashboard','.stat');
-  check('Desktop sidebar245px; active yellow indicator',await p.locator('.desktop-sidebar').evaluate(e=>getComputedStyle(e).width==='245px')&&await p.locator('.desktop-sidebar a.active').evaluate(e=>getComputedStyle(e).color==='rgb(255, 212, 59)'));
+  check('Desktop sidebar245px; active violet indicator',await p.locator('.desktop-sidebar').evaluate(e=>getComputedStyle(e).width==='245px')&&await p.locator('.desktop-sidebar a.active').evaluate(e=>getComputedStyle(e).color==='rgb(182, 156, 255)'));
   await p.setViewportSize({width:900,height:900});check('Tablet sidebar narrows210px',await p.locator('.desktop-sidebar').evaluate(e=>getComputedStyle(e).width==='210px'));
   await p.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>true});document.dispatchEvent(new Event('visibilitychange'));});await delay(100);
   check('Controlled hidden-document event cancels animation frames',(await p.evaluate(()=>window.__themeMetrics())).pending===0);
@@ -81,7 +82,7 @@ try {
   await p.emulateMedia({reducedMotion:'reduce'});await delay(100);const pixels=await p.locator('canvas').evaluate(e=>e.toDataURL());await delay(150);
   check('Reduced motion is static with no pending frames',pixels===await p.locator('canvas').evaluate(e=>e.toDataURL())&&(await p.evaluate(()=>window.__themeMetrics())).pending===0);
   const size=await p.locator('canvas').evaluate(e=>e.width*e.height);check('Canvas backing store stays below1.8M pixels',size<=1804000);
-  const before=await p.evaluate(()=>window.__themeMetrics());await p.locator('.desktop-sidebar').getByRole('link',{name:'Topics',exact:true}).click();await p.waitForURL(/\/topics$/);
+  const before=await p.evaluate(()=>window.__themeMetrics());await p.locator('.desktop-sidebar').getByRole('link',{name:'Missions',exact:true}).click();await p.waitForURL(/\/topics$/);
   check('SPA navigation keeps one background and listener set',await p.locator('.ambient-background').count()===1&&JSON.stringify(await p.evaluate(()=>window.__themeMetrics()))===JSON.stringify(before));
   c.themeFaults.delayDashboard=true;await p.locator('.desktop-sidebar').getByRole('link',{name:'Dashboard',exact:true}).click();await p.getByRole('status').waitFor();check('Real delayed response displays themed loading state',await p.locator('.spinner').isVisible());await p.locator('.stat').first().waitFor();
   await go(p,'/topics','.roadmap-item');c.themeFaults.abortDashboard=true;await p.locator('.desktop-sidebar').getByRole('link',{name:'Dashboard',exact:true}).click();await p.getByRole('alert').waitFor();check('Controlled transport failure has readable error/retry',await p.getByRole('button',{name:'Try again'}).isVisible());await p.getByRole('button',{name:'Try again'}).click();await p.locator('.stat').first().waitFor();
