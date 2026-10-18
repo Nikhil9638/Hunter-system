@@ -96,9 +96,15 @@ export function QuestionRunner({ attempt, saveAnswer, submit, submitLabel = 'Sub
     }
   };
 
+  const answeredCount = total - unanswered.length;
+
   return (
     <div className="runner">
       <p className="sr-only" aria-live="polite">{announce}</p>
+      <div className="runner-head">
+        <span className="eyebrow">System trial</span>
+        <span className="runner-progress">{answeredCount} of {total} answered</span>
+      </div>
       <nav className="runner-map" aria-label="Questions">
         <ol>
           {questions.map((x, i) => (
@@ -119,6 +125,8 @@ export function QuestionRunner({ attempt, saveAnswer, submit, submitLabel = 'Sub
           <span className="q-count">Question {index + 1} of {total}</span>
           <span className="q-stem">{q.stem}</span>
         </legend>
+        <span className="hud-corner hud-corner-tl" aria-hidden="true" /><span className="hud-corner hud-corner-tr" aria-hidden="true" />
+        <span className="hud-corner hud-corner-bl" aria-hidden="true" /><span className="hud-corner hud-corner-br" aria-hidden="true" />
         <CodeBlock code={q.code_snippet} />
         <div className="choices">
           {q.choices.map((c) => (

@@ -4,7 +4,9 @@ import { ApiError, get, isAbort, post, put } from '../api/client.js';
 import { useAuth } from '../auth/AuthContext.jsx';
 import { useApi } from '../lib/useApi.js';
 import { QuestionRunner, Review } from '../components/QuestionRunner.jsx';
-import { Card, LoadError, Loading, Notice, PageHeader, RankBadge, TableScroll, TopicLink } from '../components/ui.jsx';
+import { LoadError, Loading, Notice, PageHeader, RankBadge, TopicLink } from '../components/ui.jsx';
+import { HudPanel, ProgressMeter } from '../components/hud.jsx';
+import { EXPERIENCE_CARDS, RANKS, rankCode } from '../config/presentation.js';
 
 /** Start or resume the placement assessment (server-owned; refresh shows saved answers). */
 export function AssessmentPage() {
@@ -70,39 +72,57 @@ export function AssessmentResultPage() {
   }
   if (res.error) return <LoadError error={res.error} onRetry={res.reload} />;
   const r = res.data;
+  // Every value below comes from the stored server result (GET /assessment/result).
+  const card = r.experience_level ? EXPERIENCE_CARDS[r.experience_level.code] : null;
+  const placed = rankCode(r.placement_rank);
   return (
-    <div>
+    <div className="placement-result">
       <PageHeader title="Your starting point">
         <p className="lead">{r.label}.</p>
       </PageHeader>
-      <div className="grid-2">
-        <Card title="Placement result">
-          <RankBadge rank={r.placement_rank} size="lg" />
-          <p>{r.correct_count} of {r.question_count} correct. Your Hunter rank starts here and only goes up as you pass topics.</p>
-          {r.experience_level && <p className="muted">You described yourself as: {r.experience_level.label} (not used for the result).</p>}
-        </Card>
-        <Card title="Where to start">
-          <p>Recommended topic: <TopicLink topic={r.recommended_topic} />{!r.recommended_topic.ready && ' (content coming soon)'}</p>
-          {r.offered_topic && <p>Available now: <TopicLink topic={r.offered_topic} /> — the nearest earlier topic with content.</p>}
-          <Link className="btn btn-primary" to="/dashboard">Go to your dashboard</Link>
-        </Card>
+      <div className="placement-top">
+        <HudPanel variant="notice" eyebrow="System notification" title="Placement complete" className="placement-notice">
+          <div className="placement-rank">
+            <p className="placement-rank-label">Starting Hunter rank</p>
+            <RankBadge rank={r.placement_rank} size="lg" />
+            {placed && RANKS[placed].lore && <p className="placement-lore lore">{RANKS[placed].lore}</p>}
+          </div>
+          <ProgressMeter label="Placement check score" value={r.correct_count} max={r.question_count} valueText={`${r.correct_count} of ${r.question_count} correct`} />
+          <p className="placement-note">Your Hunter rank starts here and only goes up as you clear missions.</p>
+        </HudPanel>
+        <div className="placement-side">
+          <HudPanel variant="quiet" eyebrow="Your description" title="Self-reported experience" headingLevel={2}>
+            {r.experience_level
+              ? <p>You described yourself as: <strong>{r.experience_level.label}</strong>{card && <> (theme card: {card.character})</>}.</p>
+              : <p className="muted">No experience description recorded.</p>}
+            <p className="hint">This was your own choice. It was not used for your result or your rank.</p>
+          </HudPanel>
+          <HudPanel variant="quiet" eyebrow="Next" title="Where to start" headingLevel={2}>
+            <p>Recommended topic: <TopicLink topic={r.recommended_topic} />{!r.recommended_topic.ready && ' (content coming soon)'}</p>
+            {r.offered_topic && <p>Available now: <TopicLink topic={r.offered_topic} /> — the nearest earlier topic with content.</p>}
+            <Link className="btn btn-primary" to="/dashboard">Go to your dashboard</Link>
+          </HudPanel>
+        </div>
       </div>
-      <Card title="Skill groups">
+      <HudPanel variant="quiet" title="Skill groups">
         <p className="hint">Based on one or two questions per group, so this is a hint about where to look, not proof of mastery.</p>
-        <TableScroll label="Placement skill groups"><table className="table">
-          <thead><tr><th scope="col">Group</th><th scope="col">Correct</th></tr></thead>
-          <tbody>{r.groups.map((g) => <tr key={g.code}><td>{g.code} · {g.name}</td><td>{g.correct} of {g.asked}</td></tr>)}</tbody>
-        </table></TableScroll>
-      </Card>
-      <Card title="Topic evidence">
+        <ul className="group-meters">
+          {r.groups.map((g) => (
+            <li key={g.code}>
+              <ProgressMeter label={`${g.code} · ${g.name}`} value={g.correct} max={g.asked} valueText={`${g.correct} of ${g.asked}`} />
+            </li>
+          ))}
+        </ul>
+      </HudPanel>
+      <HudPanel variant="quiet" title="Topic evidence">
         <ul className="evidence">
           {r.topics.map((t) => (
-            <li key={t.id}><span>{t.title}</span>
+            <li key={t.id} className={t.evidence === 'not_assessed' ? 'is-unchecked' : ''}><span>{t.title}</span>
               <span className="muted">{t.evidence === 'not_assessed' ? 'not checked' : `${t.correct} of ${t.asked} correct`}</span></li>
           ))}
         </ul>
-      </Card>
-      <Card title="Review your answers"><Review items={r.review} /></Card>
+      </HudPanel>
+      <HudPanel variant="quiet" title="Review your answers"><Review items={r.review} /></HudPanel>
     </div>
   );
 }

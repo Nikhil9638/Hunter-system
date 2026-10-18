@@ -10,27 +10,7 @@
 .ri-body { display: flex; flex-direction: column; gap: var(--space-1); }
 .ri-title { font-weight: 600; }
 
-/* ---- question runner (Phase 4 redesign) */
-.runner-map ol { list-style: none; display: flex; flex-wrap: wrap; gap: var(--space-2); padding: 0; margin: 0 0 var(--space-4); }
-.map-btn { width: 44px; height: 44px; border-radius: var(--radius-sm); border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--text); font: inherit; font-weight: 700; cursor: pointer; position: relative; }
-.map-saved { border-color: var(--success); }
-.map-saved::after { content: "✓"; position: absolute; right: 2px; top: -2px; font-size: .7rem; color: var(--success); }
-.map-error { border-color: var(--danger); color: var(--danger); }
-.map-error::after { content: "!"; position: absolute; right: 3px; top: -2px; font-size: .75rem; }
-.map-current { box-shadow: 0 0 0 2px var(--hud), 0 0 14px -4px var(--hud-glow); }
-.question { border: 1px solid var(--line); border-radius: var(--radius); padding: var(--space-5); background: var(--surface-1); margin: 0 0 var(--space-4); }
-.question legend { display: contents; }
-.q-count { display: block; color: var(--text-muted); font-size: .9rem; margin-bottom: var(--space-2); }
-.q-stem { display: block; font-size: 1.15rem; font-weight: 600; margin-bottom: var(--space-4); }
-.choices { display: grid; gap: var(--space-2); margin-top: var(--space-4); }
-.choice-label { display: inline-grid; place-items: center; width: 28px; height: 28px; flex: none; border-radius: 50%; border: 1px solid var(--line-strong); font-weight: 700; font-size: .85rem; }
-.choice-text { white-space: pre-wrap; }
-.runner-actions { display: flex; justify-content: space-between; gap: var(--space-3); }
-.save { margin: var(--space-3) 0 0; font-size: .9rem; display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
-.save-saved { color: var(--success); }
-.save-saving { color: var(--text-muted); }
-.save-error { color: var(--danger); }
-.save-empty { color: var(--text-muted); }
+/* ---- question runner: see styles/onboarding.css (Phase 4) */
 
 /* ---- code and lessons */
 .code-block { background: #070818; border: 1px solid var(--line); border-left: 3px solid var(--hud); border-radius: var(--radius-sm);
@@ -92,8 +72,6 @@
 
 @media (max-width: 760px) {
   .card { padding: var(--space-4); }
-  .runner-actions { flex-direction: column-reverse; }
-  .runner-actions .btn { width: 100%; }
   .facts { grid-template-columns: 1fr; }
   .lesson { padding: 16px; }
   .evidence { grid-template-columns: minmax(0, 1fr); }

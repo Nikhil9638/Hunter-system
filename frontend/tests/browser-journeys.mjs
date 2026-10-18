@@ -43,6 +43,8 @@ function helper(fixture, ...args) {
 async function shot(page, name) {
   if (SHOTS) await page.screenshot({ path: path.join(SHOTS, `${name}.png`), fullPage: true });
 }
+/** Question position buttons of the runner (placement check and topic quizzes). */
+const questionMap = (page) => page.getByRole('navigation', { name: 'Questions' }).getByRole('button');
 /** API calls in the browser context (shares the cookie jar), for setup steps only. */
 function apiFor(context, base) {
   let csrf = null;
@@ -124,13 +126,15 @@ try {
   await page.getByLabel('Password').fill(PW);
   await page.getByRole('button', { name: 'Create account' }).click();
   await page.waitForURL(/\/start$/);
-  await page.locator('input[name=experience]').first().waitFor();
-  const levels = await page.locator('input[name=experience]').count();
-  await page.getByLabel('Complete beginner').check();
-  await page.getByRole('button', { name: /Continue/ }).click();
+  // Phase 4: themed experience cards are a native radio group named "Experience level".
+  const experience = page.getByRole('group', { name: 'Experience level' }).getByRole('radio');
+  await experience.first().waitFor({ state: 'attached' });
+  const levels = await experience.count();
+  await page.getByRole('radio', { name: /Complete beginner/ }).check();
+  await page.getByRole('button', { name: 'Confirm and begin placement check' }).click();
   await page.waitForURL(/\/assessment$/);
-  await page.locator('.question').waitFor();
-  check('A3 register -> experience (4 options) -> placement check with 10 questions', levels === 4 && (await page.locator('.map-btn').count()) === 10);
+  await page.getByRole('group', { name: /^Question \d+ of 10/ }).waitFor();
+  check('A3 register -> experience (4 options) -> placement check with 10 questions', levels === 4 && (await questionMap(page).count()) === 10);
   check('A4 nothing stored in localStorage/sessionStorage; the session cookie is HttpOnly (invisible to scripts)',
     await page.evaluate(() => localStorage.length === 0 && sessionStorage.length === 0 && !document.cookie.includes('HSSESSID')));
 
@@ -140,20 +144,20 @@ try {
   await page.locator(`input[type=radio][value="${pick(1)}"]`).check();
   await page.locator('.save-saved').waitFor();
   await page.reload();
-  await page.locator('.question').waitFor();
+  await page.getByRole('group', { name: /^Question \d+ of 10/ }).waitFor();
   const opensAt = await page.locator('.q-count').innerText();                // resumes at the first unanswered question
-  await page.locator('.map-btn').first().click();
+  await questionMap(page).first().click();
   check('A5 refresh resumes the server-owned attempt: "Welcome back", opens at question 2, question 1 still selected',
     (await page.getByText(/Welcome back/).count()) === 1 && /Question 2 of 10/.test(opensAt)
     && (await page.locator(`input[value="${pick(1)}"]`).isChecked()));
 
   // answer-save failure on question 2
-  await page.locator('.map-btn').nth(1).click();
+  await questionMap(page).nth(1).click();
   await page.route('**/api/v1/assessment/*/answers/2', (route) => route.abort('failed'));
   await page.locator(`input[type=radio][value="${pick(2)}"]`).check();
   await page.locator('.save-error').waitFor();
   const nextDisabled = await page.getByRole('button', { name: 'Next question' }).isDisabled();
-  const mapDisabled = await page.locator('.map-btn').nth(5).isDisabled();
+  const mapDisabled = await questionMap(page).nth(5).isDisabled();
   await page.unroute('**/api/v1/assessment/*/answers/2');
   await page.getByRole('button', { name: 'Retry saving' }).click();
   await page.locator('.save-saved').waitFor();
@@ -161,7 +165,7 @@ try {
     nextDisabled && mapDisabled && !(await page.getByRole('button', { name: 'Next question' }).isDisabled()));
 
   for (let pos = 3; pos <= 9; pos++) {
-    await page.locator('.map-btn').nth(pos - 1).click();
+    await questionMap(page).nth(pos - 1).click();
     await page.locator(`input[type=radio][value="${pick(pos)}"]`).check();
     await page.locator('.save-saved').waitFor();
   }
@@ -171,7 +175,7 @@ try {
   await page.route('**/api/v1/assessment/*/answers/10', async (route) => { await sleep(1500); await route.continue(); });
   page.on('requestfinished', (r) => { if (/answers\/10$/.test(r.url())) putDone = Date.now(); });
   page.on('request', (r) => { if (/assessment\/\d+\/submit$/.test(r.url())) submitSent = Date.now(); });
-  await page.locator('.map-btn').nth(9).click();
+  await questionMap(page).nth(9).click();
   await page.locator(`input[type=radio][value="${pick(10)}"]`).check();
   await page.getByRole('button', { name: 'Submit placement check' }).click();
   await page.waitForURL(/\/assessment\/result$/);
@@ -229,7 +233,7 @@ try {
     /not passed/.test(fail) && /\+10 coins/.test(fail) && /Pass to unlock the next topic/.test(fail) && (await pb.locator('.review-item').count()) === 5);
   await pb.getByRole('button', { name: 'Try again' }).click();
   await pb.waitForURL(/\/quiz\/\d+$/);
-  await pb.locator('.question').waitFor();
+  await pb.getByRole('group', { name: /^Question \d+ of 5/ }).waitFor();
   await answerQuizInUi(pb, false, 4);
   await pb.getByRole('button', { name: 'Submit quiz' }).click();
   await pb.getByText(/Quiz performance: B/).waitFor();
@@ -271,10 +275,10 @@ try {
   await pb.getByLabel('Password').fill(PW);
   await pb.getByRole('button', { name: 'Log in' }).click();
   await pb.waitForURL(quizUrl);
-  await pb.locator('.question').waitFor();
+  await pb.getByRole('group', { name: /^Question \d+ of 5/ }).waitFor();
   check('A19 session expiry: the next save gets 401 session_expired -> login page explains saved progress is kept -> after login back on the same quiz with question 1 still answered',
     /30 minutes without activity/.test(expiredMsg) && /kept/.test(expiredMsg)
-    && (await pb.locator('.map-btn').first().getAttribute('class')).includes('map-saved'));
+    && (await questionMap(pb).first().getAttribute('class')).includes('map-saved'));
 
   await pb.getByRole('button', { name: 'Log out' }).click();
   await pb.waitForURL(/\/login$/);
