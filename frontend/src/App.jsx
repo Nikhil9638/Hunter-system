@@ -1,6 +1,8 @@
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { homeFor, useAuth } from './auth/AuthContext.jsx';
 import { Layout } from './components/Layout.jsx';
+import { AmbientBackground } from './components/AmbientBackground.jsx';
+import { LandingPage } from './pages/Landing.jsx';
 import { Loading } from './components/ui.jsx';
 import { LoginPage, RegisterPage } from './pages/Auth.jsx';
 import { ExperiencePage } from './pages/Experience.jsx';
@@ -56,17 +58,22 @@ function AdminOnly({ children }) {
   return <AdminBoundary>{children}</AdminBoundary>;
 }
 
+/**
+ * "/": logged-out visitors see the public landing page; signed-in users keep the
+ * existing redirect to their server-owned home (student onboarding step or /admin).
+ */
 function Home() {
   const { status, user } = useAuth();
-  if (status === 'loading') return <Loading what="Checking your session" />;
+  if (status === 'loading') return <div className="app app-minimal"><AmbientBackground /><main id="main" className="main"><Loading what="Checking your session" /></main></div>;
+  if (status !== 'authenticated') return <LandingPage />;
   return <Navigate to={homeFor(user)} replace />;
 }
 
 export default function App() {
   return (
     <Routes>
+      <Route index element={<Home />} />
       <Route element={<Layout minimal />}>
-        <Route index element={<Home />} />
         <Route path="login" element={<Public><LoginPage /></Public>} />
         <Route path="register" element={<Public><RegisterPage /></Public>} />
         <Route path="start" element={<Student stage="start"><ExperiencePage /></Student>} />

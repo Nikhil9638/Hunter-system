@@ -77,6 +77,29 @@ export function gateName(code) {
   return g ? `Gate ${g.numeral} · ${g.name}` : String(code ?? '');
 }
 
+/**
+ * Confirmed curriculum (decision C-25), mirrored from database/seed.sql `topics`
+ * (position, title, skill group) for the PUBLIC landing preview only, where no API
+ * call is made. Logged-in screens always use GET /topics. Titles only: no statuses.
+ */
+export const CURRICULUM_PREVIEW = [
+  [1, 'Python introduction', 'G1'], [2, 'Variables and assignment', 'G1'], [3, 'Basic data types', 'G1'],
+  [4, 'Input and type conversion', 'G2'], [5, 'Arithmetic operators', 'G2'], [6, 'Comparison and logical operators', 'G2'],
+  [7, 'Conditions', 'G3'], [8, 'Loops', 'G3'], [9, 'Loop control', 'G3'],
+  [10, 'Strings', 'G4'], [11, 'Lists', 'G4'], [12, 'Tuples and sets', 'G4'], [13, 'Dictionaries', 'G4'],
+  [14, 'Functions', 'G5'], [15, 'Modules and imports', 'G5'], [16, 'Exceptions', 'G5'],
+  [17, 'File handling', 'G6'], [18, 'Basic object-oriented programming', 'G6'],
+].map(([position, title, group]) => ({ position, title, group }));
+
+/**
+ * Rank progression policy v1 (decision A-04, docs/api-contract.md §7) as display copy
+ * for the landing rank ladder. PHP applies the real rule; nothing here decides a rank.
+ */
+export const RANK_LADDER = [
+  { code: 'E', missions: '0–2' }, { code: 'D', missions: '3–5' }, { code: 'C', missions: '6–8' },
+  { code: 'B', missions: '9–11' }, { code: 'A', missions: '12–14' }, { code: 'S', missions: '15–18' },
+];
+
 /** Decorative rank artwork tiers (spec §4.2). Never an avatar, never saved. */
 export const ART = { hero: heroArt, heroSmall: heroArtSmall, young: expE };
 export const RANK_ART = { E: 'young', D: 'young', C: 'awakened', B: 'awakened', A: 'awakened', S: 'awakened' };
