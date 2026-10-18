@@ -21,3 +21,42 @@
 .admin-comparison > button { grid-column: 1 / -1; justify-self: start; }
 @media (max-width: 760px) { .admin-comparison { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 600px) { .admin-editor { padding: 16px; } .admin-filters { padding: 16px; } .admin-table td { max-width: 240px; } }
+
+/* ==== Phase 7: calm "command console" polish (spec §6). No particles, no art, minimal motion. ==== */
+.admin-header::before { display: none; }                /* the eyebrow below replaces the generic one */
+.admin-header .eyebrow { margin-bottom: var(--space-2); }
+.admin-tile { display: grid; gap: var(--space-2); border-top: 2px solid var(--hud); transition: border-color var(--dur-fast), box-shadow var(--dur-fast); }
+.admin-tile .card-title { display: flex; align-items: center; gap: var(--space-2); margin: 0; }
+.admin-tile .card-title .icon { width: 18px; height: 18px; color: var(--hud); }
+.admin-chip { display: inline-flex; align-items: center; gap: 6px; padding: 1px 10px; border-radius: 999px; border: 1px solid var(--line-strong);
+  font-size: .8rem; font-weight: 650; line-height: 1.6; white-space: nowrap; color: var(--text-muted); }
+.admin-chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: none; }
+.chip-ok { color: var(--success); border-color: rgba(74, 222, 128, .5); }
+.chip-warn { color: var(--warning); border-color: rgba(251, 191, 36, .5); }
+.chip-bad { color: var(--danger); border-color: rgba(255, 107, 129, .55); }
+.chip-info { color: var(--hud-strong); border-color: rgba(76, 201, 255, .5); }
+.chip-muted { color: var(--text-dim); border-style: dashed; }
+.admin-table td .admin-chip { white-space: normal; }
+.admin-dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 0 var(--space-5); margin: 0 0 var(--space-4); }
+.admin-dl > div { display: grid; grid-template-columns: minmax(120px, 40%) minmax(0, 1fr); gap: var(--space-3); padding: var(--space-2) 0; border-bottom: 1px solid var(--line); }
+.admin-dl dt { font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); }
+.admin-dl dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.admin-raw { margin: 0 0 var(--space-3); }
+.admin-raw summary { cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; color: var(--link); font-weight: 600; }
+.admin-raw[open] summary { margin-bottom: var(--space-2); }
+.admin-student h3 { margin-top: var(--space-4); font-size: .95rem; letter-spacing: .1em; text-transform: uppercase; color: var(--hud-strong); }
+.admin-audit h2 { font-size: 1rem; letter-spacing: .02em; }
+.admin-audit { border-left: 3px solid var(--hud); }
+.admin-badge-summary { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-3); }
+.admin-badge-summary p { margin: 0 0 var(--space-1); }
+.admin-editor > p:first-child { font-size: .9rem; color: var(--text-muted); }
+@media (max-width: 600px) { .admin-dl > div { grid-template-columns: minmax(0, 1fr); gap: 2px; } }
+
+/* ==== remaining pages: login, registration, not found ==== */
+.auth-page { max-width: 520px; }
+.auth-form { border-color: rgba(76, 201, 255, .3); border-radius: var(--radius-hud); background: linear-gradient(180deg, rgba(16, 20, 52, .94), rgba(9, 10, 28, .94));
+  box-shadow: var(--shadow), 0 0 34px -18px var(--hud-glow); }
+.auth-form::before { display: none; }
+.auth-form .btn-primary { min-height: 48px; }
+.not-found .eyebrow { margin-bottom: var(--space-2); }
+.not-found .page-header::before { display: none; }

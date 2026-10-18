@@ -19,7 +19,8 @@ export function Layout({ minimal = false }) {
   const hasNavigation=!!user && !minimal;
   const items=user?.role==='admin'?ADMIN_NAV:STUDENT_NAV;
   const section=items.filter(([to])=>location.pathname===to || to!=='/admin' && location.pathname.startsWith(to+'/')).at(-1)?.[1]
-    || ({'/login':'Log in','/register':'Create account','/start':'Experience','/assessment':'Placement check','/assessment/result':'Placement result'}[location.pathname]) || 'Python learning';
+    || ({'/login':'Log in','/register':'Create account','/start':'Experience','/assessment':'Placement check','/assessment/result':'Placement result'}[location.pathname])
+    || (location.pathname.startsWith('/quiz/') ? 'Missions' : null) || 'Python learning';   // quizzes belong to Missions
   useEffect(()=>{
     setMenuOpen(false);
     let tries=0,timer;

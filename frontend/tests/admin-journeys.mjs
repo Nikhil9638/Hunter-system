@@ -201,14 +201,14 @@ try {
 
   }
   await go(p,'/admin/questions?usage=assessment&status=active&per_page=10','Question management'); await p.locator('table').waitFor(); check('Question filters and pagination render');
-  await go(p,'/admin/badges/new','Create badge'); await p.getByLabel('Slug (immutable after creation)').fill(`fx-b7-${RUN}`); await p.getByLabel('Badge name',{exact:true}).fill(`[FIXTURE] Browser badge ${RUN}`); await p.getByLabel('Description',{exact:true}).fill('[FIXTURE] Not final content'); await p.getByLabel('Price in coins').fill('23');
+  await go(p,'/admin/badges/new','Create badge'); await p.getByLabel('Slug (immutable after creation)').fill(`fx-b7-${RUN}`); await p.getByLabel('Badge name',{exact:true}).fill(`[FIXTURE] Browser badge ${RUN}`); await p.getByLabel('Description',{exact:true}).fill('[FIXTURE] Not final content'); await p.getByLabel('Price in Mana').fill('23');
   check('Create badge with nullable artwork',await save(p)===201); await p.waitForURL(/\/admin\/badges\/\d+$/); const badgeId=Number(p.url().split('/').pop());
   await p.getByLabel('Badge name',{exact:true}).waitFor(); await action(p,'Put on sale'); await p.getByRole('alert').waitFor(); check('Publication requires approval');
-  await action(p,'Approve current price: 23 coins'); await action(p,'Put on sale'); check('Exact price approval and sale publication succeed');
-  await p.getByLabel('Price in coins').fill('24'); await save(p); await p.getByRole('button',{name:'Approve current price: 24 coins'}).waitFor(); check('Price edit visibly invalidates approval and withdraws sale',(await p.locator('main').innerText()).includes('off_sale'));
+  await action(p,'Approve current price: 23 Mana'); await action(p,'Put on sale'); check('Exact price approval and sale publication succeed');
+  await p.getByLabel('Price in Mana').fill('24'); await save(p); await p.getByRole('button',{name:'Approve current price: 24 Mana'}).waitFor(); check('Price edit visibly invalidates approval and withdraws sale',(await p.locator('main').innerText()).includes('off_sale'));
   await p.getByLabel('Artwork reference (optional)').fill('badges/not-valid.svg'); check('Restricted artwork error',await save(p)===400);
   check('Validation error keeps artwork input',await p.getByLabel('Artwork reference (optional)').inputValue()==='badges/not-valid.svg'); await p.getByLabel('Artwork reference (optional)').fill('');
-  await action(p,'Approve current price: 24 coins'); await action(p,'Put on sale'); await action(p,'Take off sale'); check('Approval and off-sale lifecycle succeeds');
+  await action(p,'Approve current price: 24 Mana'); await action(p,'Put on sale'); await action(p,'Take off sale'); check('Approval and off-sale lifecycle succeeds');
   await action(p,'Retire badge'); check('Retired badge is read only',await p.getByRole('button',{name:'Save changes'}).isDisabled());
   await go(p,`/admin/audit?entity_type=badge&entity_id=${badgeId}`,'Audit history'); await p.locator('article').first().waitFor(); check('Audit target filter exposes relevant before and after values');
   if(!MOCK) {

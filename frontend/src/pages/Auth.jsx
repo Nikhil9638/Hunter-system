@@ -54,11 +54,14 @@ export function LoginPage() {
   };
 
   return (
-    <div className="narrow">
-      <PageHeader title="Log in" />
+    <div className="narrow auth-page">
+      <PageHeader title="Log in">
+        <p className="lead">Enter the Hunter Portal to continue your missions.</p>
+      </PageHeader>
       {lostReason && LOST[lostReason] && <Notice tone="warning" title="Session ended">{LOST[lostReason]}</Notice>}
       {location.state?.from && !lostReason && <Notice tone="info">Log in to continue.</Notice>}
-      <form className="card form" onSubmit={onSubmit} noValidate>
+      <form className="card form auth-form" onSubmit={onSubmit} noValidate>
+        <span className="hud-corner hud-corner-tl" aria-hidden="true" /><span className="hud-corner hud-corner-tr" aria-hidden="true" /><span className="hud-corner hud-corner-bl" aria-hidden="true" /><span className="hud-corner hud-corner-br" aria-hidden="true" />
         <Field id="email" label="Email" type="email" value={email} onChange={setEmail} autoComplete="email" required />
         <Field id="password" label="Password" type="password" value={password} onChange={setPassword} autoComplete="current-password" required />
         {error && <Notice tone="error">{error}</Notice>}
@@ -96,9 +99,12 @@ export function RegisterPage() {
   const msg = (k) => (errors[k] === 'email_taken' ? 'An account with this email already exists.' : errors[k] ? FIELD_TEXT[errors[k]] ?? errors[k] : null);
 
   return (
-    <div className="narrow">
-      <PageHeader title="Create your account" />
-      <form className="card form" onSubmit={onSubmit} noValidate>
+    <div className="narrow auth-page">
+      <PageHeader title="Create your account">
+        <p className="lead">Begin your awakening: create your hunter account to start learning Python.</p>
+      </PageHeader>
+      <form className="card form auth-form" onSubmit={onSubmit} noValidate>
+        <span className="hud-corner hud-corner-tl" aria-hidden="true" /><span className="hud-corner hud-corner-tr" aria-hidden="true" /><span className="hud-corner hud-corner-bl" aria-hidden="true" /><span className="hud-corner hud-corner-br" aria-hidden="true" />
         <Field id="name" label="Display name" value={name} onChange={setName} autoComplete="nickname" error={msg('display_name')} maxLength={80} required />
         <Field id="email" label="Email" type="email" value={email} onChange={setEmail} autoComplete="email" error={msg('email')} required />
         <Field id="password" label="Password" type="password" value={password} onChange={setPassword} autoComplete="new-password"

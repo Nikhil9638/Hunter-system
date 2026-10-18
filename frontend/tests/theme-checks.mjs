@@ -39,7 +39,7 @@ try {
     return c;
   }
   async function go(p,url,ready){await p.goto(BASE+url);await p.locator(ready).first().waitFor();}
-  async function login(p,email,password){await go(p,'/login','input[type=email]');await p.getByLabel('Email').fill(email);await p.getByLabel('Password').fill(password);await p.getByRole('button',{name:'Log in',exact:true}).click();await p.waitForURL(/\/(dashboard|admin)$/);await p.locator('main .card').first().waitFor();}
+  async function login(p,email,password){await go(p,'/login','input[type=email]');await p.getByLabel('Email').fill(email);await p.getByLabel('Password').fill(password);await p.getByRole('button',{name:'Log in',exact:true}).click();await p.waitForURL(/\/(dashboard|admin)$/);await p.locator('main :is(.card, .hud-panel)').first().waitFor();}
   const c=await context(),p=await c.newPage();await go(p,'/login','input[type=email]');
   const actual=await p.evaluate(()=>{
     const css=getComputedStyle(document.documentElement);const primary=getComputedStyle(document.querySelector('.btn-primary'));
