@@ -94,7 +94,7 @@ try {
   for(const b of approved){
     const actual=store.find(s=>s.name===b.name);assert.ok(actual);assert.equal(actual.price,b.approved_price);
     const card=page.locator('.badge-card').filter({has:page.getByRole('heading',{name:b.name,exact:true})});
-    await card.getByRole('button',{name:'Buy',exact:true}).click();await card.getByRole('button',{name:'Confirm',exact:true}).click();await card.getByText('Owned',{exact:true}).waitFor();bought.push(actual.id);
+    await card.getByRole('button',{name:'Buy',exact:true}).click();await card.getByRole('button',{name:/^Spend \d+ Mana$/}).click();await card.getByText('Owned',{exact:true}).waitFor();bought.push(actual.id);
   }
   check('Real Chrome purchases all six approved badges for180 coins');
   const profile=await page.evaluate(async()=>{const r=await fetch('/hunter-system/api/v1/me/profile');return(await r.json()).data;});

@@ -28,7 +28,7 @@
 .rc-mine:not(.rc-correct) { border-color: rgba(255, 107, 129, .5) !important; }
 .explanation { background: rgba(76, 201, 255, .07); border-radius: var(--radius-sm); padding: var(--space-3); margin: 0; }
 
-/* ---- tables, evidence, timeline, ledger */
+/* ---- tables, evidence (rank & Mana history, store, profile: see styles/wallet.css, Phase 6) */
 .table { width: 100%; border-collapse: collapse; }
 .table th, .table td { text-align: left; padding: var(--space-2) var(--space-3); border-bottom: 1px solid var(--line); }
 .table th { color: var(--text-muted); font-weight: 600; }
@@ -36,37 +36,11 @@
 .table-wrap .table { min-width: 500px; }
 .evidence { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--space-1) var(--space-5); }
 .evidence li { display: flex; justify-content: space-between; gap: var(--space-3); border-bottom: 1px dashed var(--line); padding: var(--space-1) 0; }
-.timeline, .ledger { list-style: none; padding: 0; margin: 0 0 var(--space-4); display: grid; gap: var(--space-2); }
-.ledger li { display: grid; grid-template-columns: 4.5em 1fr; gap: 0 var(--space-3); padding-bottom: var(--space-2); border-bottom: 1px solid var(--line); }
-.ledger li .muted { grid-column: 2; font-size: .85rem; }
-.credit { color: var(--success); font-weight: 700; }
-.debit { color: var(--warning); font-weight: 700; }
-
-/* ---- badges, store, showcase (Phase 6 redesign) */
-.badge-grid { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
-.badge-card { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); margin: 0; }
-.badge-name { font-size: 1.1rem; margin: 0; }
-.price { font-weight: 700; color: var(--hud-strong); }
-.badge-art { width: 64px; height: 64px; border-radius: 12px; flex: none; object-fit: contain; }
-.badge-card > .badge-art { width: 80px; height: 80px; }
-.badge-card .price { margin-top: auto; }
-.badge-art-placeholder { display: inline-grid; place-items: center; color: var(--text-muted); border: 1px dashed var(--line-strong); background: var(--surface-2); }
-.confirm { display: grid; gap: var(--space-2); width: 100%; padding: 12px; border: 1px solid var(--hud); border-radius: var(--radius-sm); background: var(--surface-2); }
-.showcase { list-style: none; display: flex; gap: var(--space-4); padding: 0; margin: 0; flex-wrap: wrap; }
-.showcase li { display: flex; flex-direction: column; align-items: center; gap: var(--space-2); }
-.owned { list-style: none; padding: 0; margin: 0 0 var(--space-4); display: grid; gap: var(--space-2); }
-.owned-item label { display: flex; align-items: center; gap: var(--space-3); padding: var(--space-2) var(--space-3); border: 1px solid var(--line); border-radius: var(--radius-sm); cursor: pointer; }
-.order { padding-left: 0; list-style: none; display: grid; gap: var(--space-1); margin: 0 0 var(--space-4); }
-.order li { display: flex; align-items: center; gap: var(--space-2); }
-.order li span { flex: 1; }
-.order .btn { min-width: 44px; min-height: 40px; font-size: 1.1rem; color: var(--text); border: 1px solid var(--line-strong); }
 
 @media (max-width: 760px) {
   .card { padding: var(--space-4); }
   .facts { grid-template-columns: 1fr; }
   .evidence { grid-template-columns: minmax(0, 1fr); }
-  .order li { flex-wrap: wrap; }
-  .btn-small, .order .btn { min-height: 44px; }
-  .owned-item label { align-items: flex-start; }
+  .btn-small { min-height: 44px; }                 /* touch targets on small screens (all pages) */
   .hud-panel { padding: var(--space-4); }
 }

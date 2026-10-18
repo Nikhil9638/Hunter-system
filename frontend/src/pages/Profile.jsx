@@ -2,8 +2,17 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { get, put } from '../api/client.js';
 import { useAction, useApi } from '../lib/useApi.js';
-import { BadgeArt, Card, LoadError, Loading, Notice, PageHeader, RankBadge, fmtDate } from '../components/ui.jsx';
+import { BadgeArt, LoadError, Loading, Notice, PageHeader, RankBadge, fmtDate } from '../components/ui.jsx';
+import { CharacterArt, HudPanel, ManaAmount } from '../components/hud.jsx';
+import { RANKS, mana, rankCode } from '../config/presentation.js';
 
+const STATUS_TAG = { retired: 'retired', off_sale: 'off sale' };   // owned badges keep these statuses (API)
+const StatusTag = ({ status }) => (STATUS_TAG[status] ? <span className="tag">{STATUS_TAG[status]}</span> : null);
+
+/**
+ * Hunter profile (docs/frontend-design-spec.md §5.4): GET /me/profile; showcase saved
+ * with PUT /me/showcase {badge_ids}. Ordering, save, undo and error handling unchanged.
+ */
 export function ProfilePage() {
   const res = useApi((signal) => get('/me/profile', { signal }), []);
   const [draft, setDraft] = useState(null);           // ordered badge ids being edited
@@ -20,6 +29,7 @@ export function ProfilePage() {
   const saved = p.showcase.map((s) => s.badge_id);
   const byId = Object.fromEntries(p.owned_badges.map((b) => [b.badge_id, b]));
   const changed = JSON.stringify(saved) !== JSON.stringify(draft);
+  const code = rankCode(p.hunter_rank);
 
   const toggle = (id) => setDraft((d) => (d.includes(id) ? d.filter((x) => x !== id) : d.length < limit ? [...d, id] : d));
   const move = (i, delta) => setDraft((d) => {
@@ -38,31 +48,45 @@ export function ProfilePage() {
       setMessage({ tone: 'error', text: `Showcase not saved: ${err.message} Your previous showcase is unchanged.` });
     }
   });
+  const emptySlots = Math.max(0, limit - p.showcase.length);
 
   return (
-    <div>
+    <div className="profile-page">
       <PageHeader title={p.display_name} />
-      <div className="grid-3">
-        <Card title="Hunter rank" className="stat"><RankBadge rank={p.hunter_rank} size="lg" /></Card>
-        <Card title="Placement rank" className="stat"><RankBadge rank={p.placement_rank} /><p className="muted small">Starting point from the placement check.</p></Card>
-        <Card title="Progress" className="stat">
-          <p>{p.topics_passed} of {p.topics_total} topics passed</p>
-          <p>{p.coins} coins</p>
-          <p className="muted small">Experience (self-described): {p.experience_level?.label ?? '—'}</p>
-        </Card>
+      <div className="profile-top">
+        <section className={`profile-art rank-${code ?? 'none'}`} aria-label="Rank artwork">
+          <CharacterArt rank={p.hunter_rank} />
+        </section>
+        <HudPanel eyebrow="Hunter card" title="Profile" className="profile-card">
+          <dl className="status-rows">
+            <div><dt>Hunter rank</dt><dd><RankBadge rank={p.hunter_rank} size="lg" />{code && RANKS[code].lore && <span className="lore muted small profile-lore">{RANKS[code].lore}</span>}</dd></div>
+            <div><dt>Placement rank</dt><dd><RankBadge rank={p.placement_rank} size="sm" /> <span className="muted small">starting point from the placement check</span></dd></div>
+            <div><dt>Missions cleared</dt><dd><strong className="status-number">{p.topics_passed} / {p.topics_total}</strong></dd></div>
+            <div><dt>Mana</dt><dd><ManaAmount amount={p.coins} /></dd></div>
+            <div><dt>Experience</dt><dd>{p.experience_level?.label ?? '—'} <span className="muted small">(self-described)</span></dd></div>
+          </dl>
+        </HudPanel>
       </div>
 
-      <Card title="Showcase">
-        {p.showcase.length === 0 ? <p className="muted">No badges showcased.</p> : (
-          <ol className="showcase">
-            {p.showcase.map((s) => (
-              <li key={s.badge_id}><BadgeArt url={s.image_url} name={s.name} /><span>{s.name}</span>{s.status === 'retired' && <span className="tag">retired</span>}</li>
-            ))}
-          </ol>
-        )}
-      </Card>
+      <HudPanel eyebrow={`Up to ${limit} badges`} title="Showcase">
+        <div className="showcase-slots">
+          {p.showcase.length > 0 && (
+            <ol className="showcase">
+              {p.showcase.map((s) => (
+                <li key={s.badge_id} className="showcase-slot"><BadgeArt url={s.image_url} name={s.name} /><span className="showcase-name">{s.name}</span><StatusTag status={s.status} /></li>
+              ))}
+            </ol>
+          )}
+          {emptySlots > 0 && (
+            <ul className="showcase-empty" aria-label={`${emptySlots} empty showcase ${emptySlots === 1 ? 'slot' : 'slots'}`}>
+              {Array.from({ length: emptySlots }, (_, i) => <li key={i} className="showcase-slot is-empty"><span aria-hidden="true">+</span><span className="small">Empty slot</span></li>)}
+            </ul>
+          )}
+        </div>
+        {p.showcase.length === 0 && <p className="muted">No badges showcased.</p>}
+      </HudPanel>
 
-      <Card title="Your badges">
+      <HudPanel eyebrow="Collection" title="Your badges">
         {p.owned_badges.length === 0 ? (
           <p className="muted">You don't own any badges yet. <Link to="/store">Visit the store</Link>.</p>
         ) : (
@@ -70,13 +94,13 @@ export function ProfilePage() {
             <p className="hint">Choose up to {limit} badges to showcase, then arrange their order.</p>
             <ul className="owned">
               {p.owned_badges.map((b) => (
-                <li key={b.badge_id} className="owned-item">
+                <li key={b.badge_id} className={`owned-item${draft.includes(b.badge_id) ? ' is-picked' : ''}`}>
                   <label>
                     <input type="checkbox" checked={draft.includes(b.badge_id)} onChange={() => toggle(b.badge_id)}
                            disabled={pending || (!draft.includes(b.badge_id) && draft.length >= limit)} />
                     <BadgeArt url={b.image_url} name={b.name} />
-                    <span><strong>{b.name}</strong>{b.status === 'retired' && <span className="tag">retired</span>}
-                      <span className="muted small"> · paid {b.price_paid} coins · {fmtDate(b.purchased_at)}</span></span>
+                    <span><strong>{b.name}</strong><StatusTag status={b.status} />
+                      <span className="muted small owned-meta">paid {mana(b.price_paid)} · {fmtDate(b.purchased_at)}</span></span>
                   </label>
                 </li>
               ))}
@@ -97,12 +121,14 @@ export function ProfilePage() {
                 </ol>
               </>
             )}
-            <button type="button" className="btn btn-primary" onClick={save} disabled={pending || !changed}>{pending ? 'Saving…' : 'Save showcase'}</button>
-            {' '}{changed && <button type="button" className="btn btn-ghost" onClick={() => setDraft(saved)} disabled={pending}>Undo changes</button>}
+            <div className="choice-row">
+              <button type="button" className="btn btn-primary" onClick={save} disabled={pending || !changed}>{pending ? 'Saving…' : 'Save showcase'}</button>
+              {changed && <button type="button" className="btn btn-ghost" onClick={() => setDraft(saved)} disabled={pending}>Undo changes</button>}
+            </div>
           </>
         )}
         {message && <Notice tone={message.tone}>{message.text}</Notice>}
-      </Card>
+      </HudPanel>
     </div>
   );
 }

@@ -253,11 +253,11 @@ try {
   await pb.getByText('Starting rank from the placement check').waitFor();
   // Rank and coin panels load independently; wait for the ledger under test.
   await pb.locator('.ledger li').first().waitFor();
-  check('A17 rank & coin history: placement entry and the +10 first-completion credit',
+  check('A17 rank & Mana history: placement entry and the +10 first-completion credit',
     (await pb.locator('.ledger li').count()) === 1 && /\+10/.test(await pb.locator('.ledger').innerText()));
   await pb.goto(`${APACHE}/profile`);
   await pb.getByText("You don't own any badges yet.").waitFor();
-  check('A18 profile: own ranks/coins, no badges yet (nothing fabricated)', /10 coins/.test(await pb.locator('main').innerText()));
+  check('A18 profile: own ranks/Mana, no badges yet (nothing fabricated)', /10 Mana/.test(await pb.locator('main').innerText()));
 
   // session expiry mid-quiz: progress saved on the server must survive
   await pb.goto(`${APACHE}/topics/2`);
@@ -404,7 +404,7 @@ try {
     const buy = async (name) => {
       const card = pf.locator('.badge-card', { hasText: name });
       await card.getByRole('button', { name: 'Buy' }).click();
-      await card.getByRole('button', { name: 'Confirm' }).click();
+      await card.getByRole('button', { name: /^Spend \d+ Mana$/ }).click();   // Phase 6: confirmation dialog inside the card
       await pf.locator('.notice-title').first().waitFor();
     };
     let purchaseRequests = 0;
@@ -413,7 +413,7 @@ try {
     const msgA = await pf.locator('main .notice').first().innerText();
     await pf.locator('.badge-card', { hasText: 'Badge A' }).getByText('Owned').waitFor();
     check('B2 purchase with confirmation: one request, success message with price 10 and balance 50; refreshed store shows Owned and the new balance',
-      /Badge purchased/.test(msgA) && /10 coins/.test(msgA) && /Balance: 50/.test(msgA) && purchaseRequests === 1
+      /Badge purchased/.test(msgA) && /10 Mana/.test(msgA) && /Balance: 50/.test(msgA) && purchaseRequests === 1
       && /50/.test(await pf.locator('.lead').innerText()));
     helper(true, 'badge-status', ids.c, 'off_sale');                       // taken off sale while the page is open
     await buy('Badge C');

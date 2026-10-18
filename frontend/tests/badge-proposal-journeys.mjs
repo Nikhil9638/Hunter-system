@@ -69,7 +69,7 @@ try{
     check(`${width}px store no page overflow`,await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.screenshot({path:`../content/badges/store-${width}.png`,fullPage:true});
   }
   for(const b of manifest.badges.slice(0,3)){
-    const card=page.locator('.badge-card').filter({has:page.getByRole('heading',{name:b.name,exact:true})});await card.getByRole('button',{name:'Buy',exact:true}).click();await card.getByRole('button',{name:'Confirm',exact:true}).click();await card.getByText('Owned',{exact:true}).waitFor();check(`${b.name}: real browser purchase confirmed`);
+    const card=page.locator('.badge-card').filter({has:page.getByRole('heading',{name:b.name,exact:true})});await card.getByRole('button',{name:'Buy',exact:true}).click();await card.getByRole('button',{name:/^Spend \d+ Mana$/}).click();await card.getByText('Owned',{exact:true}).waitFor();check(`${b.name}: real browser purchase confirmed`);
   }
   await page.goto(BASE+'/profile');await page.getByRole('heading',{name:'Your badges',exact:true}).waitFor();
   for(const name of manifest.badges.slice(0,3).map(b=>b.name))await page.locator('.owned-item').filter({hasText:name}).getByRole('checkbox').check();
