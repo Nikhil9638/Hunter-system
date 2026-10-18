@@ -1,6 +1,6 @@
 /* Hunter System stylesheet entry (docs/frontend-design-spec.md §1, §8.2).
    Vite inlines these imports into one hashed CSS file. Order matters:
-   tokens -> base -> shell -> components -> pages -> landing -> onboarding -> admin -> motion. */
+   tokens -> base -> shell -> components -> pages -> landing -> onboarding -> missions -> admin -> motion. */
 @import './styles/tokens.css';
 @import './styles/base.css';
 @import './styles/shell.css';
@@ -8,5 +8,6 @@
 @import './styles/pages.css';
 @import './styles/landing.css';
 @import './styles/onboarding.css';
+@import './styles/missions.css';
 @import './styles/admin.css';
 @import './styles/motion.css';

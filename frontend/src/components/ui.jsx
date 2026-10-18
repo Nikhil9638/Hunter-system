@@ -52,13 +52,24 @@ export function Notice({ tone = 'info', title, children, action }) {
   );
 }
 
+/**
+ * Mission state label (text + icon, never colour alone). `status` is the server's own
+ * derived value (passed > in_progress > completed > available > locked, see
+ * v_student_topic_status) or the client overlay "no_content" (topicStatus). Unknown
+ * values are shown neutrally as-is rather than guessed.
+ */
+export const MISSION_STATES = {
+  locked: ['lock', 'Locked'],
+  no_content: ['hourglass', 'Unlocked: content coming soon'],
+  available: ['gate', 'Available'],
+  in_progress: ['sword', 'Quiz in progress'],
+  completed: ['info', 'Attempted, not cleared'],
+  passed: ['seal', 'Cleared'],
+};
 export function StatusLabel({ status }) {
-  const map = {
-    locked: [<Icon name="lock" />, 'Locked'], available: ['○', 'Unlocked'], in_progress: ['◐', 'Quiz in progress'],
-    completed: ['●', 'Completed, not passed'], passed: ['✓', 'Passed'], no_content: ['…', 'Unlocked: content coming soon'],
-  };
-  const [icon, text] = map[status] ?? ['?', status];
-  return <span className={`status status-${status}`}><span aria-hidden="true">{icon}</span> {text}</span>;
+  const known = MISSION_STATES[status];
+  const [icon, text] = known ?? ['info', `Status unknown (${status})`];
+  return <span className={`status status-${known ? status : 'unknown'}`}><Icon name={icon} /> {text}</span>;
 }
 
 /** Cosmetic artwork, with a neutral fallback for absent or failed local images. */

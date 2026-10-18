@@ -53,12 +53,12 @@ try {
     await p.setViewportSize({width,height:900});await go(p,'/register','input[type=email]');check(`Registration ${width}px: no document overflow`,await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   }
   await p.setViewportSize({width:1440,height:1000});await login(p,ids.student,'Course fixture student password');
-  const routes=[['/dashboard','.stat'],['/topics','.roadmap-item'],['/topics/18','h1'],['/topics/18/lesson','.prose'],['/assessment/result','.review-item'],['/quiz/'+ids.quiz,'.question'],['/history','.ledger'],['/store','.badge-card'],['/profile','.owned-item']];
+  const routes=[['/dashboard','.status-window'],['/topics','.mission'],['/topics/18','h1'],['/topics/18/lesson','.prose'],['/assessment/result','.review-item'],['/quiz/'+ids.quiz,'.question'],['/history','.ledger'],['/store','.badge-card'],['/profile','.owned-item']];
   for(const width of [1440,900,768,390,320]){
     await p.setViewportSize({width,height:900});
     for(const [url,ready] of routes){await go(p,url,ready);check(`Student ${url} ${width}px contains page overflow`,await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));}
   }
-  await go(p,'/dashboard','.stat');
+  await go(p,'/dashboard','.status-window');
   await p.getByRole('button',{name:'Menu',exact:true}).click();await p.locator('dialog[open]').waitFor();
   check('Student drawer contains only student destinations',await p.locator('dialog nav a').count()===5&&await p.locator('dialog a[href*="/admin"]').count()===0);
   check('Drawer opens with focus inside',await p.evaluate(()=>document.querySelector('dialog').contains(document.activeElement)));
@@ -71,8 +71,8 @@ try {
   await p.getByRole('button',{name:'Menu',exact:true}).click();await p.locator('dialog nav').getByRole('link',{name:'Missions',exact:true}).click();await p.waitForURL(/\/topics$/);
   await p.waitForFunction(()=>document.querySelector('h1')===document.activeElement,{},{timeout:3000});
   check('Drawer destination closes overlay and focuses next page title',await p.locator('dialog[open]').count()===0&&await p.locator('h1').evaluate(e=>e===document.activeElement));
-  await p.reload();await p.locator('.roadmap-item').first().waitFor();check('Authenticated deep-link refresh retains themed shell',await p.locator('.ambient-background').count()===1);
-  await p.setViewportSize({width:1440,height:900});await go(p,'/dashboard','.stat');
+  await p.reload();await p.locator('.mission').first().waitFor();check('Authenticated deep-link refresh retains themed shell',await p.locator('.ambient-background').count()===1);
+  await p.setViewportSize({width:1440,height:900});await go(p,'/dashboard','.status-window');
   check('Desktop sidebar245px; active violet indicator',await p.locator('.desktop-sidebar').evaluate(e=>getComputedStyle(e).width==='245px')&&await p.locator('.desktop-sidebar a.active').evaluate(e=>getComputedStyle(e).color==='rgb(182, 156, 255)'));
   await p.setViewportSize({width:900,height:900});check('Tablet sidebar narrows210px',await p.locator('.desktop-sidebar').evaluate(e=>getComputedStyle(e).width==='210px'));
   await p.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>true});document.dispatchEvent(new Event('visibilitychange'));});await delay(100);
@@ -84,8 +84,8 @@ try {
   const size=await p.locator('canvas').evaluate(e=>e.width*e.height);check('Canvas backing store stays below1.8M pixels',size<=1804000);
   const before=await p.evaluate(()=>window.__themeMetrics());await p.locator('.desktop-sidebar').getByRole('link',{name:'Missions',exact:true}).click();await p.waitForURL(/\/topics$/);
   check('SPA navigation keeps one background and listener set',await p.locator('.ambient-background').count()===1&&JSON.stringify(await p.evaluate(()=>window.__themeMetrics()))===JSON.stringify(before));
-  c.themeFaults.delayDashboard=true;await p.locator('.desktop-sidebar').getByRole('link',{name:'Dashboard',exact:true}).click();await p.getByRole('status').waitFor();check('Real delayed response displays themed loading state',await p.locator('.spinner').isVisible());await p.locator('.stat').first().waitFor();
-  await go(p,'/topics','.roadmap-item');c.themeFaults.abortDashboard=true;await p.locator('.desktop-sidebar').getByRole('link',{name:'Dashboard',exact:true}).click();await p.getByRole('alert').waitFor();check('Controlled transport failure has readable error/retry',await p.getByRole('button',{name:'Try again'}).isVisible());await p.getByRole('button',{name:'Try again'}).click();await p.locator('.stat').first().waitFor();
+  c.themeFaults.delayDashboard=true;await p.locator('.desktop-sidebar').getByRole('link',{name:'Dashboard',exact:true}).click();await p.getByRole('status').waitFor();check('Real delayed response displays themed loading state',await p.locator('.spinner').isVisible());await p.locator('.status-window').first().waitFor();
+  await go(p,'/topics','.mission');c.themeFaults.abortDashboard=true;await p.locator('.desktop-sidebar').getByRole('link',{name:'Dashboard',exact:true}).click();await p.getByRole('alert').waitFor();check('Controlled transport failure has readable error/retry',await p.getByRole('button',{name:'Try again'}).isVisible());await p.getByRole('button',{name:'Try again'}).click();await p.locator('.status-window').first().waitFor();
   await go(p,'/store','.badge-card');await p.locator('.badge-art').first().scrollIntoViewIfNeeded();await delay(150);
   check('Approved artwork renders real local PNGs',await p.locator('.badge-card img').evaluateAll(images=>images.length===6&&images.every(i=>i.complete&&i.naturalWidth===512)));
   const image=await p.locator('.badge-card img').first().getAttribute('src');c.themeFaults.image=image;await p.reload();await p.locator('.badge-art-placeholder').waitFor();check('Failed artwork falls back without broken image',await p.locator('.badge-art-placeholder').count()===1);

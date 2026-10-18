@@ -191,9 +191,11 @@ try {
   await shot(page, 'a-placement-result');
 
   await page.goto(`${APACHE}/topics`);
-  await page.locator('.roadmap-item').first().waitFor();
-  const t3 = await page.locator('.roadmap-item').nth(2).innerText();
-  const t5 = await page.locator('.roadmap-item').nth(4).innerText();
+  // Phase 5: each mission is an article named "Mission <position>: <title>".
+  const mission = (n) => page.getByRole('article', { name: new RegExp(`^Mission ${n}:`) });
+  await mission(1).waitFor();
+  const t3 = await mission(3).innerText();
+  const t5 = await mission(5).innerText();
   check('A9 roadmap distinguishes "Unlocked: content coming soon" (topic 3) from "Locked" (topic 5) with text, not colour only',
     /content coming soon/.test(t3) && /Locked/.test(t5));
   await page.goto(`${APACHE}/topics/3/lesson`);
@@ -229,8 +231,8 @@ try {
   await pb.getByRole('button', { name: 'Submit quiz' }).click();
   await pb.getByText(/Quiz performance: D/).waitFor();
   const fail = await pb.locator('main').innerText();
-  check('A14 failed first completion: grade D, not passed, "+10 coins" for the first completed quiz, nothing unlocked',
-    /not passed/.test(fail) && /\+10 coins/.test(fail) && /Pass to unlock the next topic/.test(fail) && (await pb.locator('.review-item').count()) === 5);
+  check('A14 failed first completion: grade D, not passed, "+10 Mana" for the first completed quiz, nothing unlocked',
+    /not passed/.test(fail) && /\+10 Mana/.test(fail) && /Pass to unlock the next topic/.test(fail) && (await pb.locator('.review-item').count()) === 5);
   await pb.getByRole('button', { name: 'Try again' }).click();
   await pb.waitForURL(/\/quiz\/\d+$/);
   await pb.getByRole('group', { name: /^Question \d+ of 5/ }).waitFor();
@@ -242,9 +244,9 @@ try {
     /— passed/.test(pass) && /already been paid/.test(pass) && /Unlocked: Variables and assignment/.test(pass));
   await shot(pb, 'b-quiz-result');
   await pb.locator('main').getByRole('link', { name: 'Dashboard' }).click();
-  await pb.getByRole('heading', { name: 'Topics passed' }).waitFor();
+  await pb.getByRole('heading', { name: 'Status' }).waitFor();
   const dash = await pb.locator('main').innerText();
-  check('A16 dashboard refreshed from the API: 10 coins, 1 of 18 topics passed, rank E, current topic 2',
+  check('A16 dashboard refreshed from the API: 10 Mana, 1 of 18 topics passed, rank E, current topic 2',
     /\b10\b/.test(dash) && /1\s*\/ 18/.test(dash) && /E-Rank/.test(dash) && /Variables and assignment/.test(dash), dash.replace(/\s+/g, ' ').slice(0, 160));
   await shot(pb, 'b-dashboard');
   await pb.goto(`${APACHE}/history`);
@@ -338,7 +340,7 @@ try {
   watch(pm);
   await ctxM.addCookies(await ctxB.cookies());
   await pm.goto(`${APACHE}/dashboard`);
-  await pm.getByRole('heading', { name: 'Topics passed' }).waitFor();
+  await pm.getByRole('heading', { name: 'Status' }).waitFor();
   const overflow = await pm.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     const navHidden = !(await pm.locator('#navigation-drawer nav').isVisible());
   await pm.getByRole('button', { name: 'Menu' }).click();

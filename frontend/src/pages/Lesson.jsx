@@ -39,14 +39,19 @@ export function LessonPage() {
 
   return (
     <article className="lesson">
+      <p className="lesson-crumb"><Link to={`/topics/${topicId}`}>← Mission briefing</Link></p>
       <PageHeader title={lesson.title} />
       <Markdown source={withoutRepeatedTitle(lesson.body_markdown, lesson.title)} />
-      <div className="lesson-end card">
-        <p>Ready? The quiz has 5 questions; 3 correct passes the topic.</p>
-        <button type="button" className="btn btn-primary" onClick={startQuiz} disabled={pending}>{pending ? 'Starting…' : 'Start the quiz'}</button>
-        {' '}<Link to={`/topics/${topicId}`}>Back to the topic</Link>
+      <section className="lesson-end" aria-labelledby="lesson-end-title">
+        <span className="eyebrow">System trial</span>
+        <h2 id="lesson-end-title" className="lesson-end-title">Ready for the quiz?</h2>
+        <p>The quiz has 5 questions; 3 correct passes the topic and unlocks the next mission.</p>
+        <div className="choice-row">
+          <button type="button" className="btn btn-primary" onClick={startQuiz} disabled={pending}>{pending ? 'Starting…' : 'Start the quiz'}</button>
+          <Link to={`/topics/${topicId}`}>Back to the topic</Link>
+        </div>
         {error && <Notice tone="error">{error}</Notice>}
-      </div>
+      </section>
     </article>
   );
 }

@@ -101,7 +101,7 @@ try {
 
   // ---- B. student shell
   const cs = await context('student'), s = await cs.newPage();
-  await go(s, '/dashboard', '.stat');
+  await go(s, '/dashboard', '.status-window');
   await delay(150); await shot(s, 'student-dashboard-1440');
   const navNames = await s.locator('.desktop-sidebar nav a').allInnerTexts();
   check(`Student navigation labels: ${navNames.join(' · ')}`, navNames.join('|') === 'Dashboard|Missions|Rank & Mana|Badge store|Profile');
@@ -115,24 +115,24 @@ try {
   check('"Rookie" from the API is never rendered anywhere in the page', !/Rookie/i.test(await s.locator('body').innerText()));
   await go(s, '/history', '.timeline li');
   check('Rank history (bare letter "E") shows "E-Rank · Peasant"', (await s.locator('.timeline').innerText()).includes('E-Rank · Peasant'));
-  await go(s, '/topics', '.roadmap-item');
+  await go(s, '/topics', '.mission');
   await shot(s, 'student-topics-1440');
   check('Breadcrumb names the Missions section', (await s.locator('.breadcrumbs strong').innerText()) === 'Missions');
   await s.setViewportSize({ width: 900, height: 900 });
   check('Tablet sidebar narrows to 210px', (await s.locator('.desktop-sidebar').evaluate((e) => getComputedStyle(e).width)) === '210px');
   await s.setViewportSize({ width: 1440, height: 1000 });
-  await go(s, '/dashboard', '.stat');
+  await go(s, '/dashboard', '.status-window');
   let focusedNav = false;
   for (let i = 0; i < 12 && !focusedNav; i++) { await s.keyboard.press('Tab'); focusedNav = await s.evaluate(() => !!document.activeElement.closest('.desktop-sidebar nav')); }
   check('Keyboard reaches navigation with a visible 3px focus outline', focusedNav && (await s.evaluate(() => { const st = getComputedStyle(document.activeElement); return st.outlineStyle === 'solid' && st.outlineWidth === '3px'; })));
   for (const width of [1440, 900, 768, 390, 320]) {
     await s.setViewportSize({ width, height: 900 });
-    for (const [url, ready] of [['/dashboard', '.stat'], ['/topics', '.roadmap-item'], ['/history', '.ledger']]) { await go(s, url, ready); check(`Student ${url} ${width}px: no horizontal overflow`, await noOverflow(s)); }
+    for (const [url, ready] of [['/dashboard', '.status-window'], ['/topics', '.mission'], ['/history', '.ledger']]) { await go(s, url, ready); check(`Student ${url} ${width}px: no horizontal overflow`, await noOverflow(s)); }
   }
 
   // drawer (390px)
   await s.setViewportSize({ width: 390, height: 844 });
-  await go(s, '/dashboard', '.stat');
+  await go(s, '/dashboard', '.status-window');
   await shot(s, 'student-dashboard-390');
   await s.getByRole('button', { name: 'Menu', exact: true }).click(); await s.locator('dialog[open]').waitFor();
   await shot(s, 'student-drawer-390');
@@ -151,7 +151,7 @@ try {
   check('Drawer "Missions" closes the overlay and focuses the next page title', (await s.locator('dialog[open]').count()) === 0);
 
   // ambient loop guards (same instrumentation as theme-checks.mjs)
-  await s.setViewportSize({ width: 1440, height: 900 }); await go(s, '/dashboard', '.stat'); await delay(120);
+  await s.setViewportSize({ width: 1440, height: 900 }); await go(s, '/dashboard', '.status-window'); await delay(120);
   await s.evaluate(() => { Object.defineProperty(document, 'hidden', { configurable: true, get: () => true }); document.dispatchEvent(new Event('visibilitychange')); }); await delay(100);
   check('Hidden document cancels animation frames', (await s.evaluate(() => window.__metrics())).pending === 0);
   await s.evaluate(() => { delete document.hidden; document.dispatchEvent(new Event('visibilitychange')); }); await delay(100);

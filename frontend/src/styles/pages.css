@@ -1,14 +1,7 @@
 /* Existing page-level styles, re-tokenised for the System theme. Each page receives its
    full redesign in its own phase (spec §10.4); class names are unchanged here. */
 
-/* ---- topic roadmap (Phase 5 redesign) */
-.roadmap { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-2); }
-.roadmap-item { display: flex; gap: var(--space-4); align-items: center; padding: var(--space-3) var(--space-4); background: var(--surface-1); border: 1px solid var(--line); border-radius: var(--radius); }
-.ri-pos { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--line-strong); font-family: var(--font-display); font-weight: 700; }
-.ri-passed .ri-pos { border-color: var(--gold); color: var(--gold-soft); }
-.ri-locked { opacity: .7; }
-.ri-body { display: flex; flex-direction: column; gap: var(--space-1); }
-.ri-title { font-weight: 600; }
+/* ---- mission board, briefing, lesson, quiz result: see styles/missions.css (Phase 5) */
 
 /* ---- question runner: see styles/onboarding.css (Phase 4) */
 
@@ -16,13 +9,11 @@
 .code-block { background: #070818; border: 1px solid var(--line); border-left: 3px solid var(--hud); border-radius: var(--radius-sm);
   padding: var(--space-3) var(--space-4); overflow-x: auto; font: .95rem/1.55 var(--mono); tab-size: 4; white-space: pre; color: #e6edff; margin: 0 0 var(--space-4); }
 .inline-code { font-family: var(--mono); font-size: .92em; background: #070818; color: var(--gold-soft); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; overflow-wrap: anywhere; }
-.lesson { max-width: 860px; margin: 0 auto; background: var(--surface-1); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
 .prose { font-size: 1.05rem; line-height: 1.75; }
 .prose h2 { margin-top: var(--space-6); font-size: 1.4rem; }
 .prose h3 { margin-top: var(--space-5); font-size: 1.2rem; }
 .prose ul, .prose ol { padding-left: 1.4em; margin: 0 0 var(--space-4); }
 .prose li { margin-bottom: var(--space-1); }
-.lesson-end { margin-top: var(--space-6); }
 
 /* ---- answer review */
 .review { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-4); }
@@ -73,7 +64,6 @@
 @media (max-width: 760px) {
   .card { padding: var(--space-4); }
   .facts { grid-template-columns: 1fr; }
-  .lesson { padding: 16px; }
   .evidence { grid-template-columns: minmax(0, 1fr); }
   .order li { flex-wrap: wrap; }
   .btn-small, .order .btn { min-height: 44px; }

@@ -2,41 +2,96 @@ import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { get, post } from '../api/client.js';
 import { useAction, useApi } from '../lib/useApi.js';
-import { Card, LoadError, Loading, Notice, PageHeader, StatusLabel, TableScroll, fmtDate } from '../components/ui.jsx';
+import { LoadError, Loading, Notice, PageHeader, StatusLabel, TableScroll, fmtDate } from '../components/ui.jsx';
+import { HudPanel, ProgressMeter } from '../components/hud.jsx';
+import { Icon } from '../components/Icon.jsx';
+import { gateName } from '../config/presentation.js';
 
-/** Locked vs unlocked-without-content vs ready are separate facts (api-contract §5). */
+/**
+ * Mission state for display. Precedence (docs/frontend-design-spec.md §4.3):
+ *  1. The server's `status` is used as-is. PHP derives it (v_student_topic_status) as
+ *     passed > in_progress > completed > available > locked; the browser never
+ *     re-derives it from attempts, scores or lesson visits.
+ *  2. One overlay: an unlocked topic whose status is "available" but whose content is
+ *     not ready is shown as "no_content" (availability and readiness are separate facts).
+ *  3. Anything else (e.g. an unexpected value) is passed through and shown neutrally.
+ */
 export const topicStatus = (t) => (t.unlocked && !t.content_ready && t.status === 'available' ? 'no_content' : t.status);
+
+/** The same "current topic" rule the dashboard uses (DashboardService): first unlocked, not passed. */
+const activeMissionId = (topics) => topics.find((t) => t.unlocked && t.status !== 'passed')?.id ?? null;
+
+function missionAction(t, st) {
+  const label = { available: 'Start mission', in_progress: 'Resume quiz', completed: 'Retry mission', passed: 'Review mission' }[st];
+  if (st === 'in_progress' && t.open_attempt_id) return { to: `/quiz/${t.open_attempt_id}`, label };
+  if (label) return { to: `/topics/${t.id}`, label };
+  if (t.unlocked && !['locked', 'no_content'].includes(st)) return { to: `/topics/${t.id}`, label: 'Open mission' };   // unknown status
+  return null;
+}
 
 export function TopicsPage() {
   const res = useApi((signal) => get('/topics', { signal }), []);
   if (res.loading) return <Loading />;
   if (res.error) return <LoadError error={res.error} onRetry={res.reload} />;
+  const topics = res.data;
+  const gates = [];
+  for (const t of topics) {                            // API order; gates appear in curriculum order
+    let g = gates.find((x) => x.code === t.skill_group);
+    if (!g) gates.push(g = { code: t.skill_group, topics: [] });
+    g.topics.push(t);
+  }
+  const cleared = topics.filter((t) => t.status === 'passed').length;
+  const active = activeMissionId(topics);
   return (
-    <div>
-      <PageHeader title="Topics">
-        <p className="lead">Pass a topic's quiz (3 of 5) to unlock the next one.</p>
+    <div className="missions-page">
+      <PageHeader title="Missions">
+        <p className="lead">Clear a mission's quiz (3 of 5 correct) to unlock the next one. Unlocks and progress are recorded by the server.</p>
       </PageHeader>
-      <ol className="roadmap">
-        {res.data.map((t) => {
-          const st = topicStatus(t);
+      <div className="missions-summary">
+        <ProgressMeter label="Missions cleared" value={cleared} max={topics.length} />
+      </div>
+      <div className="gates-board">
+        {gates.map((g) => {
+          const gateCleared = g.topics.filter((t) => t.status === 'passed').length;
           return (
-            <li key={t.id} className={`roadmap-item ri-${st}`}>
-              <span className="ri-pos" aria-hidden="true">{t.position}</span>
-              <div className="ri-body">
-                {t.unlocked
-                  ? <Link className="ri-title" to={`/topics/${t.id}`}>{t.title}</Link>
-                  : <span className="ri-title">{t.title}</span>}
-                <span className="ri-meta"><StatusLabel status={st} />
-                  {t.best_correct !== null && <span className="muted"> · best {t.best_correct}/5</span>}
-                  {t.lesson_visited && <span className="muted"> · lesson read</span>}</span>
-              </div>
-            </li>
+            <section key={g.code} className="gate-panel" aria-labelledby={`gate-${g.code}`}>
+              <header className="gate-panel-head">
+                <h2 id={`gate-${g.code}`} className="gate-panel-title"><Icon name="gate" />{gateName(g.code)}</h2>
+                <span className="gate-panel-count">{gateCleared} of {g.topics.length} cleared</span>
+              </header>
+              <ol className="missions">
+                {g.topics.map((t) => {
+                  const st = topicStatus(t);
+                  const action = missionAction(t, st);
+                  const isActive = t.id === active;
+                  return (
+                    <li key={t.id}>
+                      <article className={`mission mission-${st in STATE_CLASSES ? st : 'unknown'}${isActive ? ' is-active' : ''}`} aria-label={`Mission ${t.position}: ${t.title}`}>
+                        <span className="mission-pos" aria-hidden="true">{String(t.position).padStart(2, '0')}</span>
+                        <div className="mission-body">
+                          <h3 className="mission-title">{t.title}{isActive && <span className="mission-active">Active</span>}</h3>
+                          <p className="mission-meta">
+                            <StatusLabel status={st} />
+                            {t.best_correct !== null && <span className="muted"> · best {t.best_correct}/5</span>}
+                            {t.lesson_visited && <span className="muted"> · lesson read</span>}
+                          </p>
+                          {st === 'locked' && <p className="mission-hint">Clear the previous mission to unlock.</p>}
+                        </div>
+                        {action && <Link className={`btn ${isActive || st === 'in_progress' ? 'btn-primary' : 'btn-secondary'} btn-small mission-action`} to={action.to}>
+                          {action.label}<span className="sr-only">: {t.title}</span></Link>}
+                      </article>
+                    </li>
+                  );
+                })}
+              </ol>
+            </section>
           );
         })}
-      </ol>
+      </div>
     </div>
   );
 }
+const STATE_CLASSES = { locked: 1, no_content: 1, available: 1, in_progress: 1, completed: 1, passed: 1 };
 
 /** One topic: choose lesson-first or the quiz directly; resume; attempt history. */
 export function TopicPage() {
@@ -68,12 +123,14 @@ export function TopicPage() {
   const st = topicStatus(topic);
 
   return (
-    <div>
-      <PageHeader title={`${topic.position}. ${topic.title}`}><StatusLabel status={st} /></PageHeader>
+    <div className="mission-briefing">
+      <PageHeader title={`${topic.position}. ${topic.title}`}>
+        <p className="briefing-meta"><span className="eyebrow">{gateName(topic.skill_group)}</span> <StatusLabel status={st} /></p>
+      </PageHeader>
       {!topic.unlocked && <Notice tone="info" title="Locked">Pass the previous topic's quiz to unlock this one.</Notice>}
       {st === 'no_content' && <Notice tone="info" title="Coming soon">This topic is unlocked for you, but its lesson and quiz are not available yet.</Notice>}
       {topic.unlocked && topic.content_ready && (
-        <Card title="How do you want to learn?">
+        <HudPanel variant="notice" eyebrow="Mission briefing" title="How do you want to learn?">
           <div className="choice-row">
             {topic.open_attempt_id
               ? <Link className="btn btn-primary" to={`/quiz/${topic.open_attempt_id}`}>Resume your quiz</Link>
@@ -82,12 +139,16 @@ export function TopicPage() {
                   <button type="button" className="btn btn-secondary" onClick={start} disabled={pending}>{pending ? 'Starting…' : 'Take the quiz directly'}</button>
                 </>}
           </div>
-          <p className="hint">5 questions. Passing needs 3 correct. Your first completed quiz in a topic earns 10 coins, even if you don't pass.</p>
+          <ul className="briefing-rules">
+            <li>5 questions. Passing needs 3 correct, and passing unlocks the next mission.</li>
+            <li>Your first completed quiz in a mission earns 10 Mana, even if you don't pass.</li>
+            {topic.best_correct !== null && <li>Your best so far: {topic.best_correct}/5.</li>}
+          </ul>
           {error && <Notice tone="error">{error}</Notice>}
-        </Card>
+        </HudPanel>
       )}
       {attempts.length > 0 && (
-        <Card title="Your attempts">
+        <HudPanel variant="quiet" title="Your attempts">
           <TableScroll label="Your quiz attempts"><table className="table">
             <thead><tr><th scope="col">#</th><th scope="col">Result</th><th scope="col">Submitted</th><th scope="col"><span className="sr-only">Open</span></th></tr></thead>
             <tbody>
@@ -101,8 +162,9 @@ export function TopicPage() {
               ))}
             </tbody>
           </table></TableScroll>
-        </Card>
+        </HudPanel>
       )}
+      <p><Link to="/topics">Back to missions</Link></p>
     </div>
   );
 }
